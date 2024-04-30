@@ -30,6 +30,6 @@ public partial class HungerLabel : Label
 				_currentDisplayedLength = HungerText.Length;
 			}
 		}
-		Text = HungerText[0..(_currentDisplayedLength)];
+		Text = HungerText[0.._currentDisplayedLength];
 	}
 }
