@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgfixu372cu3s"]
+
+[ext_resource type="Script" path="res://HungerLabel.cs" id="1_1lgk0"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="HungerLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "My stomach is rumbling..."
+script = ExtResource("1_1lgk0")
