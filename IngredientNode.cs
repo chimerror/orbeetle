@@ -1,9 +1,6 @@
 using Godot;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
-[Tool]
 public partial class IngredientNode : Node2D
 {
 	private const int CellSize = 32;
