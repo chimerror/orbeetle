@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1xr1r5vmqtd8"]
+
+[ext_resource type="Texture2D" uid="uid://ck06r3cj3vmkr" path="res://Art/lpc-food-v2/animal-products.png" id="1_ael7w"]
+[ext_resource type="Script" path="res://IngredientButton.cs" id="1_yxmi1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmvmg"]
+atlas = ExtResource("1_ael7w")
+region = Rect2(0, 0, 32, 32)
+
+[node name="IngredientButton" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+script = ExtResource("1_yxmi1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = SubResource("AtlasTexture_mmvmg")

@@ -1,11 +1,12 @@
 using Godot;
 using System.Collections.Generic;
 
-public partial class IngredientNode : Node2D
+public static class IngredientTexture
 {
-	private const int CellSize = 32;
+	public const int CellSize = 32;
 	private const string AnimalSheetPath = "res://Art/lpc-food-v2/animal-products.png";
 	private const string VeggieSheetPath = "res://Art/lpc-food-v2/fruits-veggies.png";
+
 	private static readonly Dictionary<IngredientType, IngredientSpriteData> ingredientDataDictionary = new()
 	{
 		{ IngredientType.Cheese, new IngredientSpriteData { spriteSheetPath = AnimalSheetPath, xCell = 1, yCell = 1 } },
@@ -23,47 +24,14 @@ public partial class IngredientNode : Node2D
 		{ IngredientType.Beans, new IngredientSpriteData { spriteSheetPath = VeggieSheetPath, xCell = 5, yCell = 11 } },
 	};
 
-	private IngredientType _ingredientType = IngredientType.Cheese;
-	private Sprite2D _ingredientSprite;
-
-	[Export]
-	public IngredientType IngredientType
+	public static AtlasTexture GetIngredientTexture(IngredientType ingredientType)
 	{
-		get => _ingredientType;
-		set
+		var spriteData = ingredientDataDictionary[ingredientType];
+		var texture = new AtlasTexture
 		{
-			var needUpdate = value != _ingredientType;
-			_ingredientType = value;
-			if (needUpdate) {
-				UpdateSprite();
-			}
-		}
-	}
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		_ingredientSprite = GetNode<Sprite2D>("IngredientSprite");
-		GD.Print($"{_ingredientSprite}");
-		UpdateSprite();
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-
-	private void UpdateSprite()
-	{
-		GD.Print("loading new ingredient sprite...");
-		if (_ingredientSprite != null)
-		{
-			var spriteData = ingredientDataDictionary[_ingredientType];
-			var texture = new AtlasTexture
-			{
-				Atlas = GD.Load<CompressedTexture2D>(spriteData.spriteSheetPath),
-				Region = new Rect2(spriteData.xCell * CellSize, spriteData.yCell * CellSize, CellSize, CellSize)
-			};
-			_ingredientSprite.Texture = texture;
-		}
+			Atlas = GD.Load<CompressedTexture2D>(spriteData.spriteSheetPath),
+			Region = new Rect2(spriteData.xCell * CellSize, spriteData.yCell * CellSize, CellSize, CellSize)
+		};
+		return texture;
 	}
 }
