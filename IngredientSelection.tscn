@@ -1,0 +1,172 @@
+[gd_scene load_steps=8 format=3 uid="uid://cgsel57rv8gui"]
+
+[ext_resource type="Texture2D" uid="uid://cyri7d0rf3nly" path="res://Sprites/ClockPlaceholder.png" id="1_cgwk4"]
+[ext_resource type="Script" path="res://IngredientSelection.cs" id="1_po45c"]
+[ext_resource type="PackedScene" uid="uid://c1xr1r5vmqtd8" path="res://IngredientButton.tscn" id="1_ypvtr"]
+[ext_resource type="Texture2D" uid="uid://dscr1gkgoudcx" path="res://Sprites/ClericPlaceholder.png" id="2_o2vol"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yoe2f"]
+font_size = 32
+
+[sub_resource type="Theme" id="Theme_fs5y8"]
+default_font_size = 24
+
+[sub_resource type="Theme" id="Theme_4s6mf"]
+
+[node name="IngredientSelection" type="Node2D"]
+script = ExtResource("1_po45c")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RootHBox" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftVBox" type="VBoxContainer" parent="CanvasLayer/RootHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TimeLabelPanel" type="PanelContainer" parent="CanvasLayer/RootHBox/LeftVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer/RootHBox/LeftVBox/TimeLabelPanel"]
+layout_mode = 2
+text = "Time Remaining"
+label_settings = SubResource("LabelSettings_yoe2f")
+horizontal_alignment = 1
+
+[node name="ClockTextureRect" type="TextureRect" parent="CanvasLayer/RootHBox/LeftVBox"]
+layout_mode = 2
+size_flags_stretch_ratio = 1.86
+texture = ExtResource("1_cgwk4")
+expand_mode = 5
+
+[node name="IngredientsLabelPanel2" type="PanelContainer" parent="CanvasLayer/RootHBox/LeftVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="IngredientsLabel" type="Label" parent="CanvasLayer/RootHBox/LeftVBox/IngredientsLabelPanel2"]
+layout_mode = 2
+text = "Ingredients"
+label_settings = SubResource("LabelSettings_yoe2f")
+horizontal_alignment = 1
+
+[node name="IngredientsGrid" type="GridContainer" parent="CanvasLayer/RootHBox/LeftVBox"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+columns = 4
+
+[node name="IngredientButton" parent="CanvasLayer/RootHBox/LeftVBox/IngredientsGrid" instance=ExtResource("1_ypvtr")]
+layout_mode = 2
+
+[node name="IngredientButton2" parent="CanvasLayer/RootHBox/LeftVBox/IngredientsGrid" instance=ExtResource("1_ypvtr")]
+layout_mode = 2
+IngredientType = 11
+
+[node name="IngredientButton3" parent="CanvasLayer/RootHBox/LeftVBox/IngredientsGrid" instance=ExtResource("1_ypvtr")]
+layout_mode = 2
+IngredientType = 2
+
+[node name="IngredientButton4" parent="CanvasLayer/RootHBox/LeftVBox/IngredientsGrid" instance=ExtResource("1_ypvtr")]
+layout_mode = 2
+IngredientType = 3
+
+[node name="IngredientButton5" parent="CanvasLayer/RootHBox/LeftVBox/IngredientsGrid" instance=ExtResource("1_ypvtr")]
+layout_mode = 2
+IngredientType = 8
+
+[node name="MiddleVBox" type="VBoxContainer" parent="CanvasLayer/RootHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="ChefsLabelPanel" type="PanelContainer" parent="CanvasLayer/RootHBox/MiddleVBox"]
+layout_mode = 2
+
+[node name="ChefsLabel" type="Label" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsLabelPanel"]
+layout_mode = 2
+text = "Chefs de Partie"
+label_settings = SubResource("LabelSettings_yoe2f")
+horizontal_alignment = 1
+
+[node name="ChefsHBox" type="HBoxContainer" parent="CanvasLayer/RootHBox/MiddleVBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="ChefTextureRect" type="TextureRect" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsHBox"]
+layout_mode = 2
+texture = ExtResource("2_o2vol")
+
+[node name="ChefTextureRect2" type="TextureRect" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsHBox"]
+layout_mode = 2
+texture = ExtResource("2_o2vol")
+
+[node name="ChefTextureRect3" type="TextureRect" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsHBox"]
+layout_mode = 2
+texture = ExtResource("2_o2vol")
+
+[node name="ChefTextureRect4" type="TextureRect" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsHBox"]
+layout_mode = 2
+texture = ExtResource("2_o2vol")
+
+[node name="PrepAreaLabelPanel" type="PanelContainer" parent="CanvasLayer/RootHBox/MiddleVBox"]
+layout_mode = 2
+
+[node name="PrepAreaLabel" type="Label" parent="CanvasLayer/RootHBox/MiddleVBox/PrepAreaLabelPanel"]
+layout_mode = 2
+text = "Prep Area"
+label_settings = SubResource("LabelSettings_yoe2f")
+horizontal_alignment = 1
+
+[node name="RightVBox" type="VBoxContainer" parent="CanvasLayer/RootHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="DishesLabelPanel" type="PanelContainer" parent="CanvasLayer/RootHBox/RightVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DishesLabel" type="Label" parent="CanvasLayer/RootHBox/RightVBox/DishesLabelPanel"]
+layout_mode = 2
+text = "Dish Status"
+label_settings = SubResource("LabelSettings_yoe2f")
+horizontal_alignment = 1
+
+[node name="DishesList" type="ItemList" parent="CanvasLayer/RootHBox/RightVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 6.0
+focus_mode = 0
+theme = SubResource("Theme_fs5y8")
+item_count = 3
+item_0/text = "Beef Patty"
+item_1/text = "Chicken Patty"
+item_2/text = "Deer Patty"
+
+[node name="PlatingAreaLabelPanel" type="PanelContainer" parent="CanvasLayer/RootHBox/RightVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlatingAreaLabel" type="Label" parent="CanvasLayer/RootHBox/RightVBox/PlatingAreaLabelPanel"]
+layout_mode = 2
+text = "Plating Area"
+label_settings = SubResource("LabelSettings_yoe2f")
+horizontal_alignment = 1
+
+[node name="Plating Area" type="TextureRect" parent="CanvasLayer/RootHBox/RightVBox"]
+layout_mode = 2
+texture = ExtResource("1_cgwk4")
+expand_mode = 5
+
+[node name="ServeButton" type="Button" parent="CanvasLayer/RootHBox/RightVBox"]
+layout_mode = 2
+theme = SubResource("Theme_4s6mf")
+theme_override_font_sizes/font_size = 128
+text = "Serve!"
