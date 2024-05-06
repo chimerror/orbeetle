@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgsel57rv8gui"]
+[gd_scene load_steps=7 format=3 uid="uid://cgsel57rv8gui"]
 
 [ext_resource type="Texture2D" uid="uid://cyri7d0rf3nly" path="res://Sprites/ClockPlaceholder.png" id="1_cgwk4"]
 [ext_resource type="Script" path="res://IngredientSelection.cs" id="1_po45c"]
-[ext_resource type="PackedScene" uid="uid://c1xr1r5vmqtd8" path="res://IngredientButton.tscn" id="1_ypvtr"]
 [ext_resource type="Texture2D" uid="uid://dscr1gkgoudcx" path="res://Sprites/ClericPlaceholder.png" id="2_o2vol"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yoe2f"]
@@ -45,41 +44,22 @@ size_flags_stretch_ratio = 1.86
 texture = ExtResource("1_cgwk4")
 expand_mode = 5
 
-[node name="IngredientsLabelPanel2" type="PanelContainer" parent="CanvasLayer/RootHBox/LeftVBox"]
+[node name="PantryLabelPanel" type="PanelContainer" parent="CanvasLayer/RootHBox/LeftVBox"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="IngredientsLabel" type="Label" parent="CanvasLayer/RootHBox/LeftVBox/IngredientsLabelPanel2"]
+[node name="PantryLabel" type="Label" parent="CanvasLayer/RootHBox/LeftVBox/PantryLabelPanel"]
 layout_mode = 2
-text = "Ingredients"
+text = "Pantry"
 label_settings = SubResource("LabelSettings_yoe2f")
 horizontal_alignment = 1
 
-[node name="IngredientsGrid" type="GridContainer" parent="CanvasLayer/RootHBox/LeftVBox"]
+[node name="PantryGrid" type="GridContainer" parent="CanvasLayer/RootHBox/LeftVBox"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 columns = 4
-
-[node name="IngredientButton" parent="CanvasLayer/RootHBox/LeftVBox/IngredientsGrid" instance=ExtResource("1_ypvtr")]
-layout_mode = 2
-
-[node name="IngredientButton2" parent="CanvasLayer/RootHBox/LeftVBox/IngredientsGrid" instance=ExtResource("1_ypvtr")]
-layout_mode = 2
-IngredientType = 11
-
-[node name="IngredientButton3" parent="CanvasLayer/RootHBox/LeftVBox/IngredientsGrid" instance=ExtResource("1_ypvtr")]
-layout_mode = 2
-IngredientType = 2
-
-[node name="IngredientButton4" parent="CanvasLayer/RootHBox/LeftVBox/IngredientsGrid" instance=ExtResource("1_ypvtr")]
-layout_mode = 2
-IngredientType = 3
-
-[node name="IngredientButton5" parent="CanvasLayer/RootHBox/LeftVBox/IngredientsGrid" instance=ExtResource("1_ypvtr")]
-layout_mode = 2
-IngredientType = 8
 
 [node name="MiddleVBox" type="VBoxContainer" parent="CanvasLayer/RootHBox"]
 layout_mode = 2
@@ -124,6 +104,12 @@ text = "Prep Area"
 label_settings = SubResource("LabelSettings_yoe2f")
 horizontal_alignment = 1
 
+[node name="PrepAreaGrid" type="GridContainer" parent="CanvasLayer/RootHBox/MiddleVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+columns = 4
+
 [node name="RightVBox" type="VBoxContainer" parent="CanvasLayer/RootHBox"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -160,10 +146,19 @@ text = "Plating Area"
 label_settings = SubResource("LabelSettings_yoe2f")
 horizontal_alignment = 1
 
-[node name="Plating Area" type="TextureRect" parent="CanvasLayer/RootHBox/RightVBox"]
+[node name="PlatingAreaPanel" type="PanelContainer" parent="CanvasLayer/RootHBox/RightVBox"]
+layout_mode = 2
+
+[node name="Plating Area" type="TextureRect" parent="CanvasLayer/RootHBox/RightVBox/PlatingAreaPanel"]
 layout_mode = 2
 texture = ExtResource("1_cgwk4")
 expand_mode = 5
+
+[node name="PlatingAreaGrid" type="GridContainer" parent="CanvasLayer/RootHBox/RightVBox/PlatingAreaPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 2
 
 [node name="ServeButton" type="Button" parent="CanvasLayer/RootHBox/RightVBox"]
 layout_mode = 2
