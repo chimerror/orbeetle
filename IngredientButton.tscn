@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://ck06r3cj3vmkr" path="res://Art/lpc-food-v2/animal-products.png" id="1_ael7w"]
 [ext_resource type="Script" path="res://IngredientButton.cs" id="1_yxmi1"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mmvmg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xptdu"]
 atlas = ExtResource("1_ael7w")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(32, 32, 32, 32)
 
 [node name="IngredientButton" type="Button"]
 custom_minimum_size = Vector2(64, 64)
@@ -17,4 +17,4 @@ script = ExtResource("1_yxmi1")
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
-texture = SubResource("AtlasTexture_mmvmg")
+texture = SubResource("AtlasTexture_xptdu")

@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://IngredientSprite.cs" id="1_4qbqr"]
 [ext_resource type="Texture2D" uid="uid://ck06r3cj3vmkr" path="res://Art/lpc-food-v2/animal-products.png" id="1_gdlq6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2hrnc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lv5w0"]
 atlas = ExtResource("1_gdlq6")
 region = Rect2(32, 32, 32, 32)
 
 [node name="IngredientSprite" type="Sprite2D"]
-texture = SubResource("AtlasTexture_2hrnc")
+texture = SubResource("AtlasTexture_lv5w0")
 script = ExtResource("1_4qbqr")
