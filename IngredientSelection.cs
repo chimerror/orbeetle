@@ -1,5 +1,5 @@
 using Godot;
-using System;
+using GColl = Godot.Collections;
 using System.Collections.Generic;
 
 public partial class IngredientSelection : Node2D
@@ -8,26 +8,13 @@ public partial class IngredientSelection : Node2D
     private const int PantryIngredientSize = 64;
     private const int PrepAreaIngredientSize = 256;
     private const int PlatingAreaIngredientSize = 128;
-    private static readonly List<IngredientType> StartingIngredients = new()
-    {
-        IngredientType.Cheese,
-        IngredientType.Eggs,
-        IngredientType.Butter,
-        IngredientType.Chicken,
-        IngredientType.Deer,
-        IngredientType.Steak,
-        IngredientType.Bacon,
-        IngredientType.Fish,
-        IngredientType.Potatoes,
-        IngredientType.Peppers,
-        IngredientType.Tomatoes,
-        IngredientType.Cabbage,
-        IngredientType.Beans
-    };
     private PackedScene _ingredientButtonScene = ResourceLoader.Load<PackedScene>("res://IngredientButton.tscn");
     private GridContainer _pantryGrid;
     private GridContainer _prepAreaGrid;
     private GridContainer _platingAreaGrid;
+
+    [Export]
+    public GColl.Array<Ingredient> StartingIngredients { get; set; } = new GColl.Array<Ingredient>();
 
     public override void _Ready()
     {
@@ -35,10 +22,12 @@ public partial class IngredientSelection : Node2D
         _prepAreaGrid = GetNode<GridContainer>($"{RootNodePath}/MiddleVBox/PrepAreaGrid");
         _platingAreaGrid = GetNode<GridContainer>($"{RootNodePath}/RightVBox/PlatingAreaPanel/PlatingAreaGrid");
         IngredientButton firstIngredient = null;
-        foreach (var ingredientType in StartingIngredients)
+        foreach (var ingredient in StartingIngredients)
         {
             var ingredientButton = _ingredientButtonScene.Instantiate<IngredientButton>();
-            ingredientButton.IngredientType = ingredientType;
+            var newIngredient = ingredient.Duplicate(true) as Ingredient;
+            newIngredient.CurrentState = IngredientState.Raw;
+            ingredientButton.Ingredient = newIngredient;
             ingredientButton.ButtonSize = PantryIngredientSize;
             ingredientButton.UiAcceptCallback = MoveToPrepArea;
             ingredientButton.UiCancelCallback = DoNothing;

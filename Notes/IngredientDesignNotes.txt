@@ -1,0 +1,10 @@
+Carrots
+	Raw
+	Chopped
+	(+ Water) Boiled
+Water
+
+Ingredients have a State (Raw, Chopped, Boiled) and a Quality (Terrible, Bad, OK, Good, Great)
+
+Actions always transition the state of the ingredient, as well as randomly possibly changing the quality from the current quality. By no more than one level, I think. So doing well chopping and boiling Terrible Raw Carrots can only get it to OK Boiled Carrots (with a stop at Bad Chopped Carrots).
+

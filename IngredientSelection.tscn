@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgsel57rv8gui"]
+[gd_scene load_steps=9 format=3 uid="uid://cgsel57rv8gui"]
 
 [ext_resource type="Texture2D" uid="uid://cyri7d0rf3nly" path="res://Sprites/ClockPlaceholder.png" id="1_cgwk4"]
 [ext_resource type="Script" path="res://IngredientSelection.cs" id="1_po45c"]
+[ext_resource type="Resource" uid="uid://eoby6gp4rvo2" path="res://Ingredients/Carrots/Carrots.tres" id="2_5fm3r"]
 [ext_resource type="Texture2D" uid="uid://dscr1gkgoudcx" path="res://Sprites/ClericPlaceholder.png" id="2_o2vol"]
+[ext_resource type="Resource" uid="uid://d2hepl5roh8lk" path="res://Ingredients/Water/Water.tres" id="3_ee1oe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yoe2f"]
 font_size = 32
@@ -14,6 +16,7 @@ default_font_size = 24
 
 [node name="IngredientSelection" type="Node2D"]
 script = ExtResource("1_po45c")
+StartingIngredients = [ExtResource("2_5fm3r"), ExtResource("2_5fm3r"), ExtResource("2_5fm3r"), ExtResource("3_ee1oe"), ExtResource("3_ee1oe"), ExtResource("3_ee1oe")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

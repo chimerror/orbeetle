@@ -1,12 +1,11 @@
 using Godot;
 using System;
-using static IngredientTexture;
 
 public partial class IngredientButton : Button
 {
     private int _buttonSize = 64;
-    private IngredientType _ingredientType = IngredientType.Cheese;
     private TextureRect _textureRect;
+    private Ingredient _ingredient;
 
     public Action<IngredientButton> UiAcceptCallback { get; set; }
     public Action<IngredientButton> UiCancelCallback { get; set; }
@@ -27,13 +26,13 @@ public partial class IngredientButton : Button
     }
 
     [Export]
-    public IngredientType IngredientType
+    public Ingredient Ingredient
     {
-        get => _ingredientType;
+        get => _ingredient;
         set
         {
-            var needUpdate = value != _ingredientType;
-            _ingredientType = value;
+            var needUpdate = value != _ingredient;
+            _ingredient = value;
             if (needUpdate)
             {
                 UpdateTexture();
@@ -79,7 +78,7 @@ public partial class IngredientButton : Button
     {
         if (_textureRect != null)
         {
-            _textureRect.Texture = GetIngredientTexture(_ingredientType);
+            _textureRect.Texture = _ingredient.CurrentTexture;
         }
     }
 }
