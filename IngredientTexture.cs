@@ -4,8 +4,8 @@ using System.Collections.Generic;
 public static class IngredientTexture
 {
     public const int CellSize = 32;
-    private const string AnimalSheetPath = "res://Art/lpc-food-v2/animal-products.png";
-    private const string VeggieSheetPath = "res://Art/lpc-food-v2/fruits-veggies.png";
+    private const string AnimalSheetPath = "res://Sprites/animal-products.png";
+    private const string VeggieSheetPath = "res://Sprites/fruits-veggies.png";
 
     private static readonly Dictionary<IngredientType, IngredientSpriteData> ingredientDataDictionary = new()
     {
@@ -22,6 +22,7 @@ public static class IngredientTexture
         { IngredientType.Tomatoes, new IngredientSpriteData { spriteSheetPath = VeggieSheetPath, xCell = 5, yCell = 1 } },
         { IngredientType.Cabbage, new IngredientSpriteData { spriteSheetPath = VeggieSheetPath, xCell = 1, yCell = 6 } },
         { IngredientType.Beans, new IngredientSpriteData { spriteSheetPath = VeggieSheetPath, xCell = 5, yCell = 11 } },
+        { IngredientType.Carrots, new IngredientSpriteData { spriteSheetPath = VeggieSheetPath, xCell = 24, yCell = 21 } },
     };
 
     public static AtlasTexture GetIngredientTexture(IngredientType ingredientType)

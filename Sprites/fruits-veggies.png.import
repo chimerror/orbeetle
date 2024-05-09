@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck06r3cj3vmkr"
-path="res://.godot/imported/animal-products.png-33e75eb57cbacf0b71055fba287c48e9.ctex"
+uid="uid://6yas1684gkyr"
+path="res://.godot/imported/fruits-veggies.png-a2bd1ea88af2a4a20961f278c5371940.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/lpc-food-v2/animal-products.png"
-dest_files=["res://.godot/imported/animal-products.png-33e75eb57cbacf0b71055fba287c48e9.ctex"]
+source_file="res://Sprites/fruits-veggies.png"
+dest_files=["res://.godot/imported/fruits-veggies.png-a2bd1ea88af2a4a20961f278c5371940.ctex"]
 
 [params]
 
