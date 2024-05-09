@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public partial class IngredientSelection : Node2D
 {
-    private const string RootNodePath = "CanvasLayer/RootHBox";
     private const int PantryIngredientSize = 64;
     private const int PrepAreaIngredientSize = 256;
     private const int PlatingAreaIngredientSize = 128;
@@ -19,9 +18,9 @@ public partial class IngredientSelection : Node2D
 
     public override void _Ready()
     {
-        _pantryGrid = GetNode<GridContainer>($"{RootNodePath}/LeftVBox/PantryGrid");
-        _prepAreaGrid = GetNode<GridContainer>($"{RootNodePath}/MiddleVBox/PrepAreaGrid");
-        _platingAreaGrid = GetNode<GridContainer>($"{RootNodePath}/RightVBox/PlatingAreaPanel/PlatingAreaGrid");
+        _pantryGrid = GetNode<GridContainer>("%PantryGrid");
+        _prepAreaGrid = GetNode<GridContainer>("%PrepAreaGrid");
+        _platingAreaGrid = GetNode<GridContainer>("%PlatingAreaGrid");
         IngredientButton firstIngredient = null;
         foreach (var ingredient in StartingIngredients)
         {
