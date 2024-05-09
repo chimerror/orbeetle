@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://d2hepl5roh8lk"]
 
-[ext_resource type="Texture2D" uid="uid://chqhhxy7n7qfd" path="res://Sprites/Ingredients/Water/water.png" id="1_wpp50"]
+[ext_resource type="Texture2D" uid="uid://chqhhxy7n7qfd" path="res://Ingredients/Water/water.png" id="1_wpp50"]
 [ext_resource type="Script" path="res://Ingredients/Ingredient.cs" id="2_eny6p"]
 
 [resource]

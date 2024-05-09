@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://chqhhxy7n7qfd"
-path="res://.godot/imported/water.png-5db485be48709ebb00013a4c4356997c.ctex"
+path="res://.godot/imported/water.png-fb2e4083636e67f81f81d340e947d3b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ingredients/Water/water.png"
-dest_files=["res://.godot/imported/water.png-5db485be48709ebb00013a4c4356997c.ctex"]
+source_file="res://Ingredients/Water/water.png"
+dest_files=["res://.godot/imported/water.png-fb2e4083636e67f81f81d340e947d3b3.ctex"]
 
 [params]
 

@@ -63,6 +63,17 @@ public partial class IngredientButton : Button
         }
     }
 
+    public override Variant _GetDragData(Vector2 atPosition)
+    {
+        var preview = new TextureRect
+        {
+            Texture = _textureRect.Texture,
+            Size = new Vector2(_buttonSize, _buttonSize)
+        };
+        SetDragPreview(preview);
+        return this;
+    }
+
     private void UpdateSize()
     {
         var sizeVector = new Vector2(_buttonSize, _buttonSize);

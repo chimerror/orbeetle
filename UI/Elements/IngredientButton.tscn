@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c1xr1r5vmqtd8"]
 
-[ext_resource type="Script" path="res://IngredientButton.cs" id="1_yxmi1"]
-[ext_resource type="Texture2D" uid="uid://bcfi4la71cpbe" path="res://Sprites/Ingredients/Carrots/RawCarrots.png" id="2_hsxi6"]
+[ext_resource type="Script" path="res://UI/Elements/IngredientButton.cs" id="1_yxmi1"]
+[ext_resource type="Texture2D" uid="uid://bcfi4la71cpbe" path="res://Ingredients/Carrots/RawCarrots.png" id="2_hsxi6"]
 
 [node name="IngredientButton" type="Button"]
 custom_minimum_size = Vector2(64, 64)

@@ -8,7 +8,8 @@ public partial class IngredientSelection : Node2D
     private const int PantryIngredientSize = 64;
     private const int PrepAreaIngredientSize = 256;
     private const int PlatingAreaIngredientSize = 128;
-    private PackedScene _ingredientButtonScene = ResourceLoader.Load<PackedScene>("res://IngredientButton.tscn");
+    private PackedScene _ingredientButtonScene =
+        ResourceLoader.Load<PackedScene>("res://UI/Elements/IngredientButton.tscn");
     private GridContainer _pantryGrid;
     private GridContainer _prepAreaGrid;
     private GridContainer _platingAreaGrid;

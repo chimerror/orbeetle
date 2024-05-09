@@ -1,8 +1,8 @@
 [gd_resource type="Resource" load_steps=5 format=3 uid="uid://eoby6gp4rvo2"]
 
-[ext_resource type="Texture2D" uid="uid://bcfi4la71cpbe" path="res://Sprites/Ingredients/Carrots/RawCarrots.png" id="1_nqfk2"]
-[ext_resource type="Texture2D" uid="uid://bimy0cd4c3m6a" path="res://Sprites/Ingredients/Carrots/ChoppedCarrots.png" id="2_dbrsh"]
-[ext_resource type="Texture2D" uid="uid://dslncmin778xg" path="res://Sprites/Ingredients/Carrots/BoiledCarrots.png" id="3_oqll0"]
+[ext_resource type="Texture2D" uid="uid://bcfi4la71cpbe" path="res://Ingredients/Carrots/RawCarrots.png" id="1_nqfk2"]
+[ext_resource type="Texture2D" uid="uid://bimy0cd4c3m6a" path="res://Ingredients/Carrots/ChoppedCarrots.png" id="2_dbrsh"]
+[ext_resource type="Texture2D" uid="uid://dslncmin778xg" path="res://Ingredients/Carrots/BoiledCarrots.png" id="3_oqll0"]
 [ext_resource type="Script" path="res://Ingredients/Ingredient.cs" id="4_omxoi"]
 
 [resource]

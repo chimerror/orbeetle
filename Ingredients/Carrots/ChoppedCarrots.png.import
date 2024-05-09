@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dslncmin778xg"
-path="res://.godot/imported/BoiledCarrots.png-b446b30140fd7d5853933f2efddf4b5f.ctex"
+uid="uid://bimy0cd4c3m6a"
+path="res://.godot/imported/ChoppedCarrots.png-eec7bd263292ad021b5ce34592e0e4d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ingredients/Carrots/BoiledCarrots.png"
-dest_files=["res://.godot/imported/BoiledCarrots.png-b446b30140fd7d5853933f2efddf4b5f.ctex"]
+source_file="res://Ingredients/Carrots/ChoppedCarrots.png"
+dest_files=["res://.godot/imported/ChoppedCarrots.png-eec7bd263292ad021b5ce34592e0e4d5.ctex"]
 
 [params]
 

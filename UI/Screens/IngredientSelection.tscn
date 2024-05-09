@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cgsel57rv8gui"]
 
 [ext_resource type="Texture2D" uid="uid://cyri7d0rf3nly" path="res://Sprites/ClockPlaceholder.png" id="1_cgwk4"]
-[ext_resource type="Script" path="res://IngredientSelection.cs" id="1_po45c"]
+[ext_resource type="Script" path="res://UI/Screens/IngredientSelection.cs" id="1_po45c"]
 [ext_resource type="Resource" uid="uid://eoby6gp4rvo2" path="res://Ingredients/Carrots/Carrots.tres" id="2_5fm3r"]
 [ext_resource type="Texture2D" uid="uid://dscr1gkgoudcx" path="res://Sprites/ClericPlaceholder.png" id="2_o2vol"]
 [ext_resource type="Resource" uid="uid://d2hepl5roh8lk" path="res://Ingredients/Water/Water.tres" id="3_ee1oe"]
