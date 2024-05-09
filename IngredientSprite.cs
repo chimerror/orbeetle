@@ -1,7 +1,6 @@
 using Godot;
 using static IngredientTexture;
 
-[Tool]
 public partial class IngredientSprite : Sprite2D
 {
     private IngredientType _ingredientType = IngredientType.Cheese;

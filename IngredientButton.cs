@@ -2,7 +2,6 @@ using Godot;
 using System;
 using static IngredientTexture;
 
-[Tool]
 public partial class IngredientButton : Button
 {
     private int _buttonSize = 64;
