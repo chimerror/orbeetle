@@ -7,8 +7,7 @@ public partial class IngredientButton : Button
     private TextureRect _textureRect;
     private Ingredient _ingredient;
 
-    public Action<IngredientButton> UiAcceptCallback { get; set; }
-    public Action<IngredientButton> UiCancelCallback { get; set; }
+    public IngredientDropSlot CurrentSlot { get; set; }
 
     [Export]
     public int ButtonSize
@@ -49,17 +48,32 @@ public partial class IngredientButton : Button
 
     public override void _GuiInput(InputEvent @event)
     {
+        if (@event.IsActionPressed("cooking_send_left") && CurrentSlot.CanGoLeft)
+        {
+            GD.Print($"Sending {Name} to the left!");
+            CurrentSlot.LeftSlot.MoveToSlot(this, true);
+        }
+        else if (@event.IsActionPressed("cooking_send_right") && CurrentSlot.CanGoRight)
+        {
+            GD.Print($"Sending {Name} to the right!");
+            CurrentSlot.RightSlot.MoveToSlot(this, true);
+        }
+        else if (@event.IsActionPressed("cooking_send_up") && CurrentSlot.CanGoUp)
+        {
+            GD.Print($"Sending {Name} up!");
+            CurrentSlot.UpSlot.MoveToSlot(this, true);
+        }
+        else if (@event.IsActionPressed("cooking_send_down") && CurrentSlot.CanGoDown)
+        {
+            GD.Print($"Sending {Name} down!");
+            CurrentSlot.DownSlot.MoveToSlot(this, true);
+        }
+
+        // Same button on controller as cooking_send_down, so we don't want to have it propagate to the button, because
+        // that will cause it to do a clicking animation and nothing else.
         if (@event.IsActionPressed("ui_accept"))
         {
-            GD.Print($"ui_accept action triggered for {Name}!");
-            UiAcceptCallback(this);
-            GrabFocus();
-        }
-        else if (@event.IsActionPressed("ui_cancel"))
-        {
-            GD.Print($"ui_cancel action triggered for {Name}!");
-            UiCancelCallback(this);
-            GrabFocus();
+            AcceptEvent();
         }
     }
 

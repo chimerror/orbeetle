@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgsel57rv8gui"]
+[gd_scene load_steps=10 format=3 uid="uid://cgsel57rv8gui"]
 
 [ext_resource type="Texture2D" uid="uid://cyri7d0rf3nly" path="res://Sprites/ClockPlaceholder.png" id="1_cgwk4"]
 [ext_resource type="Script" path="res://UI/Screens/IngredientSelection.cs" id="1_po45c"]
 [ext_resource type="Resource" uid="uid://eoby6gp4rvo2" path="res://Ingredients/Carrots/Carrots.tres" id="2_5fm3r"]
 [ext_resource type="Texture2D" uid="uid://dscr1gkgoudcx" path="res://Sprites/ClericPlaceholder.png" id="2_o2vol"]
 [ext_resource type="Resource" uid="uid://d2hepl5roh8lk" path="res://Ingredients/Water/Water.tres" id="3_ee1oe"]
+[ext_resource type="PackedScene" uid="uid://jo0r6bb2fg7j" path="res://UI/Elements/IngredientDropSlot.tscn" id="5_h0voi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yoe2f"]
 font_size = 32
@@ -57,8 +58,14 @@ text = "Pantry"
 label_settings = SubResource("LabelSettings_yoe2f")
 horizontal_alignment = 1
 
-[node name="PantryGrid" type="GridContainer" parent="CanvasLayer/RootHBox/LeftVBox"]
+[node name="PantryDropSlot" parent="CanvasLayer/RootHBox/LeftVBox" node_paths=PackedStringArray("RightSlot") instance=ExtResource("5_h0voi")]
 unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+RightSlot = NodePath("../../MiddleVBox/PrepAreaDropSlot")
+
+[node name="PantryGrid" type="GridContainer" parent="CanvasLayer/RootHBox/LeftVBox/PantryDropSlot"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
@@ -108,8 +115,15 @@ text = "Prep Area"
 label_settings = SubResource("LabelSettings_yoe2f")
 horizontal_alignment = 1
 
-[node name="PrepAreaGrid" type="GridContainer" parent="CanvasLayer/RootHBox/MiddleVBox"]
+[node name="PrepAreaDropSlot" parent="CanvasLayer/RootHBox/MiddleVBox" node_paths=PackedStringArray("LeftSlot", "RightSlot") instance=ExtResource("5_h0voi")]
 unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+IngredientSize = 256
+LeftSlot = NodePath("../../LeftVBox/PantryDropSlot")
+RightSlot = NodePath("../../RightVBox/PlatingAreaDropSlot")
+
+[node name="PrepAreaGrid" type="GridContainer" parent="CanvasLayer/RootHBox/MiddleVBox/PrepAreaDropSlot"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
@@ -151,16 +165,19 @@ text = "Plating Area"
 label_settings = SubResource("LabelSettings_yoe2f")
 horizontal_alignment = 1
 
-[node name="PlatingAreaPanel" type="PanelContainer" parent="CanvasLayer/RootHBox/RightVBox"]
+[node name="PlatingAreaDropSlot" parent="CanvasLayer/RootHBox/RightVBox" node_paths=PackedStringArray("LeftSlot") instance=ExtResource("5_h0voi")]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
+IngredientSize = 128
+LeftSlot = NodePath("../../MiddleVBox/PrepAreaDropSlot")
 
-[node name="Plating Area" type="TextureRect" parent="CanvasLayer/RootHBox/RightVBox/PlatingAreaPanel"]
+[node name="Plating Area" type="TextureRect" parent="CanvasLayer/RootHBox/RightVBox/PlatingAreaDropSlot"]
 layout_mode = 2
 texture = ExtResource("1_cgwk4")
 expand_mode = 5
 
-[node name="PlatingAreaGrid" type="GridContainer" parent="CanvasLayer/RootHBox/RightVBox/PlatingAreaPanel"]
-unique_name_in_owner = true
+[node name="PlatingAreaGrid" type="GridContainer" parent="CanvasLayer/RootHBox/RightVBox/PlatingAreaDropSlot"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
