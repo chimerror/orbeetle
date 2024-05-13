@@ -1,8 +1,18 @@
 using Godot;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class IngredientDropSlot : PanelContainer
 {
-    private Container _destination;
+    public IEnumerable<IngredientButton> CurrentIngredientButtons
+    {
+        get => DestinationSlot.GetChildren().Where(c => c is IngredientButton).Cast<IngredientButton>();
+    }
+
+    public IEnumerable<Ingredient> CurrentIngredients
+    {
+        get => CurrentIngredientButtons.Select(ib => ib.Ingredient);
+    }
 
     public bool CanGoLeft
     {
@@ -28,6 +38,9 @@ public partial class IngredientDropSlot : PanelContainer
     public int IngredientSize { get; set; } = 64;
 
     [Export]
+    public Container DestinationSlot { get; set; }
+
+    [Export]
     public IngredientDropSlot LeftSlot { get; set; }
 
     [Export]
@@ -39,18 +52,6 @@ public partial class IngredientDropSlot : PanelContainer
     [Export]
     public IngredientDropSlot DownSlot { get; set; }
 
-    public override void _Ready()
-    {
-        foreach (var child in GetChildren())
-        {
-            if (child is Container containerChild)
-            {
-                _destination = containerChild;
-                break;
-            }
-        }
-    }
-
     public override bool _CanDropData(Vector2 atPosition, Variant data)
     {
         return true;
@@ -61,10 +62,17 @@ public partial class IngredientDropSlot : PanelContainer
         MoveToSlot(data.As<IngredientButton>(), true);
     }
 
-    public void MoveToSlot(IngredientButton ingredientButton, bool grabFocus = false)
+    public virtual void MoveToSlot(IngredientButton ingredientButton, bool grabFocus = false)
     {
         ingredientButton.ButtonSize = IngredientSize;
-        ingredientButton.ForceReparent(_destination, false);
+        ingredientButton.ForceReparent(DestinationSlot, false);
+
+        var oldSlot = ingredientButton.CurrentSlot;
+        if (oldSlot is ChefActionDropSlot chefActionDropSlot)
+        {
+            chefActionDropSlot.ResetAfterIngredientTaken();
+        }
+
         ingredientButton.CurrentSlot = this;
         if (grabFocus)
         {
@@ -72,4 +80,17 @@ public partial class IngredientDropSlot : PanelContainer
         }
     }
 
+    public void RetakeFocus()
+    {
+        var firstButton = CurrentIngredientButtons.FirstOrDefault();
+        if (firstButton != default)
+        {
+            firstButton.GrabFocus();
+        }
+        else
+        {
+            // A bit worried about having to use the path here but it'll have to do.
+            GetNode<IngredientSelection>("/root/IngredientSelection").RetakeFocus();
+        }
+    }
 }

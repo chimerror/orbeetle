@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://oiwkl4fpv7og"]
+
+[ext_resource type="Texture2D" uid="uid://dscr1gkgoudcx" path="res://Sprites/ClericPlaceholder.png" id="1_4wmob"]
+[ext_resource type="PackedScene" uid="uid://d0q82ul8squfx" path="res://UI/Elements/ChefActionDropSlot.tscn" id="2_vuaqd"]
+[ext_resource type="Resource" uid="uid://d2yl5cdndh6p1" path="res://ChefActions/Boiling/Boiling.tres" id="3_hm5dp"]
+
+[node name="ChefArea" type="PanelContainer"]
+custom_minimum_size = Vector2(256, 256)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_4wmob")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="LeftChefActionDropSlot" parent="HBoxContainer" instance=ExtResource("2_vuaqd")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RightChefActionDropSlot" parent="HBoxContainer" instance=ExtResource("2_vuaqd")]
+unique_name_in_owner = true
+layout_mode = 2
+ChefAction = ExtResource("3_hm5dp")

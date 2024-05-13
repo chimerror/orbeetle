@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0q82ul8squfx"]
+
+[ext_resource type="Script" path="res://UI/Elements/ChefActionDropSlot.cs" id="1_qf6hs"]
+[ext_resource type="Resource" uid="uid://ll3bn6gdgpf5" path="res://ChefActions/Chopping/Chopping.tres" id="2_3hd1s"]
+
+[node name="ChefActionDropSlot" type="PanelContainer" node_paths=PackedStringArray("DestinationSlot")]
+custom_minimum_size = Vector2(128, 64)
+script = ExtResource("1_qf6hs")
+ChefAction = ExtResource("2_3hd1s")
+IngredientSize = 32
+DestinationSlot = NodePath("ActionIngredientMarginContainer/ActionIngredientPanelContainer")
+
+[node name="ActionTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="ActionProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+mouse_filter = 2
+show_percentage = false
+
+[node name="ActionIngredientMarginContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 2
+theme_override_constants/margin_right = 8
+
+[node name="ActionIngredientPanelContainer" type="PanelContainer" parent="ActionIngredientMarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="ActionVerbLabel" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(88, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 16
+text = "Butcher"
+horizontal_alignment = 1
+vertical_alignment = 1

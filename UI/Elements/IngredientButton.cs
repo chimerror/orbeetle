@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class IngredientButton : Button
 {
@@ -58,10 +57,19 @@ public partial class IngredientButton : Button
             GD.Print($"Sending {Name} to the right!");
             CurrentSlot.RightSlot.MoveToSlot(this, true);
         }
-        else if (@event.IsActionPressed("cooking_send_up") && CurrentSlot.CanGoUp)
+        else if (@event.IsActionPressed("cooking_send_up"))
         {
-            GD.Print($"Sending {Name} up!");
-            CurrentSlot.UpSlot.MoveToSlot(this, true);
+            if (CurrentSlot.UpSlot is ChefsDePartieDropSlot)
+            {
+                // TODOTODO: When sending up to the chef actions, a non-mouse player will have to make a second choice
+                // of which action to send it to before sending it. This seems complicated enough that there may need to
+                // be a new state to represent when an ingredient is being aimed at an action.
+            }
+            else if (CurrentSlot.CanGoUp)
+            {
+                GD.Print($"Sending {Name} up!");
+                CurrentSlot.UpSlot.MoveToSlot(this, true);
+            }
         }
         else if (@event.IsActionPressed("cooking_send_down") && CurrentSlot.CanGoDown)
         {

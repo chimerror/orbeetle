@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bcfi4la71cpbe" path="res://Ingredients/Carrots/RawCarrots.png" id="2_hsxi6"]
 
 [node name="IngredientButton" type="Button"]
-custom_minimum_size = Vector2(64, 64)
 offset_right = 64.0
 offset_bottom = 64.0
 script = ExtResource("1_yxmi1")
@@ -14,3 +13,4 @@ layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 texture = ExtResource("2_hsxi6")
+expand_mode = 1
