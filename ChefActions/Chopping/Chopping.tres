@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ll3bn6gdgpf5"]
+
+[ext_resource type="Script" path="res://ChefActions/Chopping/ChoppingChefAction.cs" id="1_letaq"]
+
+[resource]
+script = ExtResource("1_letaq")
+ActionVerb = "Chop"
+RequiredIngredients = []
