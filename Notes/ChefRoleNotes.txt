@@ -1,0 +1,16 @@
+Fighter - Butcher chef, meat/poultry prep
++ Butcher: preps animals and meats (cow > beef > cuts or ground beef)
++ Smash: smashes the thing? (pimento berry > allspice, e.g.) -- this overlaps w rogue though
+
+Rogue - prep cook, slicing dicing chopping etc.
++ Prep: carrots > sliced carrots, etc.
++ Special: ?????
+
+Mage - line cook
++ Cook: ground beef > patty, etc.
++ Ferment: grapes > wine, etc.
+
+Cleric - pastry chef
++ Bake: flour+water > bread, etc.
++ "Undo/resurrect" - undoes some prep or cook process, with a cost (perhaps you only get one or two things back). ??and
+% fail chance, e.g. maybe the returned item is worse??
