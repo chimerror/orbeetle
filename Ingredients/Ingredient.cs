@@ -6,8 +6,6 @@ using System.Linq;
 
 public partial class Ingredient : Resource
 {
-    public IngredientState CurrentState { get; set; } = IngredientState.Raw;
-
     public IngredientQuality Quality { get; set; } = IngredientQuality.Okay;
 
     public Dictionary<IngredientState, Texture2D> TextureDictionary
@@ -22,6 +20,9 @@ public partial class Ingredient : Resource
 
     [Export]
     public string IngredientName { get; set; }
+
+    [Export]
+    public IngredientState CurrentState { get; set; } = IngredientState.Raw;
 
     [Export]
     public GColl.Array<IngredientState> AllowedStates { get; set; } = new GColl.Array<IngredientState>();
@@ -62,6 +63,17 @@ public partial class Ingredient : Resource
         return IngredientName == that.IngredientName &&
             CurrentState == that.CurrentState &&
             Quality == that.Quality;
+    }
+
+    public bool QualityInsensitiveEquals(Ingredient that)
+    {
+        if (that == null)
+        {
+            return false;
+        }
+
+        return IngredientName == that.IngredientName &&
+            CurrentState == that.CurrentState;
     }
 
     public override int GetHashCode()

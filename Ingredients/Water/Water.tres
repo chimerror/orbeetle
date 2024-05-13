@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("2_eny6p")
 IngredientName = "Water"
+CurrentState = 0
 AllowedStates = [0]
 StateTextures = [ExtResource("1_wpp50")]

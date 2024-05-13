@@ -8,5 +8,6 @@
 [resource]
 script = ExtResource("4_omxoi")
 IngredientName = "Carrots"
+CurrentState = 0
 AllowedStates = [0, 1, 2]
 StateTextures = [ExtResource("1_nqfk2"), ExtResource("2_dbrsh"), ExtResource("3_oqll0")]
