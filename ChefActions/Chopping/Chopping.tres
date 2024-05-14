@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_letaq")
 ActionVerb = "Chop"
+Duration = 3.0
 RequiredIngredients = []

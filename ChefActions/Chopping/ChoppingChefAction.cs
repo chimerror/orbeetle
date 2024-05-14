@@ -11,14 +11,14 @@ public partial class ChoppingChefAction : ChefAction
             return false;
         }
         var candidateIngredient = ingredientsList[0];
-        return candidateIngredient.CurrentState == IngredientState.Raw &&
-            candidateIngredient.AllowedStates.Contains(IngredientState.Chopped);
+        return candidateIngredient.CurrentState == Ingredient.State.Raw &&
+            candidateIngredient.AllowedStates.Contains(Ingredient.State.Chopped);
     }
 
     public override Ingredient ProcessIngredients(IEnumerable<Ingredient> inputIngredients)
     {
         var processedIngredient = inputIngredients.First().Duplicate(true) as Ingredient;
-        processedIngredient.CurrentState = IngredientState.Chopped;
+        processedIngredient.CurrentState = Ingredient.State.Chopped;
         return processedIngredient;
     }
 }

@@ -15,8 +15,8 @@ public partial class BoilingChefAction : ChefAction
         {
             return false;
         }
-        return ingredientToBoil.CurrentState == IngredientState.Chopped &&
-            ingredientToBoil.AllowedStates.Contains(IngredientState.Boiled);
+        return ingredientToBoil.CurrentState == Ingredient.State.Chopped &&
+            ingredientToBoil.AllowedStates.Contains(Ingredient.State.Boiled);
     }
 
     public override Ingredient ProcessIngredients(IEnumerable<Ingredient> inputIngredients)
@@ -25,7 +25,7 @@ public partial class BoilingChefAction : ChefAction
         // Chef Actions can all act the same.
         var ingredientsList = inputIngredients.ToList();
         var processedIngredient = GetIngredientToBoil(ingredientsList).Duplicate(true) as Ingredient;
-        processedIngredient.CurrentState = IngredientState.Boiled;
+        processedIngredient.CurrentState = Ingredient.State.Boiled;
         return processedIngredient;
     }
 

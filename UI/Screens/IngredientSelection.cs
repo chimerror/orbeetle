@@ -25,7 +25,7 @@ public partial class IngredientSelection : Node2D
         {
             var ingredientButton = _ingredientButtonScene.Instantiate<IngredientButton>();
             var newIngredient = ingredient.Duplicate(true) as Ingredient;
-            newIngredient.CurrentState = IngredientState.Raw;
+            newIngredient.CurrentState = Ingredient.State.Raw;
             ingredientButton.Ingredient = newIngredient;
             _pantryDropSlot.MoveToSlot(ingredientButton, false);
             firstIngredient ??= ingredientButton;
