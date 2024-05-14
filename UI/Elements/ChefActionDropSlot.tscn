@@ -1,12 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0q82ul8squfx"]
+[gd_scene load_steps=6 format=3 uid="uid://d0q82ul8squfx"]
 
 [ext_resource type="Script" path="res://UI/Elements/ChefActionDropSlot.cs" id="1_qf6hs"]
 [ext_resource type="Resource" uid="uid://ll3bn6gdgpf5" path="res://ChefActions/Chopping/Chopping.tres" id="2_3hd1s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1iheh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqkva"]
+bg_color = Color(0.6, 0.5329, 0.234, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7iyd"]
+bg_color = Color(0.234, 0.6, 0.2584, 1)
 
 [node name="ChefActionDropSlot" type="PanelContainer" node_paths=PackedStringArray("DestinationSlot")]
 custom_minimum_size = Vector2(128, 64)
 script = ExtResource("1_qf6hs")
 ChefAction = ExtResource("2_3hd1s")
+DefaultStyleBox = SubResource("StyleBoxFlat_1iheh")
+SelectedStyleBox = SubResource("StyleBoxFlat_sqkva")
+ReadyStyleBox = SubResource("StyleBoxFlat_h7iyd")
 IngredientSize = 32
 DestinationSlot = NodePath("ActionIngredientMarginContainer/ActionIngredientPanelContainer")
 

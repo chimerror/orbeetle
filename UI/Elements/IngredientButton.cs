@@ -59,11 +59,13 @@ public partial class IngredientButton : Button
         }
         else if (@event.IsActionPressed("cooking_send_up"))
         {
-            if (CurrentSlot.UpSlot is ChefsDePartieDropSlot)
+            if (CurrentSlot.UpSlot is ChefsDePartieDropSlot chefsDePartieDropSlot)
             {
-                // TODOTODO: When sending up to the chef actions, a non-mouse player will have to make a second choice
-                // of which action to send it to before sending it. This seems complicated enough that there may need to
-                // be a new state to represent when an ingredient is being aimed at an action.
+                if (chefsDePartieDropSlot.CanAcceptMainIngredient(Ingredient))
+                {
+                    GD.Print($"Sending {Name} up to Chefs de Partie slot!");
+                    chefsDePartieDropSlot.MoveToSlot(this, false);
+                }
             }
             else if (CurrentSlot.CanGoUp)
             {
@@ -92,6 +94,7 @@ public partial class IngredientButton : Button
             Texture = _textureRect.Texture,
             Size = new Vector2(_buttonSize, _buttonSize)
         };
+        ChefsDePartieDropSlot.Instance.OnDragStart(Ingredient);
         SetDragPreview(preview);
         return this;
     }

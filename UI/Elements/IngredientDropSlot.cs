@@ -72,6 +72,10 @@ public partial class IngredientDropSlot : PanelContainer
         {
             chefActionDropSlot.ResetAfterIngredientTaken();
         }
+        else if (oldSlot is ChefsDePartieDropSlot chefsDePartieDropSlot)
+        {
+            chefsDePartieDropSlot.ResetAfterIngredientTaken();
+        }
 
         ingredientButton.CurrentSlot = this;
         if (grabFocus)
@@ -85,12 +89,13 @@ public partial class IngredientDropSlot : PanelContainer
         var firstButton = CurrentIngredientButtons.FirstOrDefault();
         if (firstButton != default)
         {
+            GD.Print($"Taking focus in {Name} to {firstButton.Name} which has focus mode {firstButton.FocusMode}!");
             firstButton.GrabFocus();
         }
         else
         {
-            // A bit worried about having to use the path here but it'll have to do.
-            GetNode<IngredientSelection>("/root/IngredientSelection").RetakeFocus();
+            GD.Print($"Failed to gain focus in IDS {Name}, passing to IS to take focus...");
+            IngredientSelection.Instance.RetakeFocus();
         }
     }
 }

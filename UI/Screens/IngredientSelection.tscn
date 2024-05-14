@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgsel57rv8gui"]
+[gd_scene load_steps=12 format=3 uid="uid://cgsel57rv8gui"]
 
 [ext_resource type="Texture2D" uid="uid://cyri7d0rf3nly" path="res://Sprites/ClockPlaceholder.png" id="1_cgwk4"]
 [ext_resource type="Script" path="res://UI/Screens/IngredientSelection.cs" id="1_po45c"]
@@ -10,6 +10,8 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_yoe2f"]
 font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0dwp"]
 
 [sub_resource type="Theme" id="Theme_fs5y8"]
 default_font_size = 24
@@ -59,7 +61,7 @@ text = "Pantry"
 label_settings = SubResource("LabelSettings_yoe2f")
 horizontal_alignment = 1
 
-[node name="PantryDropSlot" type="PanelContainer" parent="CanvasLayer/RootHBox/LeftVBox" node_paths=PackedStringArray("DestinationSlot", "RightSlot")]
+[node name="PantryDropSlot" type="PanelContainer" parent="CanvasLayer/RootHBox/LeftVBox" node_paths=PackedStringArray("DestinationSlot", "RightSlot", "UpSlot")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -67,6 +69,7 @@ size_flags_stretch_ratio = 10.0
 script = ExtResource("5_q2gwd")
 DestinationSlot = NodePath("PantryGrid")
 RightSlot = NodePath("../../MiddleVBox/PrepAreaDropSlot")
+UpSlot = NodePath("../../MiddleVBox/ChefsDePartieDropSlot")
 
 [node name="PantryGrid" type="GridContainer" parent="CanvasLayer/RootHBox/LeftVBox/PantryDropSlot"]
 layout_mode = 2
@@ -89,10 +92,14 @@ text = "Chefs de Partie"
 label_settings = SubResource("LabelSettings_yoe2f")
 horizontal_alignment = 1
 
-[node name="ChefsDePartieDropSlot" type="PanelContainer" parent="CanvasLayer/RootHBox/MiddleVBox" node_paths=PackedStringArray("DownSlot")]
+[node name="ChefsDePartieDropSlot" type="PanelContainer" parent="CanvasLayer/RootHBox/MiddleVBox" node_paths=PackedStringArray("DestinationSlot", "LeftSlot", "RightSlot", "DownSlot")]
 layout_mode = 2
 mouse_filter = 2
 script = ExtResource("6_f0a8r")
+IngredientSize = 128
+DestinationSlot = NodePath("AimedIngredientVBox/AimedIngredientPanel")
+LeftSlot = NodePath("../../LeftVBox/PantryDropSlot")
+RightSlot = NodePath("../../RightVBox/PlatingAreaDropSlot")
 DownSlot = NodePath("../PrepAreaDropSlot")
 
 [node name="ChefsHBox" type="HBoxContainer" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsDePartieDropSlot"]
@@ -112,6 +119,28 @@ layout_mode = 2
 [node name="ChefArea4" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsDePartieDropSlot/ChefsHBox" instance=ExtResource("6_rao2u")]
 layout_mode = 2
 
+[node name="AimedIngredientVBox" type="VBoxContainer" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsDePartieDropSlot"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(128, 192)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="AimedIngredientLabel" type="Label" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsDePartieDropSlot/AimedIngredientVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_a0dwp")
+text = "Pick a Chef Action..."
+
+[node name="AimedIngredientPanel" type="PanelContainer" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsDePartieDropSlot/AimedIngredientVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
 [node name="PrepAreaLabelPanel" type="PanelContainer" parent="CanvasLayer/RootHBox/MiddleVBox"]
 layout_mode = 2
 
@@ -121,7 +150,7 @@ text = "Prep Area"
 label_settings = SubResource("LabelSettings_yoe2f")
 horizontal_alignment = 1
 
-[node name="PrepAreaDropSlot" type="PanelContainer" parent="CanvasLayer/RootHBox/MiddleVBox" node_paths=PackedStringArray("DestinationSlot", "LeftSlot", "RightSlot")]
+[node name="PrepAreaDropSlot" type="PanelContainer" parent="CanvasLayer/RootHBox/MiddleVBox" node_paths=PackedStringArray("DestinationSlot", "LeftSlot", "RightSlot", "UpSlot")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -130,6 +159,7 @@ IngredientSize = 256
 DestinationSlot = NodePath("PrepAreaGrid")
 LeftSlot = NodePath("../../LeftVBox/PantryDropSlot")
 RightSlot = NodePath("../../RightVBox/PlatingAreaDropSlot")
+UpSlot = NodePath("../ChefsDePartieDropSlot")
 
 [node name="PrepAreaGrid" type="GridContainer" parent="CanvasLayer/RootHBox/MiddleVBox/PrepAreaDropSlot"]
 layout_mode = 2
@@ -173,13 +203,14 @@ text = "Plating Area"
 label_settings = SubResource("LabelSettings_yoe2f")
 horizontal_alignment = 1
 
-[node name="PlatingAreaDropSlot" type="PanelContainer" parent="CanvasLayer/RootHBox/RightVBox" node_paths=PackedStringArray("DestinationSlot", "LeftSlot")]
+[node name="PlatingAreaDropSlot" type="PanelContainer" parent="CanvasLayer/RootHBox/RightVBox" node_paths=PackedStringArray("DestinationSlot", "LeftSlot", "UpSlot")]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("5_q2gwd")
 IngredientSize = 128
 DestinationSlot = NodePath("PlatingAreaGrid")
 LeftSlot = NodePath("../../MiddleVBox/PrepAreaDropSlot")
+UpSlot = NodePath("../../MiddleVBox/ChefsDePartieDropSlot")
 
 [node name="Plating Area" type="TextureRect" parent="CanvasLayer/RootHBox/RightVBox/PlatingAreaDropSlot"]
 layout_mode = 2
