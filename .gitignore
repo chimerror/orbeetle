@@ -13,3 +13,7 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# personal vscode files (should probably do all .vscode to be honest...)
+.vscode/settings.json
+.vscode/spellright.dict
