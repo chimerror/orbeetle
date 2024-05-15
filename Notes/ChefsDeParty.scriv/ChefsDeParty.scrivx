@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrivenerProject Template="No" Version="2.0" Identifier="B989B9BF-6061-4FEB-9A62-DA22CD977CDE" Creator="SCRWIN-3.1.5.1" Device="JAYMIT-SUN" Modified="2024-05-14 22:57:50 -0700" ModID="6D7AEA64-12AA-467D-9D7E-FB6EBBF1319D">
+    <Binder>
+        <BinderItem UUID="9F245DCD-E1EC-4F55-A183-F1D6CBFE2B90" Type="DraftFolder" Created="2024-05-14 20:00:11 -0700" Modified="2024-05-14 20:00:11 -0700">
+            <Title>Draft</Title>
+            <MetaData>
+                <IncludeInCompile>Yes</IncludeInCompile>
+            </MetaData>
+            <Children>
+                <BinderItem UUID="98EA70C2-5EB9-4739-8898-9F7F3CD0C11A" Type="Text" Created="2024-05-14 20:00:11 -0700" Modified="2024-05-14 22:57:36 -0700">
+                    <Title>Intro</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>4322,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+            </Children>
+        </BinderItem>
+        <BinderItem UUID="DBE9275A-3F3E-4041-9C27-D1556B080180" Type="Folder" Created="2024-05-14 20:19:49 -0700" Modified="2024-05-14 20:20:04 -0700">
+            <Title>Places and History</Title>
+            <MetaData>
+                <IncludeInCompile>Yes</IncludeInCompile>
+            </MetaData>
+            <TextSettings>
+                <TextSelection>0,0</TextSelection>
+            </TextSettings>
+            <CorkboardAndOutliner>
+                <SelectedSubdocumentUUIDs>59C8E4EC-C2D6-4231-BD85-9E70C0934730</SelectedSubdocumentUUIDs>
+                <CorkboardSettings>
+                    <Arrangement>Linear</Arrangement>
+                </CorkboardSettings>
+            </CorkboardAndOutliner>
+            <Children>
+                <BinderItem UUID="59C8E4EC-C2D6-4231-BD85-9E70C0934730" Type="Text" Created="2024-05-14 20:20:10 -0700" Modified="2024-05-14 21:50:09 -0700">
+                    <Title>Tuline Isles</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>2662,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+            </Children>
+        </BinderItem>
+        <BinderItem UUID="4CFB26C0-19F2-4E22-9CE8-1E4E9E9A5632" Type="Folder" Created="2024-05-14 20:06:25 -0700" Modified="2024-05-14 20:06:31 -0700">
+            <Title>Characters</Title>
+            <MetaData>
+                <IncludeInCompile>Yes</IncludeInCompile>
+            </MetaData>
+            <TextSettings>
+                <TextSelection>0,0</TextSelection>
+            </TextSettings>
+            <CorkboardAndOutliner>
+                <SelectedSubdocumentUUIDs>1E15F1DA-9D3D-45A3-BCBC-EB82F2444663</SelectedSubdocumentUUIDs>
+                <CorkboardSettings>
+                    <Arrangement>Linear</Arrangement>
+                </CorkboardSettings>
+            </CorkboardAndOutliner>
+            <Children>
+                <BinderItem UUID="1E15F1DA-9D3D-45A3-BCBC-EB82F2444663" Type="Folder" Created="2024-05-14 20:06:54 -0700" Modified="2024-05-14 20:07:08 -0700">
+                    <Title>Antagonists</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                    <CorkboardAndOutliner>
+                        <SelectedSubdocumentUUIDs>9DB048C3-EA6C-4444-AADE-DDA3AE4F47B6</SelectedSubdocumentUUIDs>
+                        <CorkboardSettings>
+                            <Arrangement>Linear</Arrangement>
+                        </CorkboardSettings>
+                    </CorkboardAndOutliner>
+                    <Children>
+                        <BinderItem UUID="9DB048C3-EA6C-4444-AADE-DDA3AE4F47B6" Type="Text" Created="2024-05-14 20:07:27 -0700" Modified="2024-05-14 22:27:51 -0700">
+                            <Title>Thema the Sphinx, She of Great Wisdom</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>2994,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem UUID="0D31222B-34B0-4B32-A990-AD74DAEE44CD" Type="Text" Created="2024-05-14 20:10:29 -0700" Modified="2024-05-14 20:12:37 -0700">
+                            <Title>Akachi the Spiritspeaker, Ear and Mouth of Thema</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                    </Children>
+                </BinderItem>
+                <BinderItem UUID="B80C5D30-3D3F-4FA6-A793-3757B56664EF" Type="Folder" Created="2024-05-14 20:07:12 -0700" Modified="2024-05-14 20:07:23 -0700">
+                    <Title>Protagonists</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+            </Children>
+        </BinderItem>
+        <BinderItem UUID="4070FB06-F432-449C-98CD-92B7D70B8348" Type="ResearchFolder" Created="2024-05-14 20:00:11 -0700" Modified="2024-05-14 20:00:11 -0700">
+            <Title>Research</Title>
+            <MetaData>
+                <IncludeInCompile>Yes</IncludeInCompile>
+            </MetaData>
+        </BinderItem>
+        <BinderItem UUID="1613774E-7529-4044-9E4D-9E5589339DDA" Type="TrashFolder" Created="2024-05-14 20:00:11 -0700" Modified="2024-05-14 20:00:11 -0700">
+            <Title>Trash</Title>
+            <MetaData>
+                <IncludeInCompile>Yes</IncludeInCompile>
+            </MetaData>
+        </BinderItem>
+    </Binder>
+    <Collections>
+        <Collection Type="Binder" ID="0643ABD0-32D0-4A0E-85AA-6AF1C39FFED9" Color="0.266667 0.305882 0.333333">
+            <Title>Binder</Title>
+        </Collection>
+        <Collection Type="RecentSearch" ID="89767DFC-BB38-479A-A0C4-654CC53E7C11" Color="0.250980 0.274510 0.290196">
+            <Title>Search Results</Title>
+            <SearchSettings Operator="Any" Type="All" Scope="All" CompileSetting="All" CaseSensitive="No" IgnoreDiacritics="No"></SearchSettings>
+        </Collection>
+    </Collections>
+    <SectionTypes>
+        <TypeDefinitions>
+            <Type ID="DB780143-73FC-4851-B97B-45D0C4A7D614">Heading</Type>
+            <Type ID="8BE267CB-FA48-4AEC-AF35-F44116508F76">Sub-Heading</Type>
+            <Type ID="2FA60525-A98B-4AF8-8C99-011DF1DCE15B">Section</Type>
+        </TypeDefinitions>
+        <LevelTypes>
+            <Folders>
+                <Type>DB780143-73FC-4851-B97B-45D0C4A7D614</Type>
+            </Folders>
+            <Containers>
+                <Type>2FA60525-A98B-4AF8-8C99-011DF1DCE15B</Type>
+            </Containers>
+            <Files>
+                <Type>2FA60525-A98B-4AF8-8C99-011DF1DCE15B</Type>
+            </Files>
+        </LevelTypes>
+    </SectionTypes>
+    <LabelSettings>
+        <Title>Label</Title>
+        <DefaultLabelID>-1</DefaultLabelID>
+        <Labels>
+            <Label ID="-1">No Label</Label>
+            <Label ID="0" Color="0.993500 0.701213 0.732586">Red</Label>
+            <Label ID="1" Color="0.995422 0.790951 0.652384">Orange</Label>
+            <Label ID="2" Color="0.997726 0.892729 0.652567">Yellow</Label>
+            <Label ID="3" Color="0.715862 0.948714 0.697688">Green</Label>
+            <Label ID="4" Color="0.702312 0.888273 0.974258">Blue</Label>
+            <Label ID="5" Color="0.957565 0.766751 0.999619">Purple</Label>
+        </Labels>
+    </LabelSettings>
+    <StatusSettings>
+        <Title>Status</Title>
+        <DefaultStatusID>-1</DefaultStatusID>
+        <StatusItems>
+            <Status ID="-1">No Status</Status>
+            <Status ID="0">To Do</Status>
+            <Status ID="1">In Progress</Status>
+            <Status ID="2">First Draft</Status>
+            <Status ID="3">Revised Draft</Status>
+            <Status ID="4">Final Draft</Status>
+            <Status ID="5">Done</Status>
+        </StatusItems>
+    </StatusSettings>
+    <ProjectTargets Notify="No">
+        <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2024-05-14 20:00:11 -0700" IgnoreDeadline="Yes">0</DraftTarget>
+        <SessionTarget Type="Words" CountDraftOnly="No" AllowNegatives="Yes" ResetType="Time" ResetTime="01:00" DeterminedFromDeadline="No" CanWriteOnDeadlineDate="Yes" WritingDays="">0</SessionTarget>
+        <PreviousSession Words="1691" Characters="9978" Date="2024-05-14 22:57:50 -0700"/>
+    </ProjectTargets>
+    <RecentWritingHistory Date="2024-05-14 00:00:00 -0700">
+        <DraftWordCount>754</DraftWordCount>
+        <DraftCharCount>4322</DraftCharCount>
+        <OtherWordCount>937</OtherWordCount>
+        <OtherCharCount>5656</OtherCharCount>
+    </RecentWritingHistory>
+    <PrintSettings PaperSize="612.0,792.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="72.0" BottomMargin="72.0" PaperType="na-letter" Orientation="Portrait" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="No" PagesAcross="1" PagesDown="1"/>
+</ScrivenerProject>
