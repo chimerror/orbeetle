@@ -18,11 +18,16 @@ public partial class Ingredient : Resource
         get => TextureDictionary[CurrentState];
     }
 
+    public bool RequiresButchering
+    {
+        get => AllowedStates.Contains(State.Butchered);
+    }
+
     [Export]
     public string IngredientName { get; set; }
 
     [Export]
-    public Ingredient.State CurrentState { get; set; } = State.Raw;
+    public State CurrentState { get; set; } = State.Raw;
 
     [Export]
     public GColl.Array<State> AllowedStates { get; set; } = new GColl.Array<State>();
@@ -85,7 +90,8 @@ public partial class Ingredient : Resource
     {
         Raw,
         Chopped,
-        Boiled
+        Boiled,
+        Butchered
     }
 
     public enum Quality

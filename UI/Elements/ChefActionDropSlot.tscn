@@ -53,6 +53,6 @@ custom_minimum_size = Vector2(88, 64)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 16
-text = "Butcher"
+text = "Ferment"
 horizontal_alignment = 1
 vertical_alignment = 1

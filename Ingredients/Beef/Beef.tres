@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://cfe73bxc88rqn"]
+
+[ext_resource type="Texture2D" uid="uid://bxwiljvyqgmjy" path="res://Ingredients/Beef/RawBeef.png" id="1_il0jw"]
+[ext_resource type="Texture2D" uid="uid://bnqg186ay6m3t" path="res://Ingredients/Beef/ButcheredBeef.png" id="2_ym65j"]
+[ext_resource type="Texture2D" uid="uid://chh0164fr1v4y" path="res://Ingredients/Beef/ChoppedBeef.png" id="3_22x4x"]
+[ext_resource type="Script" path="res://Ingredients/Ingredient.cs" id="4_ooeto"]
+
+[resource]
+script = ExtResource("4_ooeto")
+IngredientName = "Beef"
+CurrentState = 0
+AllowedStates = [0, 3, 1]
+StateTextures = [ExtResource("1_il0jw"), ExtResource("2_ym65j"), ExtResource("3_22x4x")]

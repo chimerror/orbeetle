@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://oiwkl4fpv7og"]
+[gd_scene load_steps=6 format=3 uid="uid://oiwkl4fpv7og"]
 
 [ext_resource type="Texture2D" uid="uid://dscr1gkgoudcx" path="res://Sprites/ClericPlaceholder.png" id="1_4wmob"]
+[ext_resource type="Script" path="res://UI/Elements/ChefArea.cs" id="1_baev0"]
 [ext_resource type="PackedScene" uid="uid://d0q82ul8squfx" path="res://UI/Elements/ChefActionDropSlot.tscn" id="2_vuaqd"]
+[ext_resource type="Resource" uid="uid://ll3bn6gdgpf5" path="res://ChefActions/Chopping/Chopping.tres" id="3_7hilg"]
 [ext_resource type="Resource" uid="uid://d2yl5cdndh6p1" path="res://ChefActions/Boiling/Boiling.tres" id="3_hm5dp"]
 
 [node name="ChefArea" type="PanelContainer"]
 custom_minimum_size = Vector2(256, 256)
+script = ExtResource("1_baev0")
+LeftChefAction = ExtResource("3_7hilg")
+RightChefAction = ExtResource("3_hm5dp")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2

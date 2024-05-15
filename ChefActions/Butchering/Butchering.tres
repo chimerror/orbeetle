@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ylppitxqk4uh"]
+
+[ext_resource type="Script" path="res://ChefActions/Butchering/ButcheringChefAction.cs" id="1_viajv"]
+
+[resource]
+script = ExtResource("1_viajv")
+ActionVerb = "Butcher"
+Duration = 5.0
+RequiredIngredients = []

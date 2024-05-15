@@ -4,6 +4,7 @@ using System.Linq;
 
 public partial class ChefActionDropSlot : IngredientDropSlot
 {
+    private ChefAction _chefAction;
     private Label _actionVerbLabel;
     private Timer _actionTimer;
     private ProgressBar _actionProgressBar;
@@ -26,7 +27,19 @@ public partial class ChefActionDropSlot : IngredientDropSlot
     public ChefsDePartieDropSlot ParentChefsDePartieDropSlot { get; set; }
 
     [Export]
-    public ChefAction ChefAction { get; set; }
+    public ChefAction ChefAction
+    {
+        get => _chefAction;
+        set
+        {
+            var needUpdate = value != _chefAction;
+            _chefAction = value;
+            if (needUpdate)
+            {
+                UpdateVerb();
+            }
+        }
+    }
 
     [ExportGroup("Progress Bar Visuals")]
     [Export]
@@ -46,7 +59,7 @@ public partial class ChefActionDropSlot : IngredientDropSlot
         MouseExited += OnMouseExited;
 
         _actionVerbLabel = GetNode<Label>("%ActionVerbLabel");
-        _actionVerbLabel.Text = ChefAction.ActionVerb;
+        UpdateVerb();
 
         _actionTimer = GetNode<Timer>("%ActionTimer");
         _actionTimer.WaitTime = ChefAction.Duration;
@@ -213,6 +226,14 @@ public partial class ChefActionDropSlot : IngredientDropSlot
         {
             // To stop the animation when the mouse enters the IngredientButton
             CurrentIngredientButton.MouseFilter = MouseFilterEnum.Ignore;
+        }
+    }
+
+    private void UpdateVerb()
+    {
+        if (_actionVerbLabel != null)
+        {
+            _actionVerbLabel.Text = ChefAction.ActionVerb;
         }
     }
 
