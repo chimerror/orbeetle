@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4xbwbtthyvvx"]
+
+[ext_resource type="Script" path="res://InkScripts/InkTestScene.cs" id="1_o0863"]
+[ext_resource type="Resource" uid="uid://diy1dsgqn3nas" path="res://InkScripts/intro.ink" id="2_tsjx2"]
+
+[node name="InkTestScene" type="VBoxContainer"]
+script = ExtResource("1_o0863")
+Story = ExtResource("2_tsjx2")

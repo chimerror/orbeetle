@@ -24,6 +24,10 @@ window/size/viewport_height=1080
 
 project/assembly_name="Orbeetle"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/GodotInk/plugin.cfg")
+
 [input]
 
 ui_accept={
