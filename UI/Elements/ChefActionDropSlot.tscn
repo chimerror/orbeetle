@@ -4,12 +4,13 @@
 [ext_resource type="Resource" uid="uid://ll3bn6gdgpf5" path="res://ChefActions/Chopping/Chopping.tres" id="2_3hd1s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1iheh"]
+bg_color = Color(0.443137, 0.529412, 0.596078, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqkva"]
-bg_color = Color(0.6, 0.5329, 0.234, 1)
+bg_color = Color(0.960784, 0.894118, 0.639216, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7iyd"]
-bg_color = Color(0.234, 0.6, 0.2584, 1)
+bg_color = Color(0.772549, 0.898039, 0.701961, 1)
 
 [node name="ChefActionDropSlot" type="PanelContainer" node_paths=PackedStringArray("DestinationSlot")]
 custom_minimum_size = Vector2(128, 64)

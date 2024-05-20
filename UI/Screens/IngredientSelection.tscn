@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cgsel57rv8gui"]
+[gd_scene load_steps=12 format=3 uid="uid://cgsel57rv8gui"]
 
 [ext_resource type="Texture2D" uid="uid://cyri7d0rf3nly" path="res://Sprites/ClockPlaceholder.png" id="1_cgwk4"]
 [ext_resource type="Script" path="res://UI/Screens/IngredientSelection.cs" id="1_po45c"]
@@ -11,15 +11,8 @@
 [ext_resource type="Resource" uid="uid://ylppitxqk4uh" path="res://ChefActions/Butchering/Butchering.tres" id="8_g3arj"]
 [ext_resource type="Resource" uid="uid://ll3bn6gdgpf5" path="res://ChefActions/Chopping/Chopping.tres" id="9_uew0v"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_yoe2f"]
-font_size = 32
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0dwp"]
-
-[sub_resource type="Theme" id="Theme_fs5y8"]
-default_font_size = 24
-
-[sub_resource type="Theme" id="Theme_4s6mf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c1uj8"]
+bg_color = Color(0.211765, 0.211765, 0.270588, 1)
 
 [node name="IngredientSelection" type="Node2D"]
 script = ExtResource("1_po45c")
@@ -44,11 +37,14 @@ size_flags_vertical = 3
 
 [node name="TimeLabel" type="Label" parent="CanvasLayer/RootHBox/LeftVBox/TimeLabelPanel"]
 layout_mode = 2
+theme_type_variation = &"HeaderLarge"
 text = "Time Remaining"
-label_settings = SubResource("LabelSettings_yoe2f")
 horizontal_alignment = 1
 
-[node name="ClockTextureRect" type="TextureRect" parent="CanvasLayer/RootHBox/LeftVBox"]
+[node name="ClockTexturePanel" type="PanelContainer" parent="CanvasLayer/RootHBox/LeftVBox"]
+layout_mode = 2
+
+[node name="ClockTextureRect" type="TextureRect" parent="CanvasLayer/RootHBox/LeftVBox/ClockTexturePanel"]
 layout_mode = 2
 size_flags_stretch_ratio = 1.86
 texture = ExtResource("1_cgwk4")
@@ -60,8 +56,8 @@ size_flags_vertical = 3
 
 [node name="PantryLabel" type="Label" parent="CanvasLayer/RootHBox/LeftVBox/PantryLabelPanel"]
 layout_mode = 2
+theme_type_variation = &"HeaderLarge"
 text = "Pantry"
-label_settings = SubResource("LabelSettings_yoe2f")
 horizontal_alignment = 1
 
 [node name="PantryDropSlot" type="PanelContainer" parent="CanvasLayer/RootHBox/LeftVBox" node_paths=PackedStringArray("DestinationSlot", "RightSlot", "UpSlot")]
@@ -91,13 +87,14 @@ layout_mode = 2
 
 [node name="ChefsLabel" type="Label" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsLabelPanel"]
 layout_mode = 2
+theme_type_variation = &"HeaderLarge"
 text = "Chefs de Partie"
-label_settings = SubResource("LabelSettings_yoe2f")
 horizontal_alignment = 1
 
 [node name="ChefsDePartieDropSlot" type="PanelContainer" parent="CanvasLayer/RootHBox/MiddleVBox" node_paths=PackedStringArray("DestinationSlot", "LeftSlot", "RightSlot", "DownSlot")]
 layout_mode = 2
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c1uj8")
 script = ExtResource("6_f0a8r")
 IngredientSize = 128
 DestinationSlot = NodePath("AimedIngredientVBox/AimedIngredientPanel")
@@ -134,9 +131,6 @@ size_flags_vertical = 0
 
 [node name="AimedIngredientLabel" type="Label" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsDePartieDropSlot/AimedIngredientVBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_a0dwp")
 text = "Pick a Chef Action..."
 
 [node name="AimedIngredientPanel" type="PanelContainer" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsDePartieDropSlot/AimedIngredientVBox"]
@@ -151,8 +145,8 @@ layout_mode = 2
 
 [node name="PrepAreaLabel" type="Label" parent="CanvasLayer/RootHBox/MiddleVBox/PrepAreaLabelPanel"]
 layout_mode = 2
+theme_type_variation = &"HeaderLarge"
 text = "Prep Area"
-label_settings = SubResource("LabelSettings_yoe2f")
 horizontal_alignment = 1
 
 [node name="PrepAreaDropSlot" type="PanelContainer" parent="CanvasLayer/RootHBox/MiddleVBox" node_paths=PackedStringArray("DestinationSlot", "LeftSlot", "RightSlot", "UpSlot")]
@@ -183,8 +177,8 @@ size_flags_vertical = 3
 
 [node name="DishesLabel" type="Label" parent="CanvasLayer/RootHBox/RightVBox/DishesLabelPanel"]
 layout_mode = 2
+theme_type_variation = &"HeaderLarge"
 text = "Dish Status"
-label_settings = SubResource("LabelSettings_yoe2f")
 horizontal_alignment = 1
 
 [node name="DishesList" type="ItemList" parent="CanvasLayer/RootHBox/RightVBox"]
@@ -192,7 +186,6 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 6.0
 focus_mode = 0
-theme = SubResource("Theme_fs5y8")
 item_count = 3
 item_0/text = "Beef Patty"
 item_1/text = "Chicken Patty"
@@ -204,8 +197,8 @@ size_flags_vertical = 3
 
 [node name="PlatingAreaLabel" type="Label" parent="CanvasLayer/RootHBox/RightVBox/PlatingAreaLabelPanel"]
 layout_mode = 2
+theme_type_variation = &"HeaderLarge"
 text = "Plating Area"
-label_settings = SubResource("LabelSettings_yoe2f")
 horizontal_alignment = 1
 
 [node name="PlatingAreaDropSlot" type="PanelContainer" parent="CanvasLayer/RootHBox/RightVBox" node_paths=PackedStringArray("DestinationSlot", "LeftSlot", "UpSlot")]
@@ -231,6 +224,5 @@ columns = 2
 [node name="ServeButton" type="Button" parent="CanvasLayer/RootHBox/RightVBox"]
 unique_name_in_owner = true
 layout_mode = 2
-theme = SubResource("Theme_4s6mf")
 theme_override_font_sizes/font_size = 128
 text = "Serve!"

@@ -28,6 +28,10 @@ project/assembly_name="Orbeetle"
 
 enabled=PackedStringArray("res://addons/GodotInk/plugin.cfg")
 
+[gui]
+
+theme/custom="res://Themes/MainTheme.tres"
+
 [input]
 
 ui_accept={
