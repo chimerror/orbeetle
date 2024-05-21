@@ -1,8 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://by2to4nihbyul"]
+[gd_scene load_steps=11 format=3 uid="uid://by2to4nihbyul"]
 
 [ext_resource type="Script" path="res://UI/Screens/CrawlCutscene.cs" id="1_a58qq"]
 [ext_resource type="Texture2D" uid="uid://dcw2q80gl3g4j" path="res://Sprites/ship_parallax_complete.png" id="1_mouq5"]
 [ext_resource type="Resource" uid="uid://diy1dsgqn3nas" path="res://InkScripts/intro.ink" id="2_snrgg"]
+[ext_resource type="Texture2D" uid="uid://bwqtt0c15p4rj" path="res://Sprites/IntroPlaceholderIslands.png" id="3_4fkjb"]
+[ext_resource type="Texture2D" uid="uid://cktkrsoh6owei" path="res://Sprites/IntroPlaceholderGreatLiberation.png" id="4_r8v7s"]
+[ext_resource type="Texture2D" uid="uid://boy12msq1lap6" path="res://Sprites/IntroPlaceholderThema.png" id="5_t72w8"]
+[ext_resource type="Texture2D" uid="uid://d2usdemb4v8n2" path="res://Sprites/IntroPlaceholderClayBeasts.png" id="6_o6r23"]
+[ext_resource type="Texture2D" uid="uid://d0rc0sih71f7o" path="res://Sprites/IntroPlaceholderAkachi.png" id="7_slk65"]
+[ext_resource type="Texture2D" uid="uid://bvoyoj5i7ec72" path="res://Sprites/IntroPlaceholderParty.png" id="8_6io4r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50ilm"]
 bg_color = Color(0.211765, 0.211765, 0.270588, 0.854902)
@@ -13,12 +19,15 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_a58qq")
 Story = ExtResource("2_snrgg")
+BackgroundNames = ["Islands", "GreatLiberation", "Thema", "ClayBeasts", "Akachi", "Party"]
+Backgrounds = [ExtResource("3_4fkjb"), ExtResource("4_r8v7s"), ExtResource("5_t72w8"), ExtResource("6_o6r23"), ExtResource("7_slk65"), ExtResource("8_6io4r")]
 
 [node name="BackgroundPanel" type="PanelContainer" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="TextureRect" type="TextureRect" parent="BackgroundPanel"]
+[node name="BackgroundTextureRect" type="TextureRect" parent="BackgroundPanel"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
