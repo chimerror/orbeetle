@@ -1,15 +1,20 @@
-[gd_scene load_steps=15 format=3 uid="uid://cgsel57rv8gui"]
+[gd_scene load_steps=20 format=3 uid="uid://cgsel57rv8gui"]
 
 [ext_resource type="Texture2D" uid="uid://cyri7d0rf3nly" path="res://Sprites/ClockPlaceholder.png" id="1_cgwk4"]
 [ext_resource type="Script" path="res://UI/Screens/IngredientSelection.cs" id="1_po45c"]
 [ext_resource type="Resource" uid="uid://eoby6gp4rvo2" path="res://Ingredients/Carrots/Carrots.tres" id="2_5fm3r"]
 [ext_resource type="Resource" uid="uid://d2hepl5roh8lk" path="res://Ingredients/Water/Water.tres" id="3_ee1oe"]
 [ext_resource type="Resource" uid="uid://cfe73bxc88rqn" path="res://Ingredients/Beef/Beef.tres" id="4_bgj5l"]
+[ext_resource type="Resource" uid="uid://dlqvdld8n45dx" path="res://Ingredients/Beans/Beans.tres" id="5_4gsrf"]
 [ext_resource type="Script" path="res://UI/Elements/IngredientDropSlot.cs" id="5_q2gwd"]
 [ext_resource type="Script" path="res://UI/Elements/ChefsDePartieDropSlot.cs" id="6_f0a8r"]
+[ext_resource type="Resource" uid="uid://c3jgdkksehny6" path="res://Ingredients/Onions/Onions.tres" id="6_jvugi"]
 [ext_resource type="PackedScene" uid="uid://oiwkl4fpv7og" path="res://UI/Elements/ChefArea.tscn" id="6_rao2u"]
+[ext_resource type="Resource" uid="uid://b0064g6j5bahi" path="res://Ingredients/Apples/Apples.tres" id="7_2inqv"]
 [ext_resource type="Resource" uid="uid://ylppitxqk4uh" path="res://ChefActions/Butchering/Butchering.tres" id="8_g3arj"]
+[ext_resource type="Resource" uid="uid://dfjei6lfkuytt" path="res://Ingredients/Sugar/Sugar.tres" id="8_makfs"]
 [ext_resource type="Resource" uid="uid://ll3bn6gdgpf5" path="res://ChefActions/Chopping/Chopping.tres" id="9_uew0v"]
+[ext_resource type="Resource" uid="uid://du54vfiq3pxvm" path="res://ChefActions/Fermenting/Fermenting.tres" id="15_jdc28"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yoe2f"]
 font_size = 32
@@ -23,7 +28,7 @@ default_font_size = 24
 
 [node name="IngredientSelection" type="Node2D"]
 script = ExtResource("1_po45c")
-StartingIngredients = [ExtResource("2_5fm3r"), ExtResource("2_5fm3r"), ExtResource("2_5fm3r"), ExtResource("3_ee1oe"), ExtResource("3_ee1oe"), ExtResource("3_ee1oe"), ExtResource("4_bgj5l"), ExtResource("4_bgj5l"), ExtResource("4_bgj5l")]
+StartingIngredients = [ExtResource("4_bgj5l"), ExtResource("3_ee1oe"), ExtResource("3_ee1oe"), ExtResource("2_5fm3r"), ExtResource("2_5fm3r"), ExtResource("5_4gsrf"), ExtResource("5_4gsrf"), ExtResource("6_jvugi"), ExtResource("6_jvugi"), ExtResource("7_2inqv"), ExtResource("7_2inqv"), ExtResource("8_makfs"), ExtResource("8_makfs")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -120,6 +125,7 @@ layout_mode = 2
 
 [node name="ChefArea3" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsDePartieDropSlot/ChefsHBox" instance=ExtResource("6_rao2u")]
 layout_mode = 2
+RightChefAction = ExtResource("15_jdc28")
 
 [node name="ChefArea4" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsDePartieDropSlot/ChefsHBox" instance=ExtResource("6_rao2u")]
 layout_mode = 2

@@ -3,7 +3,7 @@ using GColl = Godot.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-public partial class ChoppingChefAction : ChefAction
+public partial class GrillingChefAction : ChefAction
 {
 
     [Export]
