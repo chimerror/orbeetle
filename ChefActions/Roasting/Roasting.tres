@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bh1w3m01lyuew"]
+
+[ext_resource type="Script" path="res://ChefActions/Roasting/RoastingChefAction.cs" id="1_dkocb"]
+
+[resource]
+script = ExtResource("1_dkocb")
+MustBeCooked = null
+ActionVerb = "Roast"
+Duration = 3.0
+RequiredIngredients = []

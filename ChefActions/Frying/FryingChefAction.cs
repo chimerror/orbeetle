@@ -3,7 +3,7 @@ using GColl = Godot.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-public partial class GrillingChefAction : ChefAction
+public partial class FryingChefAction : ChefAction
 {
 
     [Export]
@@ -12,13 +12,12 @@ public partial class GrillingChefAction : ChefAction
     public override bool CanAcceptIngredients(IEnumerable<Ingredient> ingredients)
     {
         var ingredientsList = ingredients.ToList();
-        /*
-        Unclear if I'll need this?
+/* 
         if (ingredientsList.Count != 1)
         {
             return false;
         }
-        */
+ */
         var candidateIngredient = ingredientsList[0];
         if (candidateIngredient.RequiresButchering && candidateIngredient.CurrentState != Ingredient.State.Butchered)
         {
@@ -28,13 +27,13 @@ public partial class GrillingChefAction : ChefAction
         {
             return false;
         }
-        return candidateIngredient.AllowedStates.Contains(Ingredient.State.Grilled);
+        return candidateIngredient.AllowedStates.Contains(Ingredient.State.Fried);
     }
 
     public override Ingredient ProcessIngredients(IEnumerable<Ingredient> inputIngredients)
     {
         var processedIngredient = inputIngredients.First().Duplicate(true) as Ingredient;
-        processedIngredient.CurrentState = Ingredient.State.Grilled;
+        processedIngredient.CurrentState = Ingredient.State.Fried;
         return processedIngredient;
     }
 }

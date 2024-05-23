@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cgsel57rv8gui"]
+[gd_scene load_steps=23 format=3 uid="uid://cgsel57rv8gui"]
 
 [ext_resource type="Texture2D" uid="uid://cyri7d0rf3nly" path="res://Sprites/ClockPlaceholder.png" id="1_cgwk4"]
 [ext_resource type="Script" path="res://UI/Screens/IngredientSelection.cs" id="1_po45c"]
@@ -13,8 +13,11 @@
 [ext_resource type="Resource" uid="uid://b0064g6j5bahi" path="res://Ingredients/Apples/Apples.tres" id="7_2inqv"]
 [ext_resource type="Resource" uid="uid://ylppitxqk4uh" path="res://ChefActions/Butchering/Butchering.tres" id="8_g3arj"]
 [ext_resource type="Resource" uid="uid://dfjei6lfkuytt" path="res://Ingredients/Sugar/Sugar.tres" id="8_makfs"]
-[ext_resource type="Resource" uid="uid://ll3bn6gdgpf5" path="res://ChefActions/Chopping/Chopping.tres" id="9_uew0v"]
+[ext_resource type="Resource" uid="uid://b06k6gtub17dl" path="res://ChefActions/Frying/Frying.tres" id="14_qhu0p"]
 [ext_resource type="Resource" uid="uid://du54vfiq3pxvm" path="res://ChefActions/Fermenting/Fermenting.tres" id="15_jdc28"]
+[ext_resource type="Resource" uid="uid://btp61o52fe15p" path="res://ChefActions/Grilling/Grilling.tres" id="15_lvqg3"]
+[ext_resource type="Resource" uid="uid://bh1w3m01lyuew" path="res://ChefActions/Roasting/Roasting.tres" id="17_byg2q"]
+[ext_resource type="Resource" uid="uid://b4ca6fsmbb1dt" path="res://ChefActions/Mixing/Mixing.tres" id="18_ivgs1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yoe2f"]
 font_size = 32
@@ -118,17 +121,20 @@ alignment = 1
 [node name="ChefArea" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsDePartieDropSlot/ChefsHBox" instance=ExtResource("6_rao2u")]
 layout_mode = 2
 LeftChefAction = ExtResource("8_g3arj")
-RightChefAction = ExtResource("9_uew0v")
+RightChefAction = ExtResource("14_qhu0p")
 
 [node name="ChefArea2" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsDePartieDropSlot/ChefsHBox" instance=ExtResource("6_rao2u")]
 layout_mode = 2
+RightChefAction = ExtResource("15_lvqg3")
 
 [node name="ChefArea3" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsDePartieDropSlot/ChefsHBox" instance=ExtResource("6_rao2u")]
 layout_mode = 2
-RightChefAction = ExtResource("15_jdc28")
+LeftChefAction = ExtResource("15_jdc28")
+RightChefAction = ExtResource("17_byg2q")
 
 [node name="ChefArea4" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsDePartieDropSlot/ChefsHBox" instance=ExtResource("6_rao2u")]
 layout_mode = 2
+LeftChefAction = ExtResource("18_ivgs1")
 
 [node name="AimedIngredientVBox" type="VBoxContainer" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsDePartieDropSlot"]
 unique_name_in_owner = true
