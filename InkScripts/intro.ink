@@ -1,18 +1,18 @@
-BACKGROUND Islands
+BG Islands
 We sail now in the Tuline Sea, home of the Tuline Isles, generally known to be a peaceful area of liberty and justice. Though it was not always so.
-BACKGROUND GreatLiberation
+BG GreatLiberation
 The great and terrible Vesperine conquestors came across the Far Ocean, bringing their weapons as well as enslaved people from the Originlands, wreaking the Terrible Vesperine Conquest across the islands, leaving a trail of destroyed cultures, genocided peoples, and ravaged lands. This sad state of affairs lasted for nearly 50 years, before a spark of revolution struck Big Landmother Island. The enslaved overthrew their masters, and soon fought to liberate all the Tuline Islands in the Great Liberation.
 We are the descendants of those people. While our own bravery and fierceness should not be forgotten, we all know that we owe our liberation to the aid of many who travelled over from the Originlands as news spread, but with one shining star in particular…
-BACKGROUND Thema
+BG Thema
 Thema the Sphinx, She of Great Wisdom was a towering and wild force to the Vesperine Conquestors but a sagacious source of guidance to us. Despite her help, she always stressed our collective power, and that is something that has informed how we’ve seen ourselves in these 75 years since the Great Liberation was completed. For many of those years Thema herself lived with us, settling on Big Landmother Island, allowing all, noble and commoner alike to petition her. She was often referred to as the Queen of Tuline, though she had harsh words and sharp claws for those who called her that to her face.
 This conflict between her desires for solitude and her desires to help the people she had freed came to a head about 13 years ago, when in a fit of rage she flew off to Small Farwater Island, taking only her closest confidants, and expelling all others from the islands, which we call the Cloistering of Thema. While we fretted over what we should do with the loss of one of our wisest advisors as well as how best to integrate the new refugees, time passed with nothing but silence from Small Farwater Island. Those who travelled too close to the island seemed to invariably have their ships destroyed far before they could ever reach its shores. Attempts to contact Thema through means both mundane and magical yielded no responses.
-BACKGROUND ClayBeasts
-Just as we had settled to accepting this new state of affairs, a new threat emerged a few years ago, directly from the sea itself, literally walking across the bottom of it from Small Farwater Island. Clay automatons, crafted in the hybrid image of animals and Tall-Ones began rising from the ocean and stripping the land. They would take the clay of the earth and use that to replicate themselves at alarming rates. We called them the Clay-Beasts. Combined forces of adventurers from all the Tuline Isles have mostly kept the problem at bay, but the number of Clay-Beasts keep rising. Contact would have to be made.
-BACKGROUND Akachi
+BG ClayBeasts
+Just as we had settled to accepting this new state of affairs, a new threat emerged a few years ago, directly from the sea itself, literally walking across the bottom of it from Small Farwater Island. Clay automatons, crafted in the hybrid image of animals and tall-ones began rising from the ocean and stripping the land. They would take the clay of the earth and use that to replicate themselves at alarming rates. We called them the Clay-Beasts. Combined forces of adventurers from all the Tuline Isles have mostly kept the problem at bay, but the number of Clay-Beasts keep rising. Contact would have to be made.
+BG Akachi
 After confirming they were coming from Small Farwater Island, the expeditionary ship was surprised by a sudden booming voice, and a bright purple-pink light shone on the deck before the captain.
 “I am Akachi the Spiritspeaker, Ear and Mouth of Thema. Why do you flaunt our rules?” the voice asked. The sailors explained that they merely wished to contact Thema about the Clay-Beasts, and that they meant no harm.
 “Your concern for our creations is not warranted. They also mean no harm, just like you. But if you wish, Thema will welcome a small party of adventurers to discuss the matter. Be warned, however, she has lost none of her power and will punish those who attempt to use this gracious offer to strike at her.”
 Before anyone could respond, the voice and light was gone. The sailors argued what to do, but noting the large number of Clay-beasts they could see moving about on Small Farwater Island, they decided to turn around and report.
-BACKGROUND Party
+BG Party
 A call was made to all the islands to send their greatest adventurers for this confrontation with Thema. The resulting party is on the boat ahead, about to make landfall. Many are concerned that Thema intends nothing more but to slay us as a warning. That she wishes to take her throne as Queen of Tuline on her own terms. Perhaps.
 I can only go off of what I’ve been told by our historians, but I think that cooler heads can prevail. And I think you, Great Chef Xandre can help with that…

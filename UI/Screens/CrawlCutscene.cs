@@ -18,7 +18,7 @@ public partial class CrawlCutscene : Control
     public float CrawlSpeed { get; set; } = 0.9375f;
 
     [Export]
-    public InkStory Story;
+    public InkStory Story { get; set; }
 
     [Export]
     public GColl.Array<string> BackgroundNames { get; set; } = new();
@@ -43,9 +43,9 @@ public partial class CrawlCutscene : Control
         while (Story.CanContinue)
         {
             var nextPart = Story.Continue();
-            if (nextPart.StartsWith("BACKGROUND "))
+            if (nextPart.StartsWith("BG "))
             {
-                var backgroundName = nextPart.Replace("BACKGROUND ", string.Empty).TrimEnd();
+                var backgroundName = nextPart.Replace("BG ", string.Empty).TrimEnd();
                 backgroundCharacterPositions.Add(builder.Length);
                 _orderedBackgroundNames.Add(backgroundName);
             }

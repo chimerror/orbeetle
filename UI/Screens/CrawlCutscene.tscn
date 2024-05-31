@@ -23,6 +23,7 @@ BackgroundNames = ["Islands", "GreatLiberation", "Thema", "ClayBeasts", "Akachi"
 Backgrounds = [ExtResource("3_4fkjb"), ExtResource("4_r8v7s"), ExtResource("5_t72w8"), ExtResource("6_o6r23"), ExtResource("7_slk65"), ExtResource("8_6io4r")]
 
 [node name="BackgroundPanel" type="PanelContainer" parent="."]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
