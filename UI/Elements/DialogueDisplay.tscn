@@ -1,0 +1,147 @@
+[gd_scene load_steps=13 format=3 uid="uid://bph57lbhphswh"]
+
+[ext_resource type="Script" path="res://UI/Elements/DialogueDisplay.cs" id="1_1orrv"]
+[ext_resource type="Resource" uid="uid://cwoktv1pn657o" path="res://InkScripts/MakingLandfall.ink" id="2_1m7py"]
+[ext_resource type="Texture2D" uid="uid://dcw2q80gl3g4j" path="res://Sprites/ship_parallax_complete.png" id="2_aqf1j"]
+[ext_resource type="PackedScene" uid="uid://c80namwaovu6n" path="res://UI/Elements/DialogueCharacter.tscn" id="3_ncks0"]
+[ext_resource type="Resource" uid="uid://cmtnv6bwrcuft" path="res://Characters/Amari/Amari.tres" id="4_0ovlg"]
+[ext_resource type="Resource" uid="uid://m8tpbhob62nw" path="res://Characters/Blank/BlankCharacter.tres" id="4_ksr5e"]
+[ext_resource type="Resource" uid="uid://b18hag8qmnd41" path="res://Characters/Cheeko/Cheeko.tres" id="5_hgycc"]
+[ext_resource type="Resource" uid="uid://cpl0rhp7vbbsf" path="res://Characters/Friedrich/Friedrich.tres" id="6_mheio"]
+[ext_resource type="Resource" uid="uid://c0kn4l7pnwvt8" path="res://Characters/Grumpo/Grumpo.tres" id="7_1ubwm"]
+[ext_resource type="Resource" uid="uid://mgq35d3fhwhg" path="res://Characters/Happo/Happo.tres" id="8_alchj"]
+[ext_resource type="Resource" uid="uid://bf4nq3654nsal" path="res://Characters/Xandre/Xandre.tres" id="9_p5xlo"]
+[ext_resource type="Texture2D" uid="uid://b828i7cvxtvvr" path="res://Sprites/BGPlaceholderLandingArea.png" id="11_ekemp"]
+
+[node name="DialogueDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1orrv")
+Story = ExtResource("2_1m7py")
+BlankCharacter = ExtResource("4_ksr5e")
+AvailableCharacters = Array[Resource]([ExtResource("4_0ovlg"), ExtResource("5_hgycc"), ExtResource("6_mheio"), ExtResource("7_1ubwm"), ExtResource("8_alchj"), ExtResource("9_p5xlo")])
+BackgroundNames = Array[String](["Ship", "LandingArea"])
+BackgroundTextures = Array[Texture2D]([ExtResource("2_aqf1j"), ExtResource("11_ekemp")])
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_aqf1j")
+
+[node name="CharacterHBox" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(1750, 1000)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="FarLeftCharacter" parent="CharacterHBox" instance=ExtResource("3_ncks0")]
+unique_name_in_owner = true
+layout_mode = 2
+CurrentMood = "neutral"
+Character = ExtResource("4_ksr5e")
+
+[node name="LeftCharacter" parent="CharacterHBox" instance=ExtResource("3_ncks0")]
+unique_name_in_owner = true
+layout_mode = 2
+CurrentMood = "neutral"
+Character = ExtResource("4_ksr5e")
+
+[node name="CenterCharacter" parent="CharacterHBox" instance=ExtResource("3_ncks0")]
+unique_name_in_owner = true
+layout_mode = 2
+CurrentMood = "neutral"
+Character = ExtResource("4_ksr5e")
+
+[node name="RightCharacter" parent="CharacterHBox" instance=ExtResource("3_ncks0")]
+unique_name_in_owner = true
+layout_mode = 2
+CurrentMood = "neutral"
+Character = ExtResource("4_ksr5e")
+
+[node name="FarRightCharacter" parent="CharacterHBox" instance=ExtResource("3_ncks0")]
+unique_name_in_owner = true
+layout_mode = 2
+CurrentMood = "neutral"
+Character = ExtResource("4_ksr5e")
+
+[node name="DialogueBox" type="Control" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1536, 350)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -768.0
+offset_top = -350.0
+offset_right = 768.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="SpeakerPanelContainer" type="PanelContainer" parent="DialogueBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 1
+anchors_preset = -1
+offset_top = -75.0
+offset_bottom = 2.0
+
+[node name="SpeakerMarginContainer" type="MarginContainer" parent="DialogueBox/SpeakerPanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="SpeakerLabel" type="Label" parent="DialogueBox/SpeakerPanelContainer/SpeakerMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Sous Chef Amari Okorie"
+
+[node name="DialoguePanel" type="Panel" parent="DialogueBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogueMarginContainer" type="MarginContainer" parent="DialogueBox"]
+custom_minimum_size = Vector2(1536, 350)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 5
+
+[node name="DialogueLabel" type="RichTextLabel" parent="DialogueBox/DialogueMarginContainer"]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0.211765, 0.211765, 0.270588, 1)
+theme_override_font_sizes/normal_font_size = 56
+theme_override_font_sizes/bold_font_size = 56
+theme_override_font_sizes/italics_font_size = 56
+theme_override_font_sizes/bold_italics_font_size = 56
+bbcode_enabled = true
+text = "Anyway, my sister Kamari has mentioned in her letters many times that while the standard rations the Isles have been giving to the adventurers are serviceable, that they only make her miss my cooking…
+"

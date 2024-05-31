@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://cmtnv6bwrcuft"]
+
+[ext_resource type="Texture2D" uid="uid://b6w8nbidnkrig" path="res://Characters/Amari/AmariNeutral.png" id="1_h6j2x"]
+[ext_resource type="Texture2D" uid="uid://yrmhr8jo64or" path="res://Characters/Amari/AmariGrumpy.png" id="2_32xlf"]
+[ext_resource type="Texture2D" uid="uid://dfyd07yivu7hy" path="res://Characters/Amari/AmariSad.png" id="3_4m0uj"]
+[ext_resource type="Texture2D" uid="uid://caxbwxwnmf1yh" path="res://Characters/Amari/AmariHappy.png" id="4_lftrl"]
+[ext_resource type="Script" path="res://Characters/Character.cs" id="5_jn7gs"]
+
+[resource]
+script = ExtResource("5_jn7gs")
+ShortName = "amari"
+FullDialogueName = "Sous Chef Amari Okorie"
+Moods = Array[String](["neutral", "grumpy", "sad", "happy"])
+MoodTextures = Array[Texture2D]([ExtResource("1_h6j2x"), ExtResource("2_32xlf"), ExtResource("3_4m0uj"), ExtResource("4_lftrl")])

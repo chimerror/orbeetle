@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://c0kn4l7pnwvt8"]
+
+[ext_resource type="Texture2D" uid="uid://dsdi1ndpjkphf" path="res://Characters/Grumpo/GrumpoNeutral.png" id="1_jdbgy"]
+[ext_resource type="Texture2D" uid="uid://c3jes0p8alwf7" path="res://Characters/Grumpo/GrumpoGrumpy.png" id="2_34asl"]
+[ext_resource type="Texture2D" uid="uid://cpt7npajgcu26" path="res://Characters/Grumpo/GrumpoSad.png" id="3_10u5q"]
+[ext_resource type="Texture2D" uid="uid://baavsytut343k" path="res://Characters/Grumpo/GrumpoHappy.png" id="4_uis7o"]
+[ext_resource type="Script" path="res://Characters/Character.cs" id="5_5q6nu"]
+
+[resource]
+script = ExtResource("5_5q6nu")
+ShortName = "grumpo"
+FullDialogueName = "Chef de Partie Grumpo"
+Moods = Array[String](["neutral", "grumpy", "sad", "happy"])
+MoodTextures = Array[Texture2D]([ExtResource("1_jdbgy"), ExtResource("2_34asl"), ExtResource("3_10u5q"), ExtResource("4_uis7o")])

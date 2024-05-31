@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://c80namwaovu6n"]
+
+[ext_resource type="Texture2D" uid="uid://caxbwxwnmf1yh" path="res://Characters/Amari/AmariHappy.png" id="1_j0nxw"]
+[ext_resource type="Script" path="res://UI/Elements/DialogueCharacter.cs" id="2_fhou1"]
+[ext_resource type="Resource" uid="uid://bf4nq3654nsal" path="res://Characters/Xandre/Xandre.tres" id="3_ridi7"]
+
+[node name="DialogueCharacter" type="TextureRect"]
+offset_right = 350.0
+offset_bottom = 1000.0
+texture = ExtResource("1_j0nxw")
+script = ExtResource("2_fhou1")
+CurrentMood = "grumpy"
+Character = ExtResource("3_ridi7")

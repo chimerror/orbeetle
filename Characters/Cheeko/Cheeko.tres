@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://b18hag8qmnd41"]
+
+[ext_resource type="Texture2D" uid="uid://c8w1s1dqb6qen" path="res://Characters/Cheeko/CheekoNeutral.png" id="1_4okv3"]
+[ext_resource type="Texture2D" uid="uid://b0ihasljinthx" path="res://Characters/Cheeko/CheekoGrumpy.png" id="2_0b7gn"]
+[ext_resource type="Texture2D" uid="uid://bwphcm4tad5gc" path="res://Characters/Cheeko/CheekoSad.png" id="3_feuni"]
+[ext_resource type="Texture2D" uid="uid://bx2v3in0tu3xs" path="res://Characters/Cheeko/CheekoHappy.png" id="4_oi8xu"]
+[ext_resource type="Script" path="res://Characters/Character.cs" id="5_7ukd4"]
+
+[resource]
+script = ExtResource("5_7ukd4")
+ShortName = "cheeko"
+FullDialogueName = "Chef de Partie Cheeko"
+Moods = Array[String](["neutral", "grumpy", "sad", "happy"])
+MoodTextures = Array[Texture2D]([ExtResource("1_4okv3"), ExtResource("2_0b7gn"), ExtResource("3_feuni"), ExtResource("4_oi8xu")])

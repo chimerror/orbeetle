@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://iwug66emdkvn"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://iwug66emdkvn"]
 
 [ext_resource type="FontFile" uid="uid://bkg0yeb2fnmjk" path="res://Fonts/Platypi-VariableFont_wght.ttf" id="1_8insa"]
 [ext_resource type="FontFile" uid="uid://b40j7wayyif2e" path="res://Fonts/static/Platypi-Bold.ttf" id="1_m2h70"]
+[ext_resource type="FontFile" uid="uid://bplidc0mwfbau" path="res://Fonts/Platypi-Italic-VariableFont_wght.ttf" id="3_m5n74"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3djqr"]
 bg_color = Color(0.211765, 0.211765, 0.270588, 1)
@@ -11,6 +12,18 @@ bg_color = Color(0.968627, 0.917647, 0.713726, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ll7t6"]
 bg_color = Color(0.968627, 0.917647, 0.713726, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_sxnwn"]
+base_font = ExtResource("1_8insa")
+variation_opentype = {
+2003265652: 700
+}
+
+[sub_resource type="FontVariation" id="FontVariation_1jewr"]
+base_font = ExtResource("3_m5n74")
+variation_opentype = {
+2003265652: 700
+}
 
 [resource]
 default_font = ExtResource("1_8insa")
@@ -25,3 +38,7 @@ ItemList/styles/panel = SubResource("StyleBoxFlat_mmjqp")
 Label/colors/font_color = Color(0.211765, 0.211765, 0.270588, 1)
 Panel/styles/panel = SubResource("StyleBoxFlat_ll7t6")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_ll7t6")
+RichTextLabel/fonts/bold_font = SubResource("FontVariation_sxnwn")
+RichTextLabel/fonts/bold_italics_font = SubResource("FontVariation_1jewr")
+RichTextLabel/fonts/italics_font = ExtResource("3_m5n74")
+RichTextLabel/fonts/normal_font = ExtResource("1_8insa")

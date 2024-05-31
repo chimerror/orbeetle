@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://bf4nq3654nsal"]
+
+[ext_resource type="Texture2D" uid="uid://fidqrvljyb5x" path="res://Characters/Xandre/XandreNeutral.png" id="1_ggwsx"]
+[ext_resource type="Texture2D" uid="uid://yq3oane7lwso" path="res://Characters/Xandre/XandreGrumpy.png" id="2_wejbc"]
+[ext_resource type="Texture2D" uid="uid://b3bj12tfntrbe" path="res://Characters/Xandre/XandreSad.png" id="3_xj70w"]
+[ext_resource type="Texture2D" uid="uid://c47ltwqf5p1mg" path="res://Characters/Xandre/XandreHappy.png" id="4_m3j5s"]
+[ext_resource type="Script" path="res://Characters/Character.cs" id="5_mgm1e"]
+
+[resource]
+script = ExtResource("5_mgm1e")
+ShortName = "xandre"
+FullDialogueName = "Great Chef Xandre"
+Moods = Array[String](["neutral", "grumpy", "sad", "happy"])
+MoodTextures = Array[Texture2D]([ExtResource("1_ggwsx"), ExtResource("2_wejbc"), ExtResource("3_xj70w"), ExtResource("4_m3j5s")])

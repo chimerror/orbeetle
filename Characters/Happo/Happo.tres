@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://mgq35d3fhwhg"]
+
+[ext_resource type="Texture2D" uid="uid://0s44jwv5q3cq" path="res://Characters/Happo/HappoNeutral.png" id="1_184e3"]
+[ext_resource type="Texture2D" uid="uid://cmauf58or2aek" path="res://Characters/Happo/HappoGrumpy.png" id="2_wp7oo"]
+[ext_resource type="Texture2D" uid="uid://yufoyj4q3yjo" path="res://Characters/Happo/HappoSad.png" id="3_olv5o"]
+[ext_resource type="Texture2D" uid="uid://o8rey3j7kap8" path="res://Characters/Happo/HappoHappy.png" id="4_0aymu"]
+[ext_resource type="Script" path="res://Characters/Character.cs" id="5_8cowp"]
+
+[resource]
+script = ExtResource("5_8cowp")
+ShortName = "happo"
+FullDialogueName = "Chef de Partie Happo"
+Moods = Array[String](["neutral", "grumpy", "sad", "happy"])
+MoodTextures = Array[Texture2D]([ExtResource("1_184e3"), ExtResource("2_wp7oo"), ExtResource("3_olv5o"), ExtResource("4_0aymu")])
