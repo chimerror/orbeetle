@@ -23,6 +23,9 @@ public partial class DialogueDisplay : Control
     private PanelContainer _speakerPanelContainer;
     private Label _speakerLabel;
     private RichTextLabel _dialogueLabel;
+    private PanelContainer _choicesPanelContainer;
+    private VBoxContainer _choicesVBox;
+    private bool _mouseOverChoice = false;
 
     public Dictionary<string, Character> CharacterDictionary
     {
@@ -64,24 +67,48 @@ public partial class DialogueDisplay : Control
         _speakerPanelContainer = GetNode<PanelContainer>("%SpeakerPanelContainer");
         _speakerLabel = GetNode<Label>("%SpeakerLabel");
         _dialogueLabel = GetNode<RichTextLabel>("%DialogueLabel");
+        _choicesPanelContainer = GetNode<PanelContainer>("%ChoicesPanelContainer");
+        _choicesVBox = GetNode<VBoxContainer>("%ChoicesVBox");
 
         ContinueStory();
     }
 
     public override void _Input(InputEvent @event)
     {
-        if (@event.IsActionPressed("ui_accept") ||
-            (@event is InputEventMouseButton mouseEvent &&
-            mouseEvent.Pressed &&
-            mouseEvent.ButtonIndex == MouseButton.Left))
+        var currentFocus = GetViewport().GuiGetFocusOwner();
+        if (_choicesPanelContainer.Visible)
         {
-            ContinueStory();
+            if (currentFocus == null &&
+                (@event is InputEventJoypadButton || @event is InputEventJoypadMotion || @event is InputEventKey))
+            {
+                _choicesVBox.GetChild<Button>(0).GrabFocus();
+                return; // Don't actually try to process the event until next frame, just grab focus
+            }
+            else if (currentFocus != null && !_mouseOverChoice && @event is InputEventMouse)
+            {
+                GD.Print("DEBUG: Releasing keyboard focus in favor of mouse!");
+                currentFocus.ReleaseFocus();
+            }
         }
-
+        else
+        {
+            if (@event.IsActionPressed("ui_accept") ||
+                (@event is InputEventMouseButton mouseEvent &&
+                mouseEvent.Pressed &&
+                mouseEvent.ButtonIndex == MouseButton.Left))
+            {
+                ContinueStory();
+            }
+        }
     }
 
     private void ContinueStory(int choice = -1)
     {
+        if (choice > -1)
+        {
+            Story.ChooseChoiceIndex(choice);
+        }
+
         var rawText = Story.CanContinue ? Story.Continue() : null;
 
         while (rawText != null && DirectiveRegex.IsMatch(rawText))
@@ -92,11 +119,15 @@ public partial class DialogueDisplay : Control
 
         if (rawText != null)
         {
+            _choicesPanelContainer.Visible = false;
             UpdateDialogue(rawText, Story.CurrentTags);
+            _dialogueBox.Visible = true;
         }
         else if (Story.CurrentChoices.Count > 0)
         {
-            // TODOTODO: handle choices
+            _dialogueBox.Visible = false;
+            UpdateChoices();
+            _choicesPanelContainer.Visible = true;
         }
         else
         {
@@ -220,8 +251,8 @@ public partial class DialogueDisplay : Control
 
     private void ResetToBlankCharacter(DialogueCharacter dialogueCharacter)
     {
+        dialogueCharacter.CurrentMood = "neutral"; // Have to set mood first since the blank has only neutral
         dialogueCharacter.Character = BlankCharacter;
-        dialogueCharacter.CurrentMood = "neutral";
     }
 
     private void UpdateDialogue(string rawText, IReadOnlyList<string> currentTags)
@@ -266,6 +297,24 @@ public partial class DialogueDisplay : Control
                 return;
             }
             _currentlyDisplayedCharacters[speaker].CurrentMood = mood;
+        }
+    }
+
+    private void UpdateChoices()
+    {
+        foreach (var child in _choicesVBox.GetChildren())
+        {
+            child.QueueFree();
+        }
+
+        foreach (var choice in Story.CurrentChoices)
+        {
+            Button choiceButton = new() { Text = choice.Text };
+            choiceButton.Pressed += () => ContinueStory(choice.Index);
+            choiceButton.MouseEntered += () => _mouseOverChoice = true;
+            choiceButton.MouseExited += () => _mouseOverChoice = false;
+            choiceButton.ThemeTypeVariation = "ChoiceButton";
+            _choicesVBox.AddChild(choiceButton);
         }
     }
 }

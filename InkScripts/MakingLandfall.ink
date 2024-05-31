@@ -6,7 +6,7 @@ Xandre: Though… #neutral
 Xandre: …Cousin Amari, how can [i]I[/i] help with this? I may be among the greatest chefs of Royaume du Soleil, headmaster of the esteemed École du Bellamy…
 Xandre: However, despite my many skills, I am no man of battle or woman of magic. #sad
 Xandre: If one of these “Clay-Beasts” were to be spied, I must confess I would likely soil myself whilst I made… well… a tactical retreat…
-Amari: That's completely understandable, Chef. I am no adventurer myself. My sister took up that mantle, thankfully!
+Amari: That’s completely understandable, Chef. I am no adventurer myself. My sister took up that mantle, thankfully!
 Amari: However, we know food, and food may be what will keep cool heads here. #happy
 Xandre: Excellent observation, Cousin Amari! When our stomachs growl so do our heads… #happy
 Amari: And when our stomachs purr, so do our heads!
@@ -29,16 +29,24 @@ Amari: If only we all saw it that way… #sad
 Xandre: Cousin Amari, I swear I will do my utmost to take what barbs come my way with grace. #neutral
 Amari: That’s all I can really ask. #happy
 CHARACTER LEFT Grumpo MOOD neutral
-CHARACTER FAR_LEFT Cheeko Mood neutral
+CHARACTER FAR_LEFT Cheeko MOOD neutral
 Grumpo: Hey, bossman… What about us goblins? Should we be careful?
 Cheeko: Ja, ja, the tall-ones of the Königreich may overlook us…
 Grumpo: Literally… #grumpy
 Cheeko: But we’re Vesperians just the same!
-Amari: Well… to be honest, I’m not sure most people of the Tuline Isles have even heard of goblins… They might recognize the accent, though… #neutral
-Amari: Most conquestors were tall-ones, long-ears, dwarves, and short-ones.
-Cheeko: Ah, the chosen peoples!
-Grumpo: Not to say that there weren’t goblins trying to be chosen…
-Amari: Just keep quiet and they’ll probably be too mystified to worry about you.
+* [Might be OK…]
+    Amari: Well… to be honest, I’m not sure most people of the Tuline Isles have even heard of goblins… They might recognize the accent, though… #neutral
+    Amari: Most conquestors were tall-ones, long-ears, dwarves, and short-ones.
+    Cheeko: Ah, the chosen peoples!
+    Grumpo: Not to say that there weren’t goblins trying to be chosen…
+* [Same for you]
+    Amari: Not many from the Tuline Isles have even heard of goblins… I suspect them to be extra-suspicious, possibly even afraid that you are monsters just like the Clay-Beasts… #neutral
+    Grumpo: Well, I’ll turn on that beloved Grumpo charm, and they will be put at ease by my bon mots. #happy
+    Cheeko: Ach! With your never-ending yammering, I expect they’ll get the pitchforks soon enough! #grumpy
+    Grumpo: Bah! I am beloved by all! #grumpy
+    Amari: I don’t think Grumpo’s words would be the problem as much as his accent… That will mark him as an obvious Vesperian…
+    Grumpo: Good point, bossman! #neutral
+- Amari: Just keep quiet and they’ll probably be too mystified to worry about you.
 Grumpo: Can do, bossman! #happy
 CHARACTER LEFT Cheeko MOOD grumpy
 CHARACTER FAR_LEFT Happo MOOD happy
