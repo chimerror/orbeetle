@@ -40,9 +40,8 @@ public partial class DialogueDisplay : Control
     [Export]
     public InkStory Story { get; set; }
 
-    // TODO: This blank character is necessary because I have used an HBox as the container, and if I mark a character
-    // as not visible, it will shift the others. I think there may be a grid container that will work better here, but
-    // I'm fine with doing it this way to start.
+    // Not very happy with having to use this blank character versus setting it to be not visible, but it seems that
+    // even a GridContainer would have the issue that it collapses in the others when a child is not visible.
     [Export]
     public Character BlankCharacter { get; set; }
 
