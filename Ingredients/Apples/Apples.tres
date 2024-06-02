@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://b0064g6j5bahi"]
+
+[ext_resource type="Texture2D" uid="uid://2ch5vthdmui1" path="res://Ingredients/Apples/Apples_raw.png" id="1_cenxw"]
+[ext_resource type="Texture2D" uid="uid://br03xuvb215wb" path="res://Ingredients/Apples/Apples_chopped.png" id="2_ygbck"]
+[ext_resource type="Texture2D" uid="uid://b38mpwedgysll" path="res://Ingredients/Apples/Apples_vinegar.png" id="3_1fw1f"]
+[ext_resource type="Script" path="res://Ingredients/Ingredient.cs" id="3_a6f1d"]
+
+[resource]
+script = ExtResource("3_a6f1d")
+IngredientName = "Apples"
+CurrentState = 0
+AllowedStates = [0, 1, 4]
+StateTextures = [ExtResource("1_cenxw"), ExtResource("2_ygbck"), ExtResource("3_1fw1f")]

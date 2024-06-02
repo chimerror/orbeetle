@@ -1,18 +1,10 @@
-[gd_resource type="Resource" load_steps=5 format=3 uid="uid://d2yl5cdndh6p1"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d2yl5cdndh6p1"]
 
-[ext_resource type="Texture2D" uid="uid://chqhhxy7n7qfd" path="res://Ingredients/Water/water.png" id="1_8djld"]
-[ext_resource type="Script" path="res://Ingredients/Ingredient.cs" id="2_5hi0s"]
+[ext_resource type="Resource" uid="uid://d2hepl5roh8lk" path="res://Ingredients/Water/Water.tres" id="1_u7oy3"]
 [ext_resource type="Script" path="res://ChefActions/Boiling/BoilingChefAction.cs" id="2_t8yoh"]
-
-[sub_resource type="Resource" id="Resource_5gm6j"]
-script = ExtResource("2_5hi0s")
-IngredientName = "Water"
-CurrentState = 0
-AllowedStates = [0]
-StateTextures = [ExtResource("1_8djld")]
 
 [resource]
 script = ExtResource("2_t8yoh")
 ActionVerb = "Boil"
 Duration = 3.0
-RequiredIngredients = [SubResource("Resource_5gm6j")]
+RequiredIngredients = [ExtResource("1_u7oy3")]

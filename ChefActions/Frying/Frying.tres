@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b06k6gtub17dl"]
+
+[ext_resource type="Script" path="res://ChefActions/Frying/FryingChefAction.cs" id="1_qkrur"]
+
+[resource]
+script = ExtResource("1_qkrur")
+MustBeCooked = null
+ActionVerb = "Fry"
+Duration = 3.0
+RequiredIngredients = []

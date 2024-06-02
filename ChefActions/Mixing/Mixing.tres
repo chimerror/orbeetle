@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b4ca6fsmbb1dt"]
+
+[ext_resource type="Script" path="res://ChefActions/Mixing/MixingChefAction.cs" id="1_p7fiq"]
+
+[resource]
+script = ExtResource("1_p7fiq")
+MustBeCooked = null
+ActionVerb = "Mix"
+Duration = 3.0
+RequiredIngredients = []

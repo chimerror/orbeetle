@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dfjei6lfkuytt"]
+
+[ext_resource type="Texture2D" uid="uid://d3bartbfkjvng" path="res://Ingredients/Sugar/Sugar.png" id="1_sa3i1"]
+[ext_resource type="Script" path="res://Ingredients/Ingredient.cs" id="2_qfhcg"]
+
+[resource]
+script = ExtResource("2_qfhcg")
+IngredientName = "Sugar"
+CurrentState = 0
+AllowedStates = [0]
+StateTextures = [ExtResource("1_sa3i1")]

@@ -1,9 +1,11 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ll3bn6gdgpf5"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ll3bn6gdgpf5"]
 
 [ext_resource type="Script" path="res://ChefActions/Chopping/ChoppingChefAction.cs" id="1_letaq"]
+[ext_resource type="Resource" uid="uid://dlqvdld8n45dx" path="res://Ingredients/Beans/Beans.tres" id="1_xxhwa"]
 
 [resource]
 script = ExtResource("1_letaq")
+MustBeCooked = Array[Resource]([ExtResource("1_xxhwa")])
 ActionVerb = "Chop"
 Duration = 3.0
 RequiredIngredients = []

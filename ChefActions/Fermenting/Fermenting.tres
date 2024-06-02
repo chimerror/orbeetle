@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://du54vfiq3pxvm"]
+
+[ext_resource type="Resource" uid="uid://d2hepl5roh8lk" path="res://Ingredients/Water/Water.tres" id="1_jr7pq"]
+[ext_resource type="Resource" uid="uid://dfjei6lfkuytt" path="res://Ingredients/Sugar/Sugar.tres" id="2_2s6jf"]
+[ext_resource type="Script" path="res://ChefActions/Fermenting/FermentingChefAction.cs" id="3_6g3ex"]
+
+[resource]
+script = ExtResource("3_6g3ex")
+ActionVerb = "Ferment"
+Duration = 5.0
+RequiredIngredients = [ExtResource("1_jr7pq"), ExtResource("2_2s6jf")]

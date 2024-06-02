@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bcp2fxsi7vrjt"]
+
+[ext_resource type="Texture2D" uid="uid://bafisr0p3ww78" path="res://Ingredients/Turmeric/Turmeric.png" id="1_k7pl3"]
+[ext_resource type="Script" path="res://Ingredients/Ingredient.cs" id="2_8u1yj"]
+
+[resource]
+script = ExtResource("2_8u1yj")
+IngredientName = "Turmeric"
+CurrentState = 0
+AllowedStates = [0]
+StateTextures = [ExtResource("1_k7pl3")]
