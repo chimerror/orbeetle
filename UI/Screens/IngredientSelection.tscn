@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cgsel57rv8gui"]
+[gd_scene load_steps=25 format=3 uid="uid://cgsel57rv8gui"]
 
 [ext_resource type="Texture2D" uid="uid://cyri7d0rf3nly" path="res://Sprites/ClockPlaceholder.png" id="1_cgwk4"]
 [ext_resource type="Script" path="res://UI/Screens/IngredientSelection.cs" id="1_po45c"]
@@ -13,6 +13,8 @@
 [ext_resource type="Resource" uid="uid://b0064g6j5bahi" path="res://Ingredients/Apples/Apples.tres" id="7_2inqv"]
 [ext_resource type="Resource" uid="uid://ylppitxqk4uh" path="res://ChefActions/Butchering/Butchering.tres" id="8_g3arj"]
 [ext_resource type="Resource" uid="uid://dfjei6lfkuytt" path="res://Ingredients/Sugar/Sugar.tres" id="8_makfs"]
+[ext_resource type="Resource" uid="uid://bcp2fxsi7vrjt" path="res://Ingredients/Turmeric/Turmeric.tres" id="9_jdjew"]
+[ext_resource type="Resource" uid="uid://dhfq2t87pt37v" path="res://Ingredients/VeggiePatty/VeggiePatty.tres" id="10_sjpr8"]
 [ext_resource type="Resource" uid="uid://b06k6gtub17dl" path="res://ChefActions/Frying/Frying.tres" id="14_qhu0p"]
 [ext_resource type="Resource" uid="uid://du54vfiq3pxvm" path="res://ChefActions/Fermenting/Fermenting.tres" id="15_jdc28"]
 [ext_resource type="Resource" uid="uid://btp61o52fe15p" path="res://ChefActions/Grilling/Grilling.tres" id="15_lvqg3"]
@@ -22,9 +24,18 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c1uj8"]
 bg_color = Color(0.211765, 0.211765, 0.270588, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c0yhl"]
+bg_color = Color(0.956863, 0.752941, 0.721569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_klja1"]
+bg_color = Color(0.956863, 0.752941, 0.721569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lcbx1"]
+bg_color = Color(0.956863, 0.752941, 0.721569, 1)
+
 [node name="IngredientSelection" type="Node2D"]
 script = ExtResource("1_po45c")
-StartingIngredients = [ExtResource("4_bgj5l"), ExtResource("3_ee1oe"), ExtResource("3_ee1oe"), ExtResource("2_5fm3r"), ExtResource("2_5fm3r"), ExtResource("5_4gsrf"), ExtResource("5_4gsrf"), ExtResource("6_jvugi"), ExtResource("6_jvugi"), ExtResource("7_2inqv"), ExtResource("7_2inqv"), ExtResource("8_makfs"), ExtResource("8_makfs")]
+StartingIngredients = [ExtResource("4_bgj5l"), ExtResource("3_ee1oe"), ExtResource("3_ee1oe"), ExtResource("2_5fm3r"), ExtResource("2_5fm3r"), ExtResource("5_4gsrf"), ExtResource("5_4gsrf"), ExtResource("6_jvugi"), ExtResource("6_jvugi"), ExtResource("7_2inqv"), ExtResource("7_2inqv"), ExtResource("8_makfs"), ExtResource("8_makfs"), ExtResource("9_jdjew"), ExtResource("9_jdjew"), ExtResource("10_sjpr8")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -42,6 +53,7 @@ size_flags_horizontal = 3
 [node name="TimeLabelPanel" type="PanelContainer" parent="CanvasLayer/RootHBox/LeftVBox"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_type_variation = &"TitlePanel"
 
 [node name="TimeLabel" type="Label" parent="CanvasLayer/RootHBox/LeftVBox/TimeLabelPanel"]
 layout_mode = 2
@@ -61,6 +73,7 @@ expand_mode = 5
 [node name="PantryLabelPanel" type="PanelContainer" parent="CanvasLayer/RootHBox/LeftVBox"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_type_variation = &"TitlePanel"
 
 [node name="PantryLabel" type="Label" parent="CanvasLayer/RootHBox/LeftVBox/PantryLabelPanel"]
 layout_mode = 2
@@ -92,6 +105,7 @@ size_flags_stretch_ratio = 4.0
 
 [node name="ChefsLabelPanel" type="PanelContainer" parent="CanvasLayer/RootHBox/MiddleVBox"]
 layout_mode = 2
+theme_type_variation = &"TitlePanel"
 
 [node name="ChefsLabel" type="Label" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsLabelPanel"]
 layout_mode = 2
@@ -143,6 +157,7 @@ size_flags_vertical = 0
 
 [node name="AimedIngredientLabel" type="Label" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsDePartieDropSlot/AimedIngredientVBox"]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_c0yhl")
 text = "Pick a Chef Action..."
 
 [node name="AimedIngredientPanel" type="PanelContainer" parent="CanvasLayer/RootHBox/MiddleVBox/ChefsDePartieDropSlot/AimedIngredientVBox"]
@@ -154,6 +169,7 @@ size_flags_vertical = 0
 
 [node name="PrepAreaLabelPanel" type="PanelContainer" parent="CanvasLayer/RootHBox/MiddleVBox"]
 layout_mode = 2
+theme_type_variation = &"TitlePanel"
 
 [node name="PrepAreaLabel" type="Label" parent="CanvasLayer/RootHBox/MiddleVBox/PrepAreaLabelPanel"]
 layout_mode = 2
@@ -186,6 +202,7 @@ size_flags_stretch_ratio = 1.5
 [node name="DishesLabelPanel" type="PanelContainer" parent="CanvasLayer/RootHBox/RightVBox"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_type_variation = &"TitlePanel"
 
 [node name="DishesLabel" type="Label" parent="CanvasLayer/RootHBox/RightVBox/DishesLabelPanel"]
 layout_mode = 2
@@ -206,6 +223,7 @@ item_2/text = "Deer Patty"
 [node name="PlatingAreaLabelPanel" type="PanelContainer" parent="CanvasLayer/RootHBox/RightVBox"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_type_variation = &"TitlePanel"
 
 [node name="PlatingAreaLabel" type="Label" parent="CanvasLayer/RootHBox/RightVBox/PlatingAreaLabelPanel"]
 layout_mode = 2
@@ -236,5 +254,9 @@ columns = 2
 [node name="ServeButton" type="Button" parent="CanvasLayer/RootHBox/RightVBox"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.211765, 0.211765, 0.270588, 1)
+theme_override_colors/font_focus_color = Color(0.211765, 0.211765, 0.270588, 1)
 theme_override_font_sizes/font_size = 128
+theme_override_styles/hover = SubResource("StyleBoxFlat_klja1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lcbx1")
 text = "Serve!"

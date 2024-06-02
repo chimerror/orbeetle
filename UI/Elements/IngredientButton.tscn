@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1xr1r5vmqtd8"]
+[gd_scene load_steps=7 format=3 uid="uid://c1xr1r5vmqtd8"]
 
 [ext_resource type="Script" path="res://UI/Elements/IngredientButton.cs" id="1_yxmi1"]
 [ext_resource type="Texture2D" uid="uid://bcfi4la71cpbe" path="res://Ingredients/Carrots/RawCarrots.png" id="2_hsxi6"]
@@ -7,10 +7,18 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4suvi"]
 bg_color = Color(0.584314, 0.647059, 0.698039, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wddb2"]
+bg_color = Color(0.772549, 0.898039, 0.701961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0krdr"]
+bg_color = Color(0.772549, 0.898039, 0.701961, 1)
+
 [node name="IngredientButton" type="Button"]
 offset_right = 64.0
 offset_bottom = 64.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_4suvi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wddb2")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0krdr")
 script = ExtResource("1_yxmi1")
 Ingredient = ExtResource("2_xcxim")
 

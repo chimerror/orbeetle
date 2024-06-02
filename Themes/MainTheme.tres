@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://iwug66emdkvn"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://iwug66emdkvn"]
 
 [ext_resource type="FontFile" uid="uid://bkg0yeb2fnmjk" path="res://Fonts/Platypi-VariableFont_wght.ttf" id="1_8insa"]
 [ext_resource type="FontFile" uid="uid://b40j7wayyif2e" path="res://Fonts/static/Platypi-Bold.ttf" id="1_m2h70"]
@@ -45,6 +45,9 @@ variation_opentype = {
 2003265652: 700
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbdet"]
+bg_color = Color(0.772549, 0.898039, 0.701961, 1)
+
 [resource]
 default_font = ExtResource("1_8insa")
 Button/colors/font_color = Color(0.960784, 0.894118, 0.639216, 1)
@@ -70,3 +73,5 @@ RichTextLabel/fonts/bold_font = SubResource("FontVariation_sxnwn")
 RichTextLabel/fonts/bold_italics_font = SubResource("FontVariation_1jewr")
 RichTextLabel/fonts/italics_font = ExtResource("3_m5n74")
 RichTextLabel/fonts/normal_font = ExtResource("1_8insa")
+TitlePanel/base_type = &"PanelContainer"
+TitlePanel/styles/panel = SubResource("StyleBoxFlat_lbdet")
