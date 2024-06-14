@@ -8,12 +8,12 @@ using System.Text.RegularExpressions;
 
 public partial class DialogueDisplay : Control
 {
-    private readonly static Regex DirectiveRegex = new Regex(@"^(?<directive>BG|CHARACTER)\s*(?<parameters>.+)?$");
-    private readonly static Regex CharacterParameters = new Regex(@"^(?<position>FAR_LEFT|LEFT|CENTER|RIGHT|FAR_RIGHT|OFF)(\s+(?<name>.+?))?(\s+MOOD (?<mood>[\w-]+))?$");
-    private readonly static Regex DialogueRegex = new Regex(@"^(?<speaker>.+):\s+(?<dialogue>.*)$");
+    private readonly static Regex DirectiveRegex = new(@"^(?<directive>BG|CHARACTER)\s*(?<parameters>.+)?$");
+    private readonly static Regex CharacterParameters = new(@"^(?<position>FAR_LEFT|LEFT|CENTER|RIGHT|FAR_RIGHT|OFF)(\s+(?<name>.+?))?(\s+MOOD (?<mood>[\w-]+))?$");
+    private readonly static Regex DialogueRegex = new(@"^(?<speaker>.+):\s+(?<dialogue>.*)$");
 
+    private readonly Dictionary<string, DialogueCharacter> _currentlyDisplayedCharacters = new();
     private TextureRect _backgroundTextureRect;
-    private Dictionary<string, DialogueCharacter> _currentlyDisplayedCharacters = new();
     private DialogueCharacter _farLeftCharacter;
     private DialogueCharacter _leftCharacter;
     private DialogueCharacter _centerCharacter;
@@ -257,7 +257,7 @@ public partial class DialogueDisplay : Control
     private void UpdateDialogue(string rawText, IReadOnlyList<string> currentTags)
     {
         string speaker = null;
-        string dialogue = null;
+        string dialogue;
         var match = DialogueRegex.Match(rawText);
         if (match.Success)
         {
@@ -287,7 +287,7 @@ public partial class DialogueDisplay : Control
 
         _dialogueLabel.Text = dialogue;
 
-        var mood = currentTags.FirstOrDefault();
+        var mood = currentTags.Count > 0 ? currentTags[0] : null;
         if (mood != null)
         {
             if (speaker == null || !_currentlyDisplayedCharacters.ContainsKey(speaker))
