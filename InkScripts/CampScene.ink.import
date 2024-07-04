@@ -1,0 +1,16 @@
+[remap]
+
+importer="ink"
+type="Resource"
+uid="uid://ch0q0y8ilbmjb"
+path="res://.godot/imported/CampScene.ink-7b7880cfc884f0db89d15fc1ec609685.res"
+
+[deps]
+
+source_file="res://InkScripts/CampScene.ink"
+dest_files=["res://.godot/imported/CampScene.ink-7b7880cfc884f0db89d15fc1ec609685.res"]
+
+[params]
+
+is_main_file=true
+compress=true
