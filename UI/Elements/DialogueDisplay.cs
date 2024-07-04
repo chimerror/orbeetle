@@ -27,6 +27,12 @@ public partial class DialogueDisplay : Control
     private VBoxContainer _choicesVBox;
     private bool _mouseOverChoice = false;
 
+    [Signal]
+    public delegate void DialogueStartedEventHandler(string knotName);
+
+    [Signal]
+    public delegate void DialogueFinishedEventHandler();
+
     public Dictionary<string, Character> CharacterDictionary
     {
         get => AvailableCharacters.ToDictionary(c => c.ShortName, c => c);
@@ -69,6 +75,9 @@ public partial class DialogueDisplay : Control
         _choicesPanelContainer = GetNode<PanelContainer>("%ChoicesPanelContainer");
         _choicesVBox = GetNode<VBoxContainer>("%ChoicesVBox");
 
+        DialogueStarted += OnDialogueStarted;
+        DialogueFinished += OnDialogueFinished;
+
         ContinueStory();
     }
 
@@ -85,7 +94,7 @@ public partial class DialogueDisplay : Control
             }
             else if (currentFocus != null && !_mouseOverChoice && @event is InputEventMouse)
             {
-                GD.Print("DEBUG: Releasing keyboard focus in favor of mouse!");
+                GD.Print("Releasing keyboard focus in favor of mouse!");
                 currentFocus.ReleaseFocus();
             }
         }
@@ -97,18 +106,47 @@ public partial class DialogueDisplay : Control
                 mouseEvent.ButtonIndex == MouseButton.Left))
             {
                 ContinueStory();
+                AcceptEvent();
             }
         }
     }
 
-    private void ContinueStory(int choice = -1)
+    public void StartDialogue(string knotName)
+    {
+        EmitSignal(SignalName.DialogueStarted, knotName);
+    }
+
+    private void OnDialogueStarted(string knotName)
+    {
+        ProcessMode = ProcessModeEnum.Always;
+        Visible = true;
+        Story.ChoosePathString(knotName);
+        ContinueStory(-1, false);
+    }
+
+    private void OnDialogueFinished()
+    {
+        // TODO: Hook this up to advance the scene when in a normal dialogue cutscene
+        ProcessMode = ProcessModeEnum.Disabled;
+        Visible = false;
+    }
+
+    private void ContinueStory(int choice = -1, bool advanceIfAble = true)
     {
         if (choice > -1)
         {
             Story.ChooseChoiceIndex(choice);
         }
 
-        var rawText = Story.CanContinue ? Story.Continue() : null;
+        string rawText;
+        if (advanceIfAble)
+        {
+            rawText = Story.CanContinue ? Story.Continue() : null;
+        }
+        else
+        {
+            rawText = Story.CurrentText;
+        }
 
         while (rawText != null && DirectiveRegex.IsMatch(rawText))
         {
@@ -130,7 +168,7 @@ public partial class DialogueDisplay : Control
         }
         else
         {
-            // TODOTODO: handle hitting end of script
+            EmitSignal(SignalName.DialogueFinished);
         }
     }
 
@@ -161,8 +199,16 @@ public partial class DialogueDisplay : Control
 
     private void UpdateBackground(string parameters)
     {
-        GD.Print($"Loading background '{parameters}'");
-        _backgroundTextureRect.Texture = BackgroundDictionary[parameters];
+        if (parameters.ToLowerInvariant() == "off")
+        {
+            GD.Print($"Setting background to off...");
+            _backgroundTextureRect.Texture = null;
+        }
+        else
+        {
+            GD.Print($"Loading background '{parameters}'");
+            _backgroundTextureRect.Texture = BackgroundDictionary[parameters];
+        }
     }
 
     private void HandleCharacter(string parameters)
@@ -175,9 +221,6 @@ public partial class DialogueDisplay : Control
         }
 
         var position = match.Groups["position"].Value;
-        if (position.Equals("OFF")) // Turns all characters off
-        {
-        }
 
         DialogueCharacter positionCharacter;
         switch (position)

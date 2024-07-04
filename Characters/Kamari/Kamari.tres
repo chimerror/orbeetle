@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d1hsngdxe731d"]
+
+[ext_resource type="Texture2D" uid="uid://d1yb85dtyrls0" path="res://Characters/Kamari/KamariNeutral.png" id="1_in7iy"]
+[ext_resource type="Script" path="res://Characters/Character.cs" id="2_67jc7"]
+
+[resource]
+script = ExtResource("2_67jc7")
+ShortName = "kamari"
+FullDialogueName = "Kamari Okorie, Warrior"
+Moods = Array[String](["neutral"])
+MoodTextures = Array[Texture2D]([ExtResource("1_in7iy")])

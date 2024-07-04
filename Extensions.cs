@@ -1,5 +1,6 @@
 using Godot;
-using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public static class Extensions
 {
@@ -14,5 +15,10 @@ public static class Extensions
         {
             node.Reparent(newParent, keepGlobalTransform);
         }
+    }
+
+    public static List<T> GetChildrenOfType<T>(this Node node)
+    {
+        return node.GetChildren().Where(n => n is T).Cast<T>().ToList();
     }
 }

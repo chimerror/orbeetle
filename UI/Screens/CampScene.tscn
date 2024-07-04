@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://cly445wemitk0"]
+
+[ext_resource type="Script" path="res://UI/Screens/CampScene.cs" id="1_t7wrk"]
+[ext_resource type="Texture2D" uid="uid://ogcvk7oohlkw" path="res://UI/Screens/CampPlaceholder.png" id="1_vt4sg"]
+[ext_resource type="PackedScene" uid="uid://dfkcodf1kxky1" path="res://Characters/CampPlayer.tscn" id="2_ve3wt"]
+[ext_resource type="PackedScene" uid="uid://vbai4lev6w35" path="res://Characters/CampNpc.tscn" id="3_d6diy"]
+[ext_resource type="PackedScene" uid="uid://bph57lbhphswh" path="res://UI/Elements/DialogueDisplay.tscn" id="4_0c0v2"]
+[ext_resource type="Resource" uid="uid://ch0q0y8ilbmjb" path="res://InkScripts/CampScene.ink" id="4_espsq"]
+[ext_resource type="Resource" uid="uid://cmtnv6bwrcuft" path="res://Characters/Amari/Amari.tres" id="5_7wu5q"]
+[ext_resource type="Resource" uid="uid://d1hsngdxe731d" path="res://Characters/Kamari/Kamari.tres" id="6_e7j7e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkx6r"]
+size = Vector2(3840, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v775j"]
+size = Vector2(2160, 100)
+
+[node name="CampScene" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_t7wrk")
+
+[node name="CampBackground" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("1_vt4sg")
+
+[node name="BottomWall" type="StaticBody2D" parent="."]
+position = Vector2(0, 1080)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+shape = SubResource("RectangleShape2D_lkx6r")
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+position = Vector2(0, -1080)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+shape = SubResource("RectangleShape2D_lkx6r")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(1920, 0)
+rotation = 1.5708
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+shape = SubResource("RectangleShape2D_v775j")
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2(-1920, 0)
+rotation = 1.5708
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+shape = SubResource("RectangleShape2D_v775j")
+
+[node name="CampPlayer" parent="." instance=ExtResource("2_ve3wt")]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="CampPlayer"]
+
+[node name="DialogueDisplay" parent="CampPlayer/Camera2D" instance=ExtResource("4_0c0v2")]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+offset_top = 67.5
+offset_bottom = 67.5
+scale = Vector2(0.125, 0.125)
+Story = ExtResource("4_espsq")
+AvailableCharacters = Array[Resource]([ExtResource("5_7wu5q"), ExtResource("6_e7j7e")])
+BackgroundNames = Array[String](["none"])
+BackgroundTextures = Array[Texture2D]([null])
+
+[node name="CampNpc" parent="." instance=ExtResource("3_d6diy")]
+position = Vector2(-1291, -20)
