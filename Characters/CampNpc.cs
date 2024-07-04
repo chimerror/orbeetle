@@ -3,14 +3,24 @@ using System;
 
 public partial class CampNpc : Area2D
 {
+    private Sprite2D _npcSprite;
     private Sprite2D _speechSprite;
     private bool _mouseInArea;
 
     // Will be set by CampScene._Ready
     public DialogueDisplay dialogueDisplay;
 
+    [Export]
+    public Character Character { get; set; }
+
+    [Export]
+    public int SpriteFrame { get; set; } = 7;
+
     public override void _Ready()
     {
+        _npcSprite = GetNode<Sprite2D>("%NpcSprite");
+        _npcSprite.Texture = Character.CampTexture;
+        _npcSprite.Frame = SpriteFrame;
         _speechSprite = GetNode<Sprite2D>("%SpeechSprite");
         BodyEntered += OnBodyEntered;
         BodyExited += OnBodyExited;
@@ -27,7 +37,7 @@ public partial class CampNpc : Area2D
             mouseEvent.Pressed &&
             mouseEvent.ButtonIndex == MouseButton.Left))
         {
-            dialogueDisplay.StartDialogue("kamari"); // TODOTODO: Have knot grabbed from a character resource?
+            dialogueDisplay.StartDialogue(Character.ShortName);
         }
     }
 

@@ -29,5 +29,6 @@ public partial class Character : Resource
     [Export]
     public GColl.Array<Texture2D> MoodTextures { get; set; }
 
-    // TODO: Add properties for camp view textures
+    [Export]
+    public Texture2D CampTexture { get; set; }
 }

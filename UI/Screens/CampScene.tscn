@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cly445wemitk0"]
+[gd_scene load_steps=12 format=3 uid="uid://cly445wemitk0"]
 
 [ext_resource type="Script" path="res://UI/Screens/CampScene.cs" id="1_t7wrk"]
 [ext_resource type="Texture2D" uid="uid://ogcvk7oohlkw" path="res://UI/Screens/CampPlaceholder.png" id="1_vt4sg"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://ch0q0y8ilbmjb" path="res://InkScripts/CampScene.ink" id="4_espsq"]
 [ext_resource type="Resource" uid="uid://cmtnv6bwrcuft" path="res://Characters/Amari/Amari.tres" id="5_7wu5q"]
 [ext_resource type="Resource" uid="uid://d1hsngdxe731d" path="res://Characters/Kamari/Kamari.tres" id="6_e7j7e"]
+[ext_resource type="Resource" uid="uid://00yy58c46u71" path="res://Characters/Pretorius/Pretorius.tres" id="8_2hxte"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkx6r"]
 size = Vector2(3840, 100)
@@ -70,9 +71,14 @@ offset_top = 67.5
 offset_bottom = 67.5
 scale = Vector2(0.125, 0.125)
 Story = ExtResource("4_espsq")
-AvailableCharacters = Array[Resource]([ExtResource("5_7wu5q"), ExtResource("6_e7j7e")])
+AvailableCharacters = Array[Resource]([ExtResource("5_7wu5q"), ExtResource("6_e7j7e"), ExtResource("8_2hxte")])
 BackgroundNames = Array[String](["none"])
 BackgroundTextures = Array[Texture2D]([null])
 
 [node name="CampNpc" parent="." instance=ExtResource("3_d6diy")]
 position = Vector2(-1291, -20)
+Character = ExtResource("6_e7j7e")
+SpriteFrame = 7
+
+[node name="CampNpc2" parent="." instance=ExtResource("3_d6diy")]
+position = Vector2(481, -347)

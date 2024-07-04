@@ -1,5 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d1hsngdxe731d"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://d1hsngdxe731d"]
 
+[ext_resource type="Texture2D" uid="uid://cqpfoswd28sxy" path="res://Characters/Kamari/KamariCamp.png" id="1_5wki2"]
 [ext_resource type="Texture2D" uid="uid://d1yb85dtyrls0" path="res://Characters/Kamari/KamariNeutral.png" id="1_in7iy"]
 [ext_resource type="Script" path="res://Characters/Character.cs" id="2_67jc7"]
 
@@ -9,3 +10,4 @@ ShortName = "kamari"
 FullDialogueName = "Kamari Okorie, Warrior"
 Moods = Array[String](["neutral"])
 MoodTextures = Array[Texture2D]([ExtResource("1_in7iy")])
+CampTexture = ExtResource("1_5wki2")
