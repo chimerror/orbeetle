@@ -5,6 +5,9 @@
             <Title>Akachi the Spiritspeaker, Ear and Mouth of Thema</Title>
             <Synopsis>Thema's only remaining humanoid advisor, the most closest one and responsible for confronting the party</Synopsis>
         </Document>
+        <Document ID="0F679497-9C54-4AD0-8AD2-9B8EB0AB4F27">
+            <Title>Great Chef Xandre du Bellamy</Title>
+        </Document>
         <Document ID="1E15F1DA-9D3D-45A3-BCBC-EB82F2444663">
             <Title>Antagonists</Title>
         </Document>
@@ -26,6 +29,15 @@ Waterspring Island, another mountainous island like Big Landmother Island with t
 Valiantport Island, which while it has its own charms is mostly known as the seat of governance for the Confederacy of the Eastern Islands, which combined are just as populous if not even more populous than the big three Isles. The Eastern Islands (Valiantport, the Leeward Isles, and the Windward Isles) are famed for their knowledge of powerful and destructive magic, producing the most powerful mages in the Tuline Isles
 
 Since the Great Liberation, most of the peoples on the Tuline Isles have generally worked together for the betterment at all on the Islands, dedicated to healing the scars of the Terrible Vesperine Conquest, though rivalries and conflict between them are not unknown, especially since Thema’s Cloistering. Such is the grasping and mercurial ways of all us mortals perhaps…</Text>
+        </Document>
+        <Document ID="859247A5-79CE-422E-8379-BDF3E427EC64">
+            <Title>École du Bellamy</Title>
+        </Document>
+        <Document ID="8789E53F-7B28-467F-97BA-2184F465860E">
+            <Title>Sous Chef Amari Okorie</Title>
+        </Document>
+        <Document ID="972C7151-D957-41BE-AC18-9FA47F656519">
+            <Title>Warrior Kamari Okorie</Title>
         </Document>
         <Document ID="98EA70C2-5EB9-4739-8898-9F7F3CD0C11A">
             <Title>Intro</Title>
@@ -76,11 +88,26 @@ Trips to the waters outside of Small Farwater Island showed many of these automa
 
 Politcal discussions of this have considered this a crisis and perhaps a sign that Thema has turned against the people she had freed though those who knew her best find that line of thought suspicious. Others think that they are the work of Akachi who has manipulated the wise and gracious Thema though to what ends remain in question…</Text>
         </Document>
+        <Document ID="B734F735-4EEC-42B4-B8C6-E008C166F2BF">
+            <Title>The Adventuring Party</Title>
+        </Document>
         <Document ID="B80C5D30-3D3F-4FA6-A793-3757B56664EF">
             <Title>Protagonists</Title>
         </Document>
+        <Document ID="C60EF0D2-E978-4E33-BABD-B4BBCB535D75">
+            <Title>Alchemist Wasi Temitope</Title>
+        </Document>
+        <Document ID="DB15E5BC-24C9-4C9A-B09E-4DE94FBD31A8">
+            <Title>Chefs de Partie Grumpo, Cheeko, Happo, and Friedrich</Title>
+        </Document>
         <Document ID="DBE9275A-3F3E-4041-9C27-D1556B080180">
             <Title>Places and History</Title>
+        </Document>
+        <Document ID="F2ED8FB4-C9C6-4D82-BE79-118DD317DF93">
+            <Title>Mbali the Hunter</Title>
+        </Document>
+        <Document ID="FE6BD4A3-15A1-406F-BA24-63C6EA693B48">
+            <Title>Pretorius the Mage</Title>
         </Document>
     </Documents>
 </SearchIndexes>
