@@ -114,6 +114,7 @@ public partial class DialogueDisplay : Control
     public void StartDialogue(string knotName)
     {
         EmitSignal(SignalName.DialogueStarted, knotName);
+        AcceptEvent(); // To consume the button press
     }
 
     private void OnDialogueStarted(string knotName)
@@ -121,7 +122,7 @@ public partial class DialogueDisplay : Control
         ProcessMode = ProcessModeEnum.Always;
         Visible = true;
         Story.ChoosePathString(knotName);
-        ContinueStory(-1, false);
+        ContinueStory();
     }
 
     private void OnDialogueFinished()
@@ -131,22 +132,14 @@ public partial class DialogueDisplay : Control
         Visible = false;
     }
 
-    private void ContinueStory(int choice = -1, bool advanceIfAble = true)
+    private void ContinueStory(int choice = -1)
     {
         if (choice > -1)
         {
             Story.ChooseChoiceIndex(choice);
         }
 
-        string rawText;
-        if (advanceIfAble)
-        {
-            rawText = Story.CanContinue ? Story.Continue() : null;
-        }
-        else
-        {
-            rawText = Story.CurrentText;
-        }
+        string rawText = Story.CanContinue ? Story.Continue() : null;
 
         while (rawText != null && DirectiveRegex.IsMatch(rawText))
         {
