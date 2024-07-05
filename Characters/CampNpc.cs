@@ -70,13 +70,11 @@ public partial class CampNpc : Area2D
 
     private void OnMouseEntered()
     {
-        GD.Print("DEBUG: Mouse entered area!");
         _mouseInArea = true;
     }
 
     private void OnMouseExited()
     {
-        GD.Print("DEBUG: Mouse exited area!");
         _mouseInArea = false;
     }
 }
