@@ -1,13 +1,13 @@
 using Godot;
 using GColl = Godot.Collections;
 using GodotInk;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
 public partial class DialogueDisplay : Control
 {
+    private const float MaxDialogueCharacters = 200.0f;
     private readonly static Regex DirectiveRegex = new(@"^(?<directive>BG|CHARACTER)\s*(?<parameters>.+)?$");
     private readonly static Regex CharacterParameters = new(@"^(?<position>FAR_LEFT|LEFT|CENTER|RIGHT|FAR_RIGHT|OFF)(\s+(?<name>.+?))?(\s+MOOD (?<mood>[\w-]+))?$");
     private readonly static Regex DialogueRegex = new(@"^(?<speaker>.+):\s+(?<dialogue>.*)$");
@@ -23,6 +23,7 @@ public partial class DialogueDisplay : Control
     private PanelContainer _speakerPanelContainer;
     private Label _speakerLabel;
     private RichTextLabel _dialogueLabel;
+    private AnimationTree _dialogueAnimationTree;
     private PanelContainer _choicesPanelContainer;
     private VBoxContainer _choicesVBox;
     private bool _mouseOverChoice = false;
@@ -72,6 +73,8 @@ public partial class DialogueDisplay : Control
         _speakerPanelContainer = GetNode<PanelContainer>("%SpeakerPanelContainer");
         _speakerLabel = GetNode<Label>("%SpeakerLabel");
         _dialogueLabel = GetNode<RichTextLabel>("%DialogueLabel");
+        _dialogueAnimationTree = GetNode<AnimationTree>("%DialogueAnimationTree");
+        _dialogueAnimationTree.Active = true;
         _choicesPanelContainer = GetNode<PanelContainer>("%ChoicesPanelContainer");
         _choicesVBox = GetNode<VBoxContainer>("%ChoicesVBox");
 
@@ -322,6 +325,11 @@ public partial class DialogueDisplay : Control
         }
 
         _dialogueLabel.Text = dialogue;
+        var dialogueSpeed = MaxDialogueCharacters / dialogue.Length;
+        GD.Print($"DEBUG: Setting TimeScaleTo {dialogueSpeed}");
+        _dialogueAnimationTree.Set("parameters/WriteDialogue/TimeScale/scale", dialogueSpeed);
+        var animationPlayback = (AnimationNodeStateMachinePlayback)_dialogueAnimationTree.Get("parameters/playback");
+        animationPlayback.Start("Start", true);
 
         var mood = currentTags.Count > 0 ? currentTags[0] : null;
         if (mood != null)

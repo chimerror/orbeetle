@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bph57lbhphswh"]
+[gd_scene load_steps=26 format=3 uid="uid://bph57lbhphswh"]
 
 [ext_resource type="Script" path="res://UI/Elements/DialogueDisplay.cs" id="1_1orrv"]
 [ext_resource type="Resource" uid="uid://cwoktv1pn657o" path="res://InkScripts/MakingLandfall.ink" id="2_1m7py"]
@@ -12,6 +12,177 @@
 [ext_resource type="Resource" uid="uid://mgq35d3fhwhg" path="res://Characters/Happo/Happo.tres" id="8_alchj"]
 [ext_resource type="Resource" uid="uid://bf4nq3654nsal" path="res://Characters/Xandre/Xandre.tres" id="9_p5xlo"]
 [ext_resource type="Texture2D" uid="uid://b828i7cvxtvvr" path="res://Sprites/BGPlaceholderLandingArea.png" id="11_ekemp"]
+[ext_resource type="AudioStream" uid="uid://bhvk8dq26cdpe" path="res://Sounds/bleep014.ogg" id="13_yhh81"]
+[ext_resource type="Texture2D" uid="uid://ceq40e1qxvnwm" path="res://Sprites/target.png" id="14_wcfrq"]
+
+[sub_resource type="Animation" id="Animation_4mttc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogueAudioPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%DialogueLabel/../../DialogueFinishedMarginContainer/DialogueFinishedTextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%DialogueLabel/../../DialogueFinishedMarginContainer/DialogueFinishedTextureRect:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wbi14"]
+resource_name = "WaitingForInput"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueAudioPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%DialogueLabel/../../DialogueFinishedMarginContainer/DialogueFinishedTextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%DialogueLabel/../../DialogueFinishedMarginContainer/DialogueFinishedTextureRect:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gehj0"]
+resource_name = "WritingDialogue"
+length = 7.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogueAudioPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%DialogueLabel/../../DialogueFinishedMarginContainer/DialogueFinishedTextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0525a"]
+_data = {
+"RESET": SubResource("Animation_4mttc"),
+"WaitingForInput": SubResource("Animation_wbi14"),
+"WritingDialogue": SubResource("Animation_gehj0")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vqikm"]
+animation = &"WaitingForInput"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g2vga"]
+animation = &"WritingDialogue"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_apwi7"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ws2t5"]
+graph_offset = Vector2(-374.072, 0)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_g2vga")
+nodes/Animation/position = Vector2(-106.667, 120)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_apwi7")
+nodes/TimeScale/position = Vector2(133.333, 106.667)
+nodes/output/position = Vector2(306.667, 106.667)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l8ew6"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s8xk2"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7wfeg"]
+states/WaitingForInput/node = SubResource("AnimationNodeAnimation_vqikm")
+states/WaitingForInput/position = Vector2(607.333, 99.8519)
+states/WriteDialogue/node = SubResource("AnimationNodeBlendTree_ws2t5")
+states/WriteDialogue/position = Vector2(390.667, 100)
+transitions = ["Start", "WriteDialogue", SubResource("AnimationNodeStateMachineTransition_l8ew6"), "WriteDialogue", "WaitingForInput", SubResource("AnimationNodeStateMachineTransition_s8xk2")]
 
 [node name="DialogueDisplay" type="Control"]
 layout_mode = 3
@@ -145,6 +316,44 @@ theme_override_font_sizes/bold_italics_font_size = 56
 bbcode_enabled = true
 text = "Anyway, my sister Kamari has mentioned in her letters many times that while the standard rations the Isles have been giving to the adventurers are serviceable, that they only make her miss my cooking…
 "
+visible_characters_behavior = 1
+
+[node name="DialogueAnimationPlayer" type="AnimationPlayer" parent="DialogueBox/DialogueMarginContainer/DialogueLabel"]
+libraries = {
+"": SubResource("AnimationLibrary_0525a")
+}
+
+[node name="DialogueAudioPlayer" type="AudioStreamPlayer" parent="DialogueBox/DialogueMarginContainer/DialogueLabel"]
+stream = ExtResource("13_yhh81")
+
+[node name="DialogueAnimationTree" type="AnimationTree" parent="DialogueBox/DialogueMarginContainer/DialogueLabel"]
+unique_name_in_owner = true
+active = false
+root_node = NodePath("%DialogueAnimationTree/..")
+tree_root = SubResource("AnimationNodeStateMachine_7wfeg")
+anim_player = NodePath("../DialogueAnimationPlayer")
+parameters/WriteDialogue/TimeScale/scale = 1.0
+
+[node name="DialogueFinishedMarginContainer" type="MarginContainer" parent="DialogueBox"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="DialogueFinishedTextureRect" type="TextureRect" parent="DialogueBox/DialogueFinishedMarginContainer"]
+modulate = Color(0.211765, 0.211765, 0.270588, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_wcfrq")
 
 [node name="ChoicesPanelContainer" type="PanelContainer" parent="."]
 unique_name_in_owner = true
