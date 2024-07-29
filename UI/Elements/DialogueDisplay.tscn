@@ -105,6 +105,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_gehj0"]
 resource_name = "WritingDialogue"
@@ -136,14 +148,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%DialogueLabel/../../DialogueFinishedMarginContainer/DialogueFinishedTextureRect:visible")
+tracks/2/path = NodePath("%DialogueBox/..:AnimationInProgress")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0525a"]
@@ -349,6 +361,7 @@ theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
 [node name="DialogueFinishedTextureRect" type="TextureRect" parent="DialogueBox/DialogueFinishedMarginContainer"]
+unique_name_in_owner = true
 modulate = Color(0.211765, 0.211765, 0.270588, 1)
 layout_mode = 2
 size_flags_horizontal = 4

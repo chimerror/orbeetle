@@ -24,6 +24,8 @@ public partial class DialogueDisplay : Control
     private Label _speakerLabel;
     private RichTextLabel _dialogueLabel;
     private AnimationTree _dialogueAnimationTree;
+    private TextureRect _dialogueFinishedTextureRect;
+    private TextureButton _skipButton;
     private PanelContainer _choicesPanelContainer;
     private VBoxContainer _choicesVBox;
     private bool _mouseOverChoice = false;
@@ -61,6 +63,10 @@ public partial class DialogueDisplay : Control
     [Export]
     public GColl.Array<Texture2D> BackgroundTextures { get; set; }
 
+    // Speeds less than or equal to 0 are treated as instant
+    [Export(PropertyHint.Range, "0,8,0.25,or_greater,orless")]
+    public float DialogueSpeed { get; set; } = 1.0f;
+
     public override void _Ready()
     {
         _backgroundTextureRect = GetNode<TextureRect>("%BackgroundTextureRect");
@@ -74,7 +80,8 @@ public partial class DialogueDisplay : Control
         _speakerLabel = GetNode<Label>("%SpeakerLabel");
         _dialogueLabel = GetNode<RichTextLabel>("%DialogueLabel");
         _dialogueAnimationTree = GetNode<AnimationTree>("%DialogueAnimationTree");
-        _dialogueAnimationTree.Active = true;
+        _dialogueAnimationTree.Active = DialogueSpeed > 0.0f;
+        _dialogueFinishedTextureRect = GetNode<TextureRect>("%DialogueFinishedTextureRect");
         _choicesPanelContainer = GetNode<PanelContainer>("%ChoicesPanelContainer");
         _choicesVBox = GetNode<VBoxContainer>("%ChoicesVBox");
 
@@ -92,6 +99,7 @@ public partial class DialogueDisplay : Control
             if (currentFocus == null &&
                 (@event is InputEventJoypadButton || @event is InputEventJoypadMotion || @event is InputEventKey))
             {
+                GD.Print("Trying to move focus to choice!");
                 _choicesVBox.GetChild<Button>(0).GrabFocus();
                 return; // Don't actually try to process the event until next frame, just grab focus
             }
@@ -103,14 +111,22 @@ public partial class DialogueDisplay : Control
         }
         else
         {
-            if (@event.IsActionPressed("ui_accept") ||
-                (@event is InputEventMouseButton mouseEvent &&
-                mouseEvent.Pressed &&
-                mouseEvent.ButtonIndex == MouseButton.Left))
+            if (@event.IsActionPressed("ui_accept"))
             {
-                ContinueStory();
+                FinishWritingOrAdvanceStory();
                 AcceptEvent();
             }
+        }
+    }
+
+    public override void _GuiInput(InputEvent @event)
+    {
+        if (@event is InputEventMouseButton mouseEvent &&
+            mouseEvent.Pressed &&
+            mouseEvent.ButtonIndex == MouseButton.Left)
+        {
+            FinishWritingOrAdvanceStory();
+            AcceptEvent();
         }
     }
 
@@ -135,7 +151,21 @@ public partial class DialogueDisplay : Control
         Visible = false;
     }
 
-    private void ContinueStory(int choice = -1)
+    private void FinishWritingOrAdvanceStory()
+    {
+        var animationPlayback =
+            (AnimationNodeStateMachinePlayback)_dialogueAnimationTree.Get("parameters/playback");
+        if (animationPlayback.GetCurrentNode() == "WriteDialogue")
+        {
+            animationPlayback.Next();
+        }
+        else
+        {
+            ContinueStory();
+        }
+    }
+
+    private void ContinueStory(int choice = -1, bool skip = false)
     {
         if (choice > -1)
         {
@@ -325,11 +355,20 @@ public partial class DialogueDisplay : Control
         }
 
         _dialogueLabel.Text = dialogue;
-        var dialogueSpeed = MaxDialogueCharacters / dialogue.Length;
-        GD.Print($"DEBUG: Setting TimeScaleTo {dialogueSpeed}");
-        _dialogueAnimationTree.Set("parameters/WriteDialogue/TimeScale/scale", dialogueSpeed);
-        var animationPlayback = (AnimationNodeStateMachinePlayback)_dialogueAnimationTree.Get("parameters/playback");
-        animationPlayback.Start("Start", true);
+        if (DialogueSpeed <= 0.0f)
+        {
+            _dialogueAnimationTree.Active = false;
+            _dialogueFinishedTextureRect.Visible = true;
+        }
+        else
+        {
+            _dialogueAnimationTree.Active = true;
+            var computedDialogueSpeed = MaxDialogueCharacters / dialogue.Length * DialogueSpeed;
+            _dialogueAnimationTree.Set("parameters/WriteDialogue/TimeScale/scale", computedDialogueSpeed);
+            var animationPlayback =
+                (AnimationNodeStateMachinePlayback)_dialogueAnimationTree.Get("parameters/playback");
+            animationPlayback.Start("Start", true);
+        }
 
         var mood = currentTags.Count > 0 ? currentTags[0] : null;
         if (mood != null)
