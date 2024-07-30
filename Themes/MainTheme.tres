@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://iwug66emdkvn"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://iwug66emdkvn"]
 
 [ext_resource type="FontFile" uid="uid://bkg0yeb2fnmjk" path="res://Fonts/Platypi-VariableFont_wght.ttf" id="1_8insa"]
 [ext_resource type="FontFile" uid="uid://b40j7wayyif2e" path="res://Fonts/static/Platypi-Bold.ttf" id="1_m2h70"]
@@ -6,6 +6,12 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3djqr"]
 bg_color = Color(0.211765, 0.211765, 0.270588, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hlkys"]
+bg_color = Color(0.443137, 0.529412, 0.596078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twd6f"]
+bg_color = Color(0.968627, 0.917647, 0.713726, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_a1ala"]
 base_font = ExtResource("1_8insa")
@@ -54,6 +60,16 @@ Button/colors/font_color = Color(0.960784, 0.894118, 0.639216, 1)
 Button/colors/font_outline_color = Color(0.443137, 0.529412, 0.596078, 1)
 Button/fonts/font = ExtResource("1_m2h70")
 Button/styles/normal = SubResource("StyleBoxFlat_3djqr")
+CheckBox/colors/font_color = Color(0.211765, 0.211765, 0.270588, 1)
+CheckBox/colors/font_focus_color = Color(0.960784, 0.894118, 0.639216, 1)
+CheckBox/colors/font_hover_color = Color(0.960784, 0.894118, 0.639216, 1)
+CheckBox/colors/font_hover_pressed_color = Color(0.960784, 0.894118, 0.639216, 1)
+CheckBox/colors/font_pressed_color = Color(0.211765, 0.211765, 0.270588, 1)
+CheckBox/font_sizes/font_size = 28
+CheckBox/styles/focus = SubResource("StyleBoxFlat_hlkys")
+CheckBox/styles/hover = SubResource("StyleBoxFlat_hlkys")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxFlat_hlkys")
+CheckBox/styles/normal = SubResource("StyleBoxFlat_twd6f")
 ChoiceButton/base_type = &"Button"
 ChoiceButton/colors/font_focus_color = Color(0.211765, 0.211765, 0.270588, 1)
 ChoiceButton/colors/font_hover_color = Color(0.211765, 0.211765, 0.270588, 1)

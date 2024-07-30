@@ -28,7 +28,12 @@ public partial class DialogueDisplay : Control
     private TextureButton _skipButton;
     private PanelContainer _choicesPanelContainer;
     private VBoxContainer _choicesVBox;
-    private bool _mouseOverChoice = false;
+    private ColorRect _confirmationDialogColorRect;
+    private Label _confirmationDialogLabel;
+    private CheckBox _confirmationDialogCheckBox;
+    private Button _confirmationDialogYesButton;
+    private Button _confirmationDialogNoButton;
+    private bool _mouseOverElement = false;
 
     [Signal]
     public delegate void DialogueStartedEventHandler(string knotName);
@@ -67,6 +72,18 @@ public partial class DialogueDisplay : Control
     [Export(PropertyHint.Range, "0,8,0.25,or_greater,orless")]
     public float DialogueSpeed { get; set; } = 1.0f;
 
+    [Export]
+    public bool ConfirmBeforeSkipping { get; set; } = true;
+
+    [Export]
+    public string SkippingConfirmationDialogMessage { get; set; }
+
+    [Export]
+    public string SkippingConfirmationDialogCheckboxString { get; set; }
+
+    [Export]
+    public bool ConfirmBeforeAutoAdvance { get; set; } = true;
+
     public override void _Ready()
     {
         _backgroundTextureRect = GetNode<TextureRect>("%BackgroundTextureRect");
@@ -82,8 +99,21 @@ public partial class DialogueDisplay : Control
         _dialogueAnimationTree = GetNode<AnimationTree>("%DialogueAnimationTree");
         _dialogueAnimationTree.Active = DialogueSpeed > 0.0f;
         _dialogueFinishedTextureRect = GetNode<TextureRect>("%DialogueFinishedTextureRect");
+        _skipButton = GetNode<TextureButton>("%SkipButton");
+        _skipButton.Pressed += OnSkipButtonPressed;
         _choicesPanelContainer = GetNode<PanelContainer>("%ChoicesPanelContainer");
         _choicesVBox = GetNode<VBoxContainer>("%ChoicesVBox");
+        _confirmationDialogColorRect = GetNode<ColorRect>("%ConfirmationDialogColorRect");
+        _confirmationDialogLabel = GetNode<Label>("%ConfirmationDialogLabel");
+        _confirmationDialogCheckBox = GetNode<CheckBox>("%ConfirmationDialogCheckBox");
+        _confirmationDialogCheckBox.MouseEntered += () => _mouseOverElement = true;
+        _confirmationDialogCheckBox.MouseExited += () => _mouseOverElement = false;
+        _confirmationDialogYesButton = GetNode<Button>("%ConfirmationDialogYesButton");
+        _confirmationDialogYesButton.MouseEntered += () => _mouseOverElement = true;
+        _confirmationDialogYesButton.MouseExited += () => _mouseOverElement = false;
+        _confirmationDialogNoButton = GetNode<Button>("%ConfirmationDialogNoButton");
+        _confirmationDialogNoButton.MouseEntered += () => _mouseOverElement = true;
+        _confirmationDialogNoButton.MouseExited += () => _mouseOverElement = false;
 
         DialogueStarted += OnDialogueStarted;
         DialogueFinished += OnDialogueFinished;
@@ -93,20 +123,18 @@ public partial class DialogueDisplay : Control
 
     public override void _Input(InputEvent @event)
     {
-        var currentFocus = GetViewport().GuiGetFocusOwner();
         if (_choicesPanelContainer.Visible)
         {
-            if (currentFocus == null &&
-                (@event is InputEventJoypadButton || @event is InputEventJoypadMotion || @event is InputEventKey))
+            if (ManageFocusOnEvent(@event, _choicesVBox.GetChild<Button>(0)))
             {
-                GD.Print("Trying to move focus to choice!");
-                _choicesVBox.GetChild<Button>(0).GrabFocus();
-                return; // Don't actually try to process the event until next frame, just grab focus
+                return;
             }
-            else if (currentFocus != null && !_mouseOverChoice && @event is InputEventMouse)
+        }
+        else if (_confirmationDialogColorRect.Visible)
+        {
+            if (ManageFocusOnEvent(@event, _confirmationDialogNoButton))
             {
-                GD.Print("Releasing keyboard focus in favor of mouse!");
-                currentFocus.ReleaseFocus();
+                return;
             }
         }
         else
@@ -115,6 +143,10 @@ public partial class DialogueDisplay : Control
             {
                 FinishWritingOrAdvanceStory();
                 AcceptEvent();
+            }
+            else if (@event.IsActionPressed("dialogue_skip"))
+            {
+                OnSkipButtonPressed();
             }
         }
     }
@@ -136,6 +168,24 @@ public partial class DialogueDisplay : Control
         AcceptEvent(); // To consume the button press
     }
 
+    private bool ManageFocusOnEvent(InputEvent @event, Control controlToFocus)
+    {
+        var currentFocus = GetViewport().GuiGetFocusOwner();
+        if (currentFocus == null &&
+            (@event is InputEventJoypadButton || @event is InputEventJoypadMotion || @event is InputEventKey))
+        {
+            GD.Print("Moving keyboard focus to desired control!");
+            controlToFocus.GrabFocus();
+            return true; // Don't actually try to process the event until next frame, just grab focus
+        }
+        else if (currentFocus != null && !_mouseOverElement && @event is InputEventMouse)
+        {
+            GD.Print("Releasing keyboard focus in favor of mouse!");
+            currentFocus.ReleaseFocus();
+        }
+        return false;
+    }
+
     private void OnDialogueStarted(string knotName)
     {
         ProcessMode = ProcessModeEnum.Always;
@@ -151,15 +201,24 @@ public partial class DialogueDisplay : Control
         Visible = false;
     }
 
-    private void FinishWritingOrAdvanceStory()
+    private bool FinishWritingIfNeeded()
     {
         var animationPlayback =
             (AnimationNodeStateMachinePlayback)_dialogueAnimationTree.Get("parameters/playback");
         if (animationPlayback.GetCurrentNode() == "WriteDialogue")
         {
             animationPlayback.Next();
+            return true;
         }
         else
+        {
+            return false;
+        }
+    }
+
+    private void FinishWritingOrAdvanceStory()
+    {
+        if (!FinishWritingIfNeeded())
         {
             ContinueStory();
         }
@@ -173,10 +232,16 @@ public partial class DialogueDisplay : Control
         }
 
         string rawText = Story.CanContinue ? Story.Continue() : null;
-
-        while (rawText != null && DirectiveRegex.IsMatch(rawText))
+        while (rawText != null)
         {
-            PerformDirective(rawText);
+            if (DirectiveRegex.IsMatch(rawText))
+            {
+                PerformDirective(rawText);
+            }
+            else if (!skip)
+            {
+                break;
+            }
             rawText = Story.CanContinue ? Story.Continue() : null;
         }
 
@@ -393,10 +458,51 @@ public partial class DialogueDisplay : Control
         {
             Button choiceButton = new() { Text = choice.Text };
             choiceButton.Pressed += () => ContinueStory(choice.Index);
-            choiceButton.MouseEntered += () => _mouseOverChoice = true;
-            choiceButton.MouseExited += () => _mouseOverChoice = false;
+            choiceButton.MouseEntered += () => _mouseOverElement = true;
+            choiceButton.MouseExited += () => _mouseOverElement = false;
             choiceButton.ThemeTypeVariation = "ChoiceButton";
             _choicesVBox.AddChild(choiceButton);
         }
+    }
+
+    private void HideConfirmationDialog()
+    {
+        _confirmationDialogColorRect.Visible = false;
+    }
+
+    private void OnSkipButtonPressed()
+    {
+        FinishWritingIfNeeded();
+        if (ConfirmBeforeSkipping)
+        {
+            if (_confirmationDialogLabel.Text != SkippingConfirmationDialogMessage)
+            {
+                // TODO: unsubscribe checkbox,buttons from auto-advance
+                _confirmationDialogLabel.Text = SkippingConfirmationDialogMessage;
+                _confirmationDialogCheckBox.Text = SkippingConfirmationDialogCheckboxString;
+                _confirmationDialogCheckBox.SetPressedNoSignal(true);
+                _confirmationDialogCheckBox.Toggled += ToggleSkipConfirmation;
+                _confirmationDialogYesButton.Pressed += HideConfirmationDialog;
+                _confirmationDialogYesButton.Pressed += PerformSkip;
+                _confirmationDialogNoButton.Pressed += HideConfirmationDialog;
+            }
+            _confirmationDialogColorRect.Visible = true;
+        }
+        else
+        {
+            PerformSkip();
+        }
+    }
+
+    private void ToggleSkipConfirmation(bool state)
+    {
+        ConfirmBeforeSkipping = state;
+    }
+
+    private void PerformSkip()
+    {
+        GD.Print($"Skipping to next choice...");
+        ContinueStory(-1, true);
+        AcceptEvent();
     }
 }

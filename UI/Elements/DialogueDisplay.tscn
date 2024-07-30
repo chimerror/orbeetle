@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bph57lbhphswh"]
+[gd_scene load_steps=31 format=3 uid="uid://bph57lbhphswh"]
 
 [ext_resource type="Script" path="res://UI/Elements/DialogueDisplay.cs" id="1_1orrv"]
 [ext_resource type="Resource" uid="uid://cwoktv1pn657o" path="res://InkScripts/MakingLandfall.ink" id="2_1m7py"]
@@ -14,6 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://b828i7cvxtvvr" path="res://Sprites/BGPlaceholderLandingArea.png" id="11_ekemp"]
 [ext_resource type="AudioStream" uid="uid://bhvk8dq26cdpe" path="res://Sounds/bleep014.ogg" id="13_yhh81"]
 [ext_resource type="Texture2D" uid="uid://ceq40e1qxvnwm" path="res://Sprites/target.png" id="14_wcfrq"]
+[ext_resource type="Texture2D" uid="uid://cqxrfd1hjnqmr" path="res://Sprites/panelInset_beigeLight.png" id="15_ihdn3"]
+[ext_resource type="Texture2D" uid="uid://b42tn0bq3x0e7" path="res://Sprites/panelInset_brown.png" id="16_4k3ab"]
+[ext_resource type="Texture2D" uid="uid://b45j4mbaykscn" path="res://Sprites/panelInset_beige.png" id="17_x4yoi"]
+[ext_resource type="Texture2D" uid="uid://sbaaaejtd7k2" path="res://Sprites/panelInset_blue.png" id="18_xcchf"]
+[ext_resource type="Texture2D" uid="uid://cleqndwrd2cbj" path="res://Sprites/fastForward.png" id="19_ee7ct"]
 
 [sub_resource type="Animation" id="Animation_4mttc"]
 length = 0.001
@@ -197,6 +202,7 @@ states/WriteDialogue/position = Vector2(390.667, 100)
 transitions = ["Start", "WriteDialogue", SubResource("AnimationNodeStateMachineTransition_l8ew6"), "WriteDialogue", "WaitingForInput", SubResource("AnimationNodeStateMachineTransition_s8xk2")]
 
 [node name="DialogueDisplay" type="Control"]
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -209,6 +215,8 @@ BlankCharacter = ExtResource("4_ksr5e")
 AvailableCharacters = Array[Resource]([ExtResource("4_0ovlg"), ExtResource("5_hgycc"), ExtResource("6_mheio"), ExtResource("7_1ubwm"), ExtResource("8_alchj"), ExtResource("9_p5xlo")])
 BackgroundNames = Array[String](["Ship", "LandingArea"])
 BackgroundTextures = Array[Texture2D]([ExtResource("2_aqf1j"), ExtResource("11_ekemp")])
+SkippingConfirmationDialogMessage = "Do you want to skip the dialogue up to the next choice (if any)?"
+SkippingConfirmationDialogCheckboxString = "Show this dialog before skipping"
 
 [node name="BackgroundTextureRect" type="TextureRect" parent="."]
 unique_name_in_owner = true
@@ -218,6 +226,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_aqf1j")
 
 [node name="CharacterHBox" type="HBoxContainer" parent="."]
@@ -230,6 +239,7 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="FarLeftCharacter" parent="CharacterHBox" instance=ExtResource("3_ncks0")]
 unique_name_in_owner = true
@@ -276,6 +286,7 @@ offset_right = 768.0
 offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="SpeakerPanelContainer" type="PanelContainer" parent="DialogueBox"]
 unique_name_in_owner = true
@@ -284,9 +295,11 @@ layout_mode = 1
 anchors_preset = -1
 offset_top = -75.0
 offset_bottom = 2.0
+mouse_filter = 2
 
 [node name="SpeakerMarginContainer" type="MarginContainer" parent="DialogueBox/SpeakerPanelContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
@@ -305,12 +318,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="DialogueMarginContainer" type="MarginContainer" parent="DialogueBox"]
 custom_minimum_size = Vector2(1536, 350)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 20
@@ -320,6 +335,7 @@ theme_override_constants/margin_bottom = 5
 unique_name_in_owner = true
 clip_contents = false
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/default_color = Color(0.211765, 0.211765, 0.270588, 1)
 theme_override_font_sizes/normal_font_size = 56
 theme_override_font_sizes/bold_font_size = 56
@@ -357,6 +373,7 @@ offset_left = -50.0
 offset_top = -50.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
@@ -366,7 +383,42 @@ modulate = Color(0.211765, 0.211765, 0.270588, 1)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 texture = ExtResource("14_wcfrq")
+
+[node name="SkipButton" type="TextureButton" parent="DialogueBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -118.0
+offset_top = -77.0
+offset_right = -25.0
+offset_bottom = 17.0
+grow_horizontal = 0
+texture_normal = ExtResource("15_ihdn3")
+texture_pressed = ExtResource("16_4k3ab")
+texture_hover = ExtResource("17_x4yoi")
+texture_disabled = ExtResource("18_xcchf")
+texture_focused = ExtResource("17_x4yoi")
+
+[node name="TextureRect" type="TextureRect" parent="DialogueBox/SkipButton"]
+modulate = Color(0.211765, 0.211765, 0.270588, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("19_ee7ct")
 
 [node name="ChoicesPanelContainer" type="PanelContainer" parent="."]
 unique_name_in_owner = true
@@ -383,9 +435,11 @@ offset_right = 240.0
 offset_bottom = 44.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ChoicesMarginContainer" type="MarginContainer" parent="ChoicesPanelContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
@@ -396,3 +450,99 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="ConfirmationDialogColorRect" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.211765, 0.211765, 0.270588, 0.752941)
+
+[node name="ConfirmationDialogPanel" type="Panel" parent="ConfirmationDialogColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -175.0
+offset_right = 384.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ConfirmationDialogVBox" type="VBoxContainer" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -385.0
+offset_top = -143.5
+offset_right = 385.0
+offset_bottom = 143.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ConfirmationDialogLabelMarginContainer" type="MarginContainer" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox"]
+custom_minimum_size = Vector2(768, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="ConfirmationDialogLabel" type="Label" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox/ConfirmationDialogLabelMarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(750, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 42
+text = "Do you want to skip the dialogue up to the next choice?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ConfirmationDialogCheckButtonMarginContainer" type="MarginContainer" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 10
+
+[node name="ConfirmationDialogCheckBox" type="CheckBox" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox/ConfirmationDialogCheckButtonMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 35
+button_pressed = true
+text = "Confirm before skipping"
+
+[node name="ConfirmationDialogYesNoButtonsMarginContainer" type="MarginContainer" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ConfirmationDialogYesNoButtonsHBox" type="HBoxContainer" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox/ConfirmationDialogYesNoButtonsMarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="ConfirmationDialogYesButton" type="Button" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox/ConfirmationDialogYesNoButtonsMarginContainer/ConfirmationDialogYesNoButtonsHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"ChoiceButton"
+text = "Yes"
+
+[node name="ConfirmationDialogNoButton" type="Button" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox/ConfirmationDialogYesNoButtonsMarginContainer/ConfirmationDialogYesNoButtonsHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"ChoiceButton"
+text = "No"
