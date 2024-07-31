@@ -1,0 +1,783 @@
+[gd_scene load_steps=40 format=3 uid="uid://bph57lbhphswh"]
+
+[ext_resource type="Script" path="res://UI/Elements/DialogueDisplay.cs" id="1_1orrv"]
+[ext_resource type="Resource" uid="uid://cwoktv1pn657o" path="res://InkScripts/MakingLandfall.ink" id="2_1m7py"]
+[ext_resource type="Texture2D" uid="uid://dcw2q80gl3g4j" path="res://Sprites/ship_parallax_complete.png" id="2_aqf1j"]
+[ext_resource type="PackedScene" uid="uid://c80namwaovu6n" path="res://UI/Elements/DialogueCharacter.tscn" id="3_ncks0"]
+[ext_resource type="Resource" uid="uid://cmtnv6bwrcuft" path="res://Characters/Amari/Amari.tres" id="4_0ovlg"]
+[ext_resource type="Resource" uid="uid://m8tpbhob62nw" path="res://Characters/Blank/BlankCharacter.tres" id="4_ksr5e"]
+[ext_resource type="Resource" uid="uid://b18hag8qmnd41" path="res://Characters/Cheeko/Cheeko.tres" id="5_hgycc"]
+[ext_resource type="Resource" uid="uid://cpl0rhp7vbbsf" path="res://Characters/Friedrich/Friedrich.tres" id="6_mheio"]
+[ext_resource type="Resource" uid="uid://c0kn4l7pnwvt8" path="res://Characters/Grumpo/Grumpo.tres" id="7_1ubwm"]
+[ext_resource type="Resource" uid="uid://mgq35d3fhwhg" path="res://Characters/Happo/Happo.tres" id="8_alchj"]
+[ext_resource type="Resource" uid="uid://bf4nq3654nsal" path="res://Characters/Xandre/Xandre.tres" id="9_p5xlo"]
+[ext_resource type="Texture2D" uid="uid://b828i7cvxtvvr" path="res://Sprites/BGPlaceholderLandingArea.png" id="11_ekemp"]
+[ext_resource type="AudioStream" uid="uid://bhvk8dq26cdpe" path="res://Sounds/bleep014.ogg" id="13_yhh81"]
+[ext_resource type="Texture2D" uid="uid://ceq40e1qxvnwm" path="res://Sprites/target.png" id="14_wcfrq"]
+[ext_resource type="Texture2D" uid="uid://cqxrfd1hjnqmr" path="res://Sprites/panelInset_beigeLight.png" id="15_ihdn3"]
+[ext_resource type="Texture2D" uid="uid://b42tn0bq3x0e7" path="res://Sprites/panelInset_brown.png" id="16_4k3ab"]
+[ext_resource type="Texture2D" uid="uid://b45j4mbaykscn" path="res://Sprites/panelInset_beige.png" id="17_x4yoi"]
+[ext_resource type="Texture2D" uid="uid://sbaaaejtd7k2" path="res://Sprites/panelInset_blue.png" id="18_xcchf"]
+[ext_resource type="Texture2D" uid="uid://cleqndwrd2cbj" path="res://Sprites/fastForward.png" id="19_ee7ct"]
+[ext_resource type="Texture2D" uid="uid://h63uo4fg43vk" path="res://Sprites/return.png" id="20_wnsui"]
+
+[sub_resource type="Animation" id="Animation_k6i11"]
+resource_name = "InstantWaitingForInput"
+length = 15.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueAudioPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%DialogueLabel/../../DialogueFinishedMarginContainer/DialogueFinishedTextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%DialogueLabel/../../DialogueFinishedMarginContainer/DialogueFinishedTextureRect:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%DialogueBox/..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"AutoAdvanceIfPossible"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4mttc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogueAudioPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%DialogueLabel/../../DialogueFinishedMarginContainer/DialogueFinishedTextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%DialogueLabel/../../DialogueFinishedMarginContainer/DialogueFinishedTextureRect:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wbi14"]
+resource_name = "WaitingForInput"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueAudioPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%DialogueLabel/../../DialogueFinishedMarginContainer/DialogueFinishedTextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%DialogueLabel/../../DialogueFinishedMarginContainer/DialogueFinishedTextureRect:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%DialogueBox/..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"AutoAdvanceIfPossible"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_gehj0"]
+resource_name = "WritingDialogue"
+length = 7.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogueAudioPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%DialogueBox/..:AnimationInProgress")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0525a"]
+_data = {
+"InstantWaitingForInput": SubResource("Animation_k6i11"),
+"RESET": SubResource("Animation_4mttc"),
+"WaitingForInput": SubResource("Animation_wbi14"),
+"WritingDialogue": SubResource("Animation_gehj0")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q5yd5"]
+animation = &"InstantWaitingForInput"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_3weo1"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_pr1dq"]
+graph_offset = Vector2(-810.03, 0)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_q5yd5")
+nodes/Animation/position = Vector2(-266.667, 120)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_3weo1")
+nodes/TimeScale/position = Vector2(66.6667, 120)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vqikm"]
+animation = &"WaitingForInput"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g2vga"]
+animation = &"WritingDialogue"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_apwi7"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ws2t5"]
+graph_offset = Vector2(-365.979, 0)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_g2vga")
+nodes/Animation/position = Vector2(-106.667, 120)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_apwi7")
+nodes/TimeScale/position = Vector2(133.333, 106.667)
+nodes/output/position = Vector2(306.667, 106.667)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l8ew6"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s8xk2"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iy5c8"]
+advance_mode = 2
+advance_condition = &"instantDialogue"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7wfeg"]
+states/InstantWriteDialogue/node = SubResource("AnimationNodeBlendTree_pr1dq")
+states/InstantWriteDialogue/position = Vector2(378.667, 184.667)
+states/WaitingForInput/node = SubResource("AnimationNodeAnimation_vqikm")
+states/WaitingForInput/position = Vector2(607.333, 99.8519)
+states/WriteDialogue/node = SubResource("AnimationNodeBlendTree_ws2t5")
+states/WriteDialogue/position = Vector2(390.667, 100)
+transitions = ["Start", "WriteDialogue", SubResource("AnimationNodeStateMachineTransition_l8ew6"), "WriteDialogue", "WaitingForInput", SubResource("AnimationNodeStateMachineTransition_s8xk2"), "Start", "InstantWriteDialogue", SubResource("AnimationNodeStateMachineTransition_iy5c8")]
+
+[sub_resource type="Animation" id="Animation_84pvf"]
+resource_name = "AutoAdvanceEnabled"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture_normal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_4k3ab")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture_pressed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("15_ihdn3")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AutoAdvanceTextureRect:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_g7cla"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture_normal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("15_ihdn3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture_pressed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_4k3ab")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AutoAdvanceTextureRect:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_00doy"]
+_data = {
+"AutoAdvanceEnabled": SubResource("Animation_84pvf"),
+"RESET": SubResource("Animation_g7cla")
+}
+
+[node name="DialogueDisplay" type="Control"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1orrv")
+Story = ExtResource("2_1m7py")
+BlankCharacter = ExtResource("4_ksr5e")
+AvailableCharacters = Array[Resource]([ExtResource("4_0ovlg"), ExtResource("5_hgycc"), ExtResource("6_mheio"), ExtResource("7_1ubwm"), ExtResource("8_alchj"), ExtResource("9_p5xlo")])
+BackgroundNames = Array[String](["Ship", "LandingArea"])
+BackgroundTextures = Array[Texture2D]([ExtResource("2_aqf1j"), ExtResource("11_ekemp")])
+SkippingConfirmationDialogMessage = "Do you want to skip the dialogue up to the next choice (if any)?"
+SkippingConfirmationDialogCheckboxString = "Show this dialog before skipping"
+AutoAdvanceEnablingConfirmationDialogMessage = "Do you want the dialogue to advance automatically?"
+AutoAdvanceDisablingConfirmationDialogMessage = "Do you want the dialogue to wait for your input before advancing?"
+AutoAdvanceConfirmationDialogCheckboxString = "Show this dialog before toggling auto-advance"
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_aqf1j")
+
+[node name="CharacterHBox" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(1750, 1000)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="FarLeftCharacter" parent="CharacterHBox" instance=ExtResource("3_ncks0")]
+unique_name_in_owner = true
+layout_mode = 2
+CurrentMood = "neutral"
+Character = ExtResource("4_ksr5e")
+
+[node name="LeftCharacter" parent="CharacterHBox" instance=ExtResource("3_ncks0")]
+unique_name_in_owner = true
+layout_mode = 2
+CurrentMood = "neutral"
+Character = ExtResource("4_ksr5e")
+
+[node name="CenterCharacter" parent="CharacterHBox" instance=ExtResource("3_ncks0")]
+unique_name_in_owner = true
+layout_mode = 2
+CurrentMood = "neutral"
+Character = ExtResource("4_ksr5e")
+
+[node name="RightCharacter" parent="CharacterHBox" instance=ExtResource("3_ncks0")]
+unique_name_in_owner = true
+layout_mode = 2
+CurrentMood = "neutral"
+Character = ExtResource("4_ksr5e")
+
+[node name="FarRightCharacter" parent="CharacterHBox" instance=ExtResource("3_ncks0")]
+unique_name_in_owner = true
+layout_mode = 2
+CurrentMood = "neutral"
+Character = ExtResource("4_ksr5e")
+
+[node name="DialogueBox" type="Control" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1536, 350)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -768.0
+offset_top = -350.0
+offset_right = 768.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="SpeakerPanelContainer" type="PanelContainer" parent="DialogueBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 1
+anchors_preset = -1
+offset_top = -75.0
+offset_bottom = 2.0
+mouse_filter = 2
+
+[node name="SpeakerMarginContainer" type="MarginContainer" parent="DialogueBox/SpeakerPanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="SpeakerLabel" type="Label" parent="DialogueBox/SpeakerPanelContainer/SpeakerMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Sous Chef Amari Okorie"
+
+[node name="DialoguePanel" type="Panel" parent="DialogueBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="DialogueMarginContainer" type="MarginContainer" parent="DialogueBox"]
+custom_minimum_size = Vector2(1536, 350)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 5
+
+[node name="DialogueLabel" type="RichTextLabel" parent="DialogueBox/DialogueMarginContainer"]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.211765, 0.211765, 0.270588, 1)
+theme_override_font_sizes/normal_font_size = 56
+theme_override_font_sizes/bold_font_size = 56
+theme_override_font_sizes/italics_font_size = 56
+theme_override_font_sizes/bold_italics_font_size = 56
+bbcode_enabled = true
+text = "Anyway, my sister Kamari has mentioned in her letters many times that while the standard rations the Isles have been giving to the adventurers are serviceable, that they only make her miss my cooking…
+"
+visible_characters_behavior = 1
+
+[node name="DialogueAnimationPlayer" type="AnimationPlayer" parent="DialogueBox/DialogueMarginContainer/DialogueLabel"]
+libraries = {
+"": SubResource("AnimationLibrary_0525a")
+}
+
+[node name="DialogueAudioPlayer" type="AudioStreamPlayer" parent="DialogueBox/DialogueMarginContainer/DialogueLabel"]
+stream = ExtResource("13_yhh81")
+
+[node name="DialogueAnimationTree" type="AnimationTree" parent="DialogueBox/DialogueMarginContainer/DialogueLabel"]
+unique_name_in_owner = true
+active = false
+root_node = NodePath("%DialogueAnimationTree/..")
+tree_root = SubResource("AnimationNodeStateMachine_7wfeg")
+anim_player = NodePath("../DialogueAnimationPlayer")
+parameters/conditions/instantDialogue = false
+parameters/InstantWriteDialogue/TimeScale/scale = 1.0
+parameters/WriteDialogue/TimeScale/scale = 1.0
+
+[node name="DialogueFinishedMarginContainer" type="MarginContainer" parent="DialogueBox"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="DialogueFinishedTextureRect" type="TextureRect" parent="DialogueBox/DialogueFinishedMarginContainer"]
+unique_name_in_owner = true
+modulate = Color(0.211765, 0.211765, 0.270588, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("14_wcfrq")
+
+[node name="SkipButton" type="TextureButton" parent="DialogueBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -118.0
+offset_top = -77.0
+offset_right = -25.0
+offset_bottom = 17.0
+grow_horizontal = 0
+texture_normal = ExtResource("15_ihdn3")
+texture_pressed = ExtResource("16_4k3ab")
+texture_hover = ExtResource("17_x4yoi")
+texture_disabled = ExtResource("18_xcchf")
+texture_focused = ExtResource("17_x4yoi")
+
+[node name="SkipButtonTextureRect" type="TextureRect" parent="DialogueBox/SkipButton"]
+modulate = Color(0.211765, 0.211765, 0.270588, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("19_ee7ct")
+
+[node name="AutoAdvanceButton" type="TextureButton" parent="DialogueBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -226.0
+offset_top = -77.0
+offset_right = -133.0
+offset_bottom = 17.0
+grow_horizontal = 0
+texture_normal = ExtResource("15_ihdn3")
+texture_pressed = ExtResource("16_4k3ab")
+texture_hover = ExtResource("17_x4yoi")
+texture_disabled = ExtResource("18_xcchf")
+texture_focused = ExtResource("17_x4yoi")
+
+[node name="AutoAdvanceTextureRect" type="TextureRect" parent="DialogueBox/AutoAdvanceButton"]
+modulate = Color(0.211765, 0.211765, 0.270588, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -25.0
+offset_right = 29.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(22.09, 27.005)
+mouse_filter = 2
+texture = ExtResource("20_wnsui")
+flip_h = true
+
+[node name="AutoAdvanceButtonAnimationPlayer" type="AnimationPlayer" parent="DialogueBox/AutoAdvanceButton"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_00doy")
+}
+
+[node name="ChoicesPanelContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -44.5
+offset_right = 240.0
+offset_bottom = 44.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ChoicesMarginContainer" type="MarginContainer" parent="ChoicesPanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ChoicesVBox" type="VBoxContainer" parent="ChoicesPanelContainer/ChoicesMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="ConfirmationDialogColorRect" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.211765, 0.211765, 0.270588, 0.752941)
+
+[node name="ConfirmationDialogPanel" type="Panel" parent="ConfirmationDialogColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -175.0
+offset_right = 384.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ConfirmationDialogVBox" type="VBoxContainer" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -385.0
+offset_top = -143.5
+offset_right = 385.0
+offset_bottom = 143.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ConfirmationDialogLabelMarginContainer" type="MarginContainer" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox"]
+custom_minimum_size = Vector2(768, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="ConfirmationDialogLabel" type="Label" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox/ConfirmationDialogLabelMarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(750, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 42
+text = "Do you want to skip the dialogue up to the next choice?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ConfirmationDialogCheckButtonMarginContainer" type="MarginContainer" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 10
+
+[node name="ConfirmationDialogCheckBox" type="CheckBox" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox/ConfirmationDialogCheckButtonMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+button_pressed = true
+text = "Confirm before skipping"
+
+[node name="ConfirmationDialogYesNoButtonsMarginContainer" type="MarginContainer" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ConfirmationDialogYesNoButtonsHBox" type="HBoxContainer" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox/ConfirmationDialogYesNoButtonsMarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="ConfirmationDialogYesButton" type="Button" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox/ConfirmationDialogYesNoButtonsMarginContainer/ConfirmationDialogYesNoButtonsHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"ChoiceButton"
+text = "Yes"
+
+[node name="ConfirmationDialogNoButton" type="Button" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox/ConfirmationDialogYesNoButtonsMarginContainer/ConfirmationDialogYesNoButtonsHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"ChoiceButton"
+text = "No"

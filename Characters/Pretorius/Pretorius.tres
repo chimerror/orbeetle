@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://00yy58c46u71"]
+
+[ext_resource type="Texture2D" uid="uid://dxe5tvmknduo6" path="res://Characters/Pretorius/PretoriusCamp.png" id="1_82ek5"]
+[ext_resource type="Texture2D" uid="uid://dnlno00hjninv" path="res://Characters/Pretorius/PretoriusNeutral.png" id="1_m5rbe"]
+[ext_resource type="Script" path="res://Characters/Character.cs" id="2_cfuxr"]
+
+[resource]
+script = ExtResource("2_cfuxr")
+ShortName = "pretorius"
+FullDialogueName = "Pretorius, Dark Mage"
+Moods = Array[String](["neutral"])
+MoodTextures = Array[Texture2D]([ExtResource("1_m5rbe")])
+CampTexture = ExtResource("1_82ek5")

@@ -1,8 +1,14 @@
+using Godot;
+using GColl = Godot.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 public partial class ChoppingChefAction : ChefAction
 {
+
+    [Export]
+    public GColl.Array<Ingredient> MustBeCooked { get; set; }
+
     public override bool CanAcceptIngredients(IEnumerable<Ingredient> ingredients)
     {
         var ingredientsList = ingredients.ToList();

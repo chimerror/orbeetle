@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://cpl0rhp7vbbsf"]
+
+[ext_resource type="Texture2D" uid="uid://cstkovosubugp" path="res://Characters/Friedrich/FriedrichNeutral.png" id="1_7hnq8"]
+[ext_resource type="Texture2D" uid="uid://chl0x5085edlk" path="res://Characters/Friedrich/FriedrichGrumpy.png" id="2_x6fyd"]
+[ext_resource type="Texture2D" uid="uid://pi4sifuwet0m" path="res://Characters/Friedrich/FriedrichSad.png" id="3_m3vt7"]
+[ext_resource type="Texture2D" uid="uid://cl2j3ychqo3he" path="res://Characters/Friedrich/FriedrichHappy.png" id="4_g174g"]
+[ext_resource type="Script" path="res://Characters/Character.cs" id="5_8nkim"]
+
+[resource]
+script = ExtResource("5_8nkim")
+ShortName = "friedrich"
+FullDialogueName = "Chef de Partie Friedrich"
+Moods = Array[String](["neutral", "grumpy", "sad", "happy"])
+MoodTextures = Array[Texture2D]([ExtResource("1_7hnq8"), ExtResource("2_x6fyd"), ExtResource("3_m3vt7"), ExtResource("4_g174g")])

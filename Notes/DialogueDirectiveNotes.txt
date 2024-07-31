@@ -1,0 +1,4 @@
+Mood - specified as tag
+BG - Background (perhaps go change how crawl cutscene works to make it consistent)
+CHARACTER -
+	CHARACTER (FAR_LEFT|LEFT|CENTER|RIGHT|FAR_RIGHT|OFF) (name) MOOD (mood) FLIPPED (YES|NO)

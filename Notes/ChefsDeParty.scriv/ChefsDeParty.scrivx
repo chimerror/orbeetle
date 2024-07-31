@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrivenerProject Template="No" Version="2.0" Identifier="B989B9BF-6061-4FEB-9A62-DA22CD977CDE" Creator="SCRWIN-3.1.5.1" Device="JAYMIT-SUN" Modified="2024-05-14 22:57:50 -0700" ModID="6D7AEA64-12AA-467D-9D7E-FB6EBBF1319D">
+<ScrivenerProject Template="No" Version="2.0" Identifier="B989B9BF-6061-4FEB-9A62-DA22CD977CDE" Creator="SCRWIN-3.1.5.1" Device="JAYMIT-SUN" Modified="2024-06-16 23:42:37 -0700" ModID="DB5E8D7D-C745-45F9-B19E-206834AE20A3">
     <Binder>
         <BinderItem UUID="9F245DCD-E1EC-4F55-A183-F1D6CBFE2B90" Type="DraftFolder" Created="2024-05-14 20:00:11 -0700" Modified="2024-05-14 20:00:11 -0700">
             <Title>Draft</Title>
@@ -102,6 +102,93 @@
                     <TextSettings>
                         <TextSelection>0,0</TextSelection>
                     </TextSettings>
+                    <Children>
+                        <BinderItem UUID="859247A5-79CE-422E-8379-BDF3E427EC64" Type="Folder" Created="2024-06-16 23:40:13 -0700" Modified="2024-06-16 23:40:27 -0700">
+                            <Title>École du Bellamy</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,0</TextSelection>
+                            </TextSettings>
+                            <Children>
+                                <BinderItem UUID="0F679497-9C54-4AD0-8AD2-9B8EB0AB4F27" Type="Text" Created="2024-06-16 23:40:38 -0700" Modified="2024-06-16 23:40:45 -0700">
+                                    <Title>Great Chef Xandre du Bellamy</Title>
+                                    <MetaData>
+                                        <IncludeInCompile>Yes</IncludeInCompile>
+                                    </MetaData>
+                                    <TextSettings>
+                                        <TextSelection>0,0</TextSelection>
+                                    </TextSettings>
+                                </BinderItem>
+                                <BinderItem UUID="8789E53F-7B28-467F-97BA-2184F465860E" Type="Text" Created="2024-06-16 23:40:49 -0700" Modified="2024-06-16 23:40:56 -0700">
+                                    <Title>Sous Chef Amari Okorie</Title>
+                                    <MetaData>
+                                        <IncludeInCompile>Yes</IncludeInCompile>
+                                    </MetaData>
+                                    <TextSettings>
+                                        <TextSelection>0,0</TextSelection>
+                                    </TextSettings>
+                                </BinderItem>
+                                <BinderItem UUID="DB15E5BC-24C9-4C9A-B09E-4DE94FBD31A8" Type="Text" Created="2024-06-16 23:41:00 -0700" Modified="2024-06-16 23:41:17 -0700">
+                                    <Title>Chefs de Partie Grumpo, Cheeko, Happo, and Friedrich</Title>
+                                    <MetaData>
+                                        <IncludeInCompile>Yes</IncludeInCompile>
+                                    </MetaData>
+                                    <TextSettings>
+                                        <TextSelection>0,0</TextSelection>
+                                    </TextSettings>
+                                </BinderItem>
+                            </Children>
+                        </BinderItem>
+                        <BinderItem UUID="B734F735-4EEC-42B4-B8C6-E008C166F2BF" Type="Folder" Created="2024-06-16 23:41:22 -0700" Modified="2024-06-16 23:41:26 -0700">
+                            <Title>The Adventuring Party</Title>
+                            <MetaData>
+                                <IncludeInCompile>Yes</IncludeInCompile>
+                            </MetaData>
+                            <TextSettings>
+                                <TextSelection>0,0</TextSelection>
+                            </TextSettings>
+                            <Children>
+                                <BinderItem UUID="972C7151-D957-41BE-AC18-9FA47F656519" Type="Text" Created="2024-06-16 23:41:37 -0700" Modified="2024-06-16 23:41:48 -0700">
+                                    <Title>Warrior Kamari Okorie</Title>
+                                    <MetaData>
+                                        <IncludeInCompile>Yes</IncludeInCompile>
+                                    </MetaData>
+                                    <TextSettings>
+                                        <TextSelection>0,0</TextSelection>
+                                    </TextSettings>
+                                </BinderItem>
+                                <BinderItem UUID="F2ED8FB4-C9C6-4D82-BE79-118DD317DF93" Type="Text" Created="2024-06-16 23:41:54 -0700" Modified="2024-06-16 23:42:00 -0700">
+                                    <Title>Mbali the Hunter</Title>
+                                    <MetaData>
+                                        <IncludeInCompile>Yes</IncludeInCompile>
+                                    </MetaData>
+                                    <TextSettings>
+                                        <TextSelection>0,0</TextSelection>
+                                    </TextSettings>
+                                </BinderItem>
+                                <BinderItem UUID="C60EF0D2-E978-4E33-BABD-B4BBCB535D75" Type="Text" Created="2024-06-16 23:42:05 -0700" Modified="2024-06-16 23:42:24 -0700">
+                                    <Title>Alchemist Wasi Temitope</Title>
+                                    <MetaData>
+                                        <IncludeInCompile>Yes</IncludeInCompile>
+                                    </MetaData>
+                                    <TextSettings>
+                                        <TextSelection>0,0</TextSelection>
+                                    </TextSettings>
+                                </BinderItem>
+                                <BinderItem UUID="FE6BD4A3-15A1-406F-BA24-63C6EA693B48" Type="Text" Created="2024-06-16 23:42:29 -0700" Modified="2024-06-16 23:42:35 -0700">
+                                    <Title>Pretorius the Mage</Title>
+                                    <MetaData>
+                                        <IncludeInCompile>Yes</IncludeInCompile>
+                                    </MetaData>
+                                    <TextSettings>
+                                        <TextSelection>0,0</TextSelection>
+                                    </TextSettings>
+                                </BinderItem>
+                            </Children>
+                        </BinderItem>
+                    </Children>
                 </BinderItem>
             </Children>
         </BinderItem>
@@ -174,13 +261,13 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2024-05-14 20:00:11 -0700" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="No" AllowNegatives="Yes" ResetType="Time" ResetTime="01:00" DeterminedFromDeadline="No" CanWriteOnDeadlineDate="Yes" WritingDays="">0</SessionTarget>
-        <PreviousSession Words="1691" Characters="9978" Date="2024-05-14 22:57:50 -0700"/>
+        <PreviousSession Words="0" Characters="0" Date="2024-06-16 23:42:37 -0700"/>
     </ProjectTargets>
-    <RecentWritingHistory Date="2024-05-14 00:00:00 -0700">
-        <DraftWordCount>754</DraftWordCount>
-        <DraftCharCount>4322</DraftCharCount>
-        <OtherWordCount>937</OtherWordCount>
-        <OtherCharCount>5656</OtherCharCount>
+    <RecentWritingHistory Date="2024-06-16 00:00:00 -0700">
+        <DraftWordCount>0</DraftWordCount>
+        <DraftCharCount>0</DraftCharCount>
+        <OtherWordCount>0</OtherWordCount>
+        <OtherCharCount>0</OtherCharCount>
     </RecentWritingHistory>
     <PrintSettings PaperSize="612.0,792.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="72.0" BottomMargin="72.0" PaperType="na-letter" Orientation="Portrait" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="No" PagesAcross="1" PagesDown="1"/>
 </ScrivenerProject>

@@ -10,6 +10,7 @@ public partial class IngredientSelection : Node2D
     private IngredientDropSlot _prepAreaDropSlot;
     private IngredientDropSlot _platingAreaDropSlot;
     private Button _serveButton;
+    private bool _mouseOverButton;
 
     public static IngredientSelection Instance { get; private set; }
 
@@ -30,10 +31,27 @@ public partial class IngredientSelection : Node2D
             var newIngredient = ingredient.Duplicate(true) as Ingredient;
             newIngredient.CurrentState = Ingredient.State.Raw;
             ingredientButton.Ingredient = newIngredient;
+            ingredientButton.MouseEntered += () => _mouseOverButton = true;
+            ingredientButton.MouseExited += () => _mouseOverButton = false;
             _pantryDropSlot.MoveToSlot(ingredientButton, false);
             firstIngredient ??= ingredientButton;
         }
         firstIngredient.GrabFocus();
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        var currentFocus = GetViewport().GuiGetFocusOwner();
+        if (currentFocus == null &&
+            (@event is InputEventJoypadButton || @event is InputEventJoypadMotion || @event is InputEventKey))
+        {
+            RetakeFocus();
+            return; // Don't actually try to process until next frame, just grab focus
+        }
+        else if (currentFocus != null && !_mouseOverButton && @event is InputEventMouse)
+        {
+            currentFocus.ReleaseFocus();
+        }
     }
 
     public void RetakeFocus()

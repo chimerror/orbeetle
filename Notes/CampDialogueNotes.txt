@@ -1,0 +1,4 @@
+Change attached Dialogue Display
+Expand Dialogue Display to be able to hide the background (it looks very broken, and I don't think there's a need on the camp screen, though it could be useful for showing an object in detail)
+Expand Dialogue Display to change to a different node
+Figure out how to stop sending input to CampPlayer when conversation starts

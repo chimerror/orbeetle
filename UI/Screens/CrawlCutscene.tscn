@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://by2to4nihbyul"]
+
+[ext_resource type="Script" path="res://UI/Screens/CrawlCutscene.cs" id="1_a58qq"]
+[ext_resource type="Texture2D" uid="uid://dcw2q80gl3g4j" path="res://Sprites/ship_parallax_complete.png" id="1_mouq5"]
+[ext_resource type="Resource" uid="uid://diy1dsgqn3nas" path="res://InkScripts/intro.ink" id="2_snrgg"]
+[ext_resource type="Texture2D" uid="uid://bwqtt0c15p4rj" path="res://Sprites/IntroPlaceholderIslands.png" id="3_4fkjb"]
+[ext_resource type="Texture2D" uid="uid://cktkrsoh6owei" path="res://Sprites/IntroPlaceholderGreatLiberation.png" id="4_r8v7s"]
+[ext_resource type="Texture2D" uid="uid://boy12msq1lap6" path="res://Sprites/IntroPlaceholderThema.png" id="5_t72w8"]
+[ext_resource type="Texture2D" uid="uid://d2usdemb4v8n2" path="res://Sprites/IntroPlaceholderClayBeasts.png" id="6_o6r23"]
+[ext_resource type="Texture2D" uid="uid://d0rc0sih71f7o" path="res://Sprites/IntroPlaceholderAkachi.png" id="7_slk65"]
+[ext_resource type="Texture2D" uid="uid://bvoyoj5i7ec72" path="res://Sprites/IntroPlaceholderParty.png" id="8_6io4r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50ilm"]
+bg_color = Color(0.211765, 0.211765, 0.270588, 0.854902)
+
+[node name="CrawlCutscene" type="Control"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_a58qq")
+Story = ExtResource("2_snrgg")
+BackgroundNames = ["Islands", "GreatLiberation", "Thema", "ClayBeasts", "Akachi", "Party"]
+Backgrounds = [ExtResource("3_4fkjb"), ExtResource("4_r8v7s"), ExtResource("5_t72w8"), ExtResource("6_o6r23"), ExtResource("7_slk65"), ExtResource("8_6io4r")]
+
+[node name="BackgroundPanel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="BackgroundPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_mouq5")
+stretch_mode = 3
+
+[node name="DimmingPanel" type="Panel" parent="BackgroundPanel"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_50ilm")
+
+[node name="CrawlControl" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -540.0
+offset_right = 540.0
+offset_bottom = 2493.0
+grow_horizontal = 2
+
+[node name="CrawlLabel" type="Label" parent="CrawlControl"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -540.0
+offset_right = 540.0
+offset_bottom = 2493.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.968627, 0.917647, 0.713726, 1)
+theme_override_font_sizes/font_size = 32
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel urna et urna euismod efficitur semper ac sapien. Etiam nec erat et ligula aliquam tristique a in libero. Etiam ut pellentesque purus. Nunc et congue tortor. Cras orci neque, dignissim at gravida non, congue ut dui. Mauris varius, ante in vehicula pellentesque, ligula purus condimentum lectus, a tempus tortor neque in odio. Ut blandit ipsum eu gravida tincidunt. Nulla faucibus, arcu vitae consequat dictum, dolor nunc ultrices purus, feugiat finibus nisi dui ut magna. Sed interdum justo ut risus volutpat convallis. Mauris sed eros vel mauris ultricies laoreet at a tellus.
+
+Donec mi ante, vehicula id massa sit amet, rutrum lobortis ligula. Duis bibendum eros quis risus ultrices dictum. Quisque et lectus volutpat, pretium turpis sit amet, congue lorem. Maecenas nec quam ullamcorper, rhoncus sem vel, porttitor dolor. Duis pretium eu arcu a posuere. Nulla a sapien urna. Nam volutpat, nisl rutrum pharetra dignissim, enim dui ultricies est, ac dapibus est nisl quis tellus. Suspendisse nec est tincidunt, pretium dui id, faucibus nisl. Suspendisse pharetra, libero ut gravida venenatis, nulla leo varius diam, a lobortis ex tortor nec dolor. Nullam fermentum nisl dapibus, vulputate ipsum non, feugiat diam. Mauris dapibus dui metus, in placerat quam ornare ac. Nam feugiat leo et tortor suscipit venenatis et dignissim nulla. Praesent dapibus bibendum lorem ut vulputate. Suspendisse non pulvinar ante, eu vestibulum mi. Nunc eget enim vel mi accumsan pellentesque.
+
+Phasellus vel risus eu ipsum varius dictum. Sed dignissim lectus ut dolor porttitor, et suscipit enim tempor. Nunc sagittis accumsan felis, et consequat metus egestas eget. In hac habitasse platea dictumst. Phasellus auctor ante accumsan nibh blandit, et malesuada velit ullamcorper. In semper velit est, vel porta metus convallis eget. Fusce et urna quis mi sagittis malesuada. Nulla ornare massa in lacinia mattis. Nam finibus id sapien at pharetra. Curabitur lacus lacus, blandit euismod nulla nec, congue vestibulum lectus. Donec a pellentesque risus, eu dapibus ante. Quisque vestibulum dictum eros et hendrerit. Aenean elementum lobortis rutrum.
+
+Sed ultrices est et velit luctus fringilla. Praesent aliquam felis ac luctus fringilla. Aliquam sit amet feugiat sapien. Aliquam eros risus, finibus et dolor fringilla, dictum feugiat lorem. Morbi auctor blandit porta. Sed rutrum dolor elit, in tempus neque accumsan volutpat. Morbi maximus elementum dignissim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin sit amet condimentum quam.
+
+Etiam sit amet lacus sollicitudin, commodo quam porttitor, accumsan neque. Suspendisse potenti. Nam ac neque sem. Nullam rhoncus est augue. Duis volutpat felis et orci mattis eleifend. Aliquam erat volutpat. Maecenas interdum molestie lectus non lobortis. Fusce eu finibus nunc. Sed eget iaculis massa. Aenean lobortis ligula in mauris ornare, sit amet interdum mi porttitor. In ac scelerisque velit, eu congue felis. Mauris tempor auctor diam at dictum. Etiam ut ornare nunc."
+autowrap_mode = 3

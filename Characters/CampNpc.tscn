@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://vbai4lev6w35"]
+
+[ext_resource type="Script" path="res://Characters/CampNpc.cs" id="1_77wiv"]
+[ext_resource type="Texture2D" uid="uid://cqpfoswd28sxy" path="res://Characters/Kamari/KamariCamp.png" id="1_u0oxb"]
+[ext_resource type="Texture2D" uid="uid://bis64o3wkmi1p" path="res://Sprites/speech_bubble_large_spritesheet.png" id="2_sxjmk"]
+[ext_resource type="Resource" uid="uid://00yy58c46u71" path="res://Characters/Pretorius/Pretorius.tres" id="2_w741f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opord"]
+size = Vector2(32, 64)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8rull"]
+radius = 5.0
+height = 20.0
+
+[node name="CampNpc" type="Area2D"]
+scale = Vector2(8, 8)
+collision_layer = 2
+script = ExtResource("1_77wiv")
+Character = ExtResource("2_w741f")
+SpriteFrame = 10
+
+[node name="NpcSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+texture = ExtResource("1_u0oxb")
+hframes = 3
+vframes = 4
+frame = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_opord")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_8rull")
+
+[node name="SpeechSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+texture_filter = 1
+position = Vector2(5.25, -18.875)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_sxjmk")
+hframes = 4
+frame = 3

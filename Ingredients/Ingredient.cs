@@ -91,7 +91,12 @@ public partial class Ingredient : Resource
         Raw,
         Chopped,
         Boiled,
-        Butchered
+        Butchered,
+        Fermented,
+        Grilled,
+        Roasted,
+        Fried,
+        Mixed
     }
 
     public enum Quality

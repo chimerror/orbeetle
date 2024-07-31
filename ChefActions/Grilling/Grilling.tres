@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://btp61o52fe15p"]
+
+[ext_resource type="Script" path="res://ChefActions/Grilling/GrillingChefAction.cs" id="1_2vxax"]
+
+[resource]
+script = ExtResource("1_2vxax")
+MustBeCooked = null
+ActionVerb = "Grill"
+Duration = 3.0
+RequiredIngredients = []

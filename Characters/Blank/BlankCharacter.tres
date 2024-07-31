@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://m8tpbhob62nw"]
+
+[ext_resource type="Texture2D" uid="uid://y3bq870mtetb" path="res://Characters/Blank/BlankNeutral.png" id="1_n2fw2"]
+[ext_resource type="Script" path="res://Characters/Character.cs" id="2_bkalo"]
+
+[resource]
+script = ExtResource("2_bkalo")
+ShortName = "blank"
+FullDialogueName = "NOBODY"
+Moods = Array[String](["neutral"])
+MoodTextures = Array[Texture2D]([ExtResource("1_n2fw2")])
