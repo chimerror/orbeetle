@@ -26,6 +26,9 @@ public partial class DialogueDisplay : Control
     private AnimationTree _dialogueAnimationTree;
     private TextureRect _dialogueFinishedTextureRect;
     private TextureButton _skipButton;
+    private bool _autoAdvanceEnabled = false;
+    private TextureButton _autoAdvanceButton;
+    private AnimationPlayer _autoAdvanceButtonAnimationPlayer;
     private PanelContainer _choicesPanelContainer;
     private VBoxContainer _choicesVBox;
     private ColorRect _confirmationDialogColorRect;
@@ -84,6 +87,15 @@ public partial class DialogueDisplay : Control
     [Export]
     public bool ConfirmBeforeAutoAdvance { get; set; } = true;
 
+    [Export]
+    public string AutoAdvanceEnablingConfirmationDialogMessage { get; set; }
+
+    [Export]
+    public string AutoAdvanceDisablingConfirmationDialogMessage { get; set; }
+
+    [Export]
+    public string AutoAdvanceConfirmationDialogCheckboxString { get; set; }
+
     public override void _Ready()
     {
         _backgroundTextureRect = GetNode<TextureRect>("%BackgroundTextureRect");
@@ -97,10 +109,14 @@ public partial class DialogueDisplay : Control
         _speakerLabel = GetNode<Label>("%SpeakerLabel");
         _dialogueLabel = GetNode<RichTextLabel>("%DialogueLabel");
         _dialogueAnimationTree = GetNode<AnimationTree>("%DialogueAnimationTree");
-        _dialogueAnimationTree.Active = DialogueSpeed > 0.0f;
+        _dialogueAnimationTree.Active = true;
+        _dialogueAnimationTree.Set("parameters/conditions/instantDialogue", DialogueSpeed <= 0.0f);
         _dialogueFinishedTextureRect = GetNode<TextureRect>("%DialogueFinishedTextureRect");
         _skipButton = GetNode<TextureButton>("%SkipButton");
         _skipButton.Pressed += OnSkipButtonPressed;
+        _autoAdvanceButton = GetNode<TextureButton>("%AutoAdvanceButton");
+        _autoAdvanceButton.Pressed += OnAutoAdvanceButtonPressed;
+        _autoAdvanceButtonAnimationPlayer = GetNode<AnimationPlayer>("%AutoAdvanceButtonAnimationPlayer");
         _choicesPanelContainer = GetNode<PanelContainer>("%ChoicesPanelContainer");
         _choicesVBox = GetNode<VBoxContainer>("%ChoicesVBox");
         _confirmationDialogColorRect = GetNode<ColorRect>("%ConfirmationDialogColorRect");
@@ -111,9 +127,11 @@ public partial class DialogueDisplay : Control
         _confirmationDialogYesButton = GetNode<Button>("%ConfirmationDialogYesButton");
         _confirmationDialogYesButton.MouseEntered += () => _mouseOverElement = true;
         _confirmationDialogYesButton.MouseExited += () => _mouseOverElement = false;
+        _confirmationDialogYesButton.Pressed += HideConfirmationDialog;
         _confirmationDialogNoButton = GetNode<Button>("%ConfirmationDialogNoButton");
         _confirmationDialogNoButton.MouseEntered += () => _mouseOverElement = true;
         _confirmationDialogNoButton.MouseExited += () => _mouseOverElement = false;
+        _confirmationDialogNoButton.Pressed += HideConfirmationDialog;
 
         DialogueStarted += OnDialogueStarted;
         DialogueFinished += OnDialogueFinished;
@@ -148,6 +166,10 @@ public partial class DialogueDisplay : Control
             {
                 OnSkipButtonPressed();
             }
+            else if (@event.IsActionPressed("dialogue_toggle_auto_advance"))
+            {
+                OnAutoAdvanceButtonPressed();
+            }
         }
     }
 
@@ -166,6 +188,14 @@ public partial class DialogueDisplay : Control
     {
         EmitSignal(SignalName.DialogueStarted, knotName);
         AcceptEvent(); // To consume the button press
+    }
+
+    public void AutoAdvanceIfPossible()
+    {
+        if (_autoAdvanceEnabled && !_choicesPanelContainer.Visible && !_confirmationDialogColorRect.Visible)
+        {
+            ContinueStory();
+        }
     }
 
     private bool ManageFocusOnEvent(InputEvent @event, Control controlToFocus)
@@ -420,20 +450,29 @@ public partial class DialogueDisplay : Control
         }
 
         _dialogueLabel.Text = dialogue;
+        var dialogueSpeedMultiplier = DialogueSpeed > 0.0f ? DialogueSpeed : 1f;
+        var computedDialogueSpeed = MaxDialogueCharacters / dialogue.Length * dialogueSpeedMultiplier;
         if (DialogueSpeed <= 0.0f)
         {
-            _dialogueAnimationTree.Active = false;
-            _dialogueFinishedTextureRect.Visible = true;
+            // Only speed up or slow down the instant animation when auto-advance is enabled, otherwise keep the normal
+            // speed
+            if (!_autoAdvanceEnabled)
+            {
+                computedDialogueSpeed = 1.0f;
+            }
+            _dialogueAnimationTree.Set("parameters/conditions/instantDialogue", true);
+            _dialogueAnimationTree.Set("parameters/InstantWriteDialogue/TimeScale/scale", computedDialogueSpeed);
         }
         else
         {
-            _dialogueAnimationTree.Active = true;
-            var computedDialogueSpeed = MaxDialogueCharacters / dialogue.Length * DialogueSpeed;
+            _dialogueAnimationTree.Set("parameters/conditions/instantDialogue", false);
+            _dialogueLabel.VisibleRatio = 0f; // Otherwise, there will be a flash of the new text during auto-advance
             _dialogueAnimationTree.Set("parameters/WriteDialogue/TimeScale/scale", computedDialogueSpeed);
-            var animationPlayback =
-                (AnimationNodeStateMachinePlayback)_dialogueAnimationTree.Get("parameters/playback");
-            animationPlayback.Start("Start", true);
         }
+
+        var animationPlayback =
+            (AnimationNodeStateMachinePlayback)_dialogueAnimationTree.Get("parameters/playback");
+        animationPlayback.Start("Start", true);
 
         var mood = currentTags.Count > 0 ? currentTags[0] : null;
         if (mood != null)
@@ -475,17 +514,17 @@ public partial class DialogueDisplay : Control
         FinishWritingIfNeeded();
         if (ConfirmBeforeSkipping)
         {
-            if (_confirmationDialogLabel.Text != SkippingConfirmationDialogMessage)
-            {
-                // TODO: unsubscribe checkbox,buttons from auto-advance
-                _confirmationDialogLabel.Text = SkippingConfirmationDialogMessage;
-                _confirmationDialogCheckBox.Text = SkippingConfirmationDialogCheckboxString;
-                _confirmationDialogCheckBox.SetPressedNoSignal(true);
-                _confirmationDialogCheckBox.Toggled += ToggleSkipConfirmation;
-                _confirmationDialogYesButton.Pressed += HideConfirmationDialog;
-                _confirmationDialogYesButton.Pressed += PerformSkip;
-                _confirmationDialogNoButton.Pressed += HideConfirmationDialog;
-            }
+            _confirmationDialogLabel.Text = SkippingConfirmationDialogMessage;
+            _confirmationDialogCheckBox.Text = SkippingConfirmationDialogCheckboxString;
+            _confirmationDialogCheckBox.SetPressedNoSignal(true);
+            _confirmationDialogCheckBox.DisconnectSignalIfNeeded(
+                CheckBox.SignalName.Toggled, Callable.From<bool>(ToggleAutoAdvanceConfirmation));
+            _confirmationDialogCheckBox.ConnectSignalIfNeeded(
+                CheckBox.SignalName.Toggled, Callable.From<bool>(ToggleSkipConfirmation));
+            _confirmationDialogYesButton.DisconnectSignalIfNeeded(
+                Button.SignalName.Pressed, Callable.From(ToggleAutoAdvance));
+            _confirmationDialogYesButton.ConnectSignalIfNeeded(
+                Button.SignalName.Pressed, Callable.From(PerformSkip));
             _confirmationDialogColorRect.Visible = true;
         }
         else
@@ -504,5 +543,48 @@ public partial class DialogueDisplay : Control
         GD.Print($"Skipping to next choice...");
         ContinueStory(-1, true);
         AcceptEvent();
+    }
+
+    private void OnAutoAdvanceButtonPressed()
+    {
+        if (ConfirmBeforeAutoAdvance)
+        {
+            FinishWritingIfNeeded();
+            _confirmationDialogLabel.Text = _autoAdvanceEnabled ?
+                AutoAdvanceDisablingConfirmationDialogMessage :
+                AutoAdvanceEnablingConfirmationDialogMessage;
+            _confirmationDialogCheckBox.Text = AutoAdvanceConfirmationDialogCheckboxString;
+            _confirmationDialogCheckBox.SetPressedNoSignal(true);
+            _confirmationDialogCheckBox.DisconnectSignalIfNeeded(
+                CheckBox.SignalName.Toggled, Callable.From<bool>(ToggleSkipConfirmation));
+            _confirmationDialogCheckBox.ConnectSignalIfNeeded(
+                CheckBox.SignalName.Toggled, Callable.From<bool>(ToggleAutoAdvanceConfirmation));
+            _confirmationDialogYesButton.DisconnectSignalIfNeeded(
+                Button.SignalName.Pressed, Callable.From(PerformSkip));
+            _confirmationDialogYesButton.ConnectSignalIfNeeded(
+                Button.SignalName.Pressed, Callable.From(ToggleAutoAdvance));
+            _confirmationDialogColorRect.Visible = true;
+        }
+        else
+        {
+            ToggleAutoAdvance();
+        }
+    }
+
+    private void ToggleAutoAdvanceConfirmation(bool state)
+    {
+        ConfirmBeforeAutoAdvance = state;
+    }
+
+    private void ToggleAutoAdvance()
+    {
+        _autoAdvanceEnabled = !_autoAdvanceEnabled;
+        var animationToPlay = _autoAdvanceEnabled ? "AutoAdvanceEnabled" : "RESET";
+        var currentFocus = GetViewport().GuiGetFocusOwner();
+        if (currentFocus == _autoAdvanceButton)
+        {
+            _autoAdvanceButton.ReleaseFocus(); // Don't ever want button to retain focus
+        }
+        _autoAdvanceButtonAnimationPlayer.Play(animationToPlay);
     }
 }

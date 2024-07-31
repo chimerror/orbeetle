@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bph57lbhphswh"]
+[gd_scene load_steps=40 format=3 uid="uid://bph57lbhphswh"]
 
 [ext_resource type="Script" path="res://UI/Elements/DialogueDisplay.cs" id="1_1orrv"]
 [ext_resource type="Resource" uid="uid://cwoktv1pn657o" path="res://InkScripts/MakingLandfall.ink" id="2_1m7py"]
@@ -19,6 +19,74 @@
 [ext_resource type="Texture2D" uid="uid://b45j4mbaykscn" path="res://Sprites/panelInset_beige.png" id="17_x4yoi"]
 [ext_resource type="Texture2D" uid="uid://sbaaaejtd7k2" path="res://Sprites/panelInset_blue.png" id="18_xcchf"]
 [ext_resource type="Texture2D" uid="uid://cleqndwrd2cbj" path="res://Sprites/fastForward.png" id="19_ee7ct"]
+[ext_resource type="Texture2D" uid="uid://h63uo4fg43vk" path="res://Sprites/return.png" id="20_wnsui"]
+
+[sub_resource type="Animation" id="Animation_k6i11"]
+resource_name = "InstantWaitingForInput"
+length = 15.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueAudioPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%DialogueLabel/../../DialogueFinishedMarginContainer/DialogueFinishedTextureRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%DialogueLabel/../../DialogueFinishedMarginContainer/DialogueFinishedTextureRect:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14, 14.5, 15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%DialogueBox/..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"AutoAdvanceIfPossible"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_4mttc"]
 length = 0.001
@@ -122,6 +190,20 @@ tracks/3/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%DialogueBox/..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"AutoAdvanceIfPossible"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_gehj0"]
 resource_name = "WritingDialogue"
@@ -165,10 +247,24 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0525a"]
 _data = {
+"InstantWaitingForInput": SubResource("Animation_k6i11"),
 "RESET": SubResource("Animation_4mttc"),
 "WaitingForInput": SubResource("Animation_wbi14"),
 "WritingDialogue": SubResource("Animation_gehj0")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q5yd5"]
+animation = &"InstantWaitingForInput"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_3weo1"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_pr1dq"]
+graph_offset = Vector2(-810.03, 0)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_q5yd5")
+nodes/Animation/position = Vector2(-266.667, 120)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_3weo1")
+nodes/TimeScale/position = Vector2(66.6667, 120)
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vqikm"]
 animation = &"WaitingForInput"
@@ -179,7 +275,7 @@ animation = &"WritingDialogue"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_apwi7"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ws2t5"]
-graph_offset = Vector2(-374.072, 0)
+graph_offset = Vector2(-365.979, 0)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_g2vga")
 nodes/Animation/position = Vector2(-106.667, 120)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_apwi7")
@@ -194,12 +290,104 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iy5c8"]
+advance_mode = 2
+advance_condition = &"instantDialogue"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7wfeg"]
+states/InstantWriteDialogue/node = SubResource("AnimationNodeBlendTree_pr1dq")
+states/InstantWriteDialogue/position = Vector2(378.667, 184.667)
 states/WaitingForInput/node = SubResource("AnimationNodeAnimation_vqikm")
 states/WaitingForInput/position = Vector2(607.333, 99.8519)
 states/WriteDialogue/node = SubResource("AnimationNodeBlendTree_ws2t5")
 states/WriteDialogue/position = Vector2(390.667, 100)
-transitions = ["Start", "WriteDialogue", SubResource("AnimationNodeStateMachineTransition_l8ew6"), "WriteDialogue", "WaitingForInput", SubResource("AnimationNodeStateMachineTransition_s8xk2")]
+transitions = ["Start", "WriteDialogue", SubResource("AnimationNodeStateMachineTransition_l8ew6"), "WriteDialogue", "WaitingForInput", SubResource("AnimationNodeStateMachineTransition_s8xk2"), "Start", "InstantWriteDialogue", SubResource("AnimationNodeStateMachineTransition_iy5c8")]
+
+[sub_resource type="Animation" id="Animation_84pvf"]
+resource_name = "AutoAdvanceEnabled"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture_normal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_4k3ab")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture_pressed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("15_ihdn3")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AutoAdvanceTextureRect:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_g7cla"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture_normal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("15_ihdn3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture_pressed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_4k3ab")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AutoAdvanceTextureRect:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_00doy"]
+_data = {
+"AutoAdvanceEnabled": SubResource("Animation_84pvf"),
+"RESET": SubResource("Animation_g7cla")
+}
 
 [node name="DialogueDisplay" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)
@@ -217,6 +405,9 @@ BackgroundNames = Array[String](["Ship", "LandingArea"])
 BackgroundTextures = Array[Texture2D]([ExtResource("2_aqf1j"), ExtResource("11_ekemp")])
 SkippingConfirmationDialogMessage = "Do you want to skip the dialogue up to the next choice (if any)?"
 SkippingConfirmationDialogCheckboxString = "Show this dialog before skipping"
+AutoAdvanceEnablingConfirmationDialogMessage = "Do you want the dialogue to advance automatically?"
+AutoAdvanceDisablingConfirmationDialogMessage = "Do you want the dialogue to wait for your input before advancing?"
+AutoAdvanceConfirmationDialogCheckboxString = "Show this dialog before toggling auto-advance"
 
 [node name="BackgroundTextureRect" type="TextureRect" parent="."]
 unique_name_in_owner = true
@@ -360,6 +551,8 @@ active = false
 root_node = NodePath("%DialogueAnimationTree/..")
 tree_root = SubResource("AnimationNodeStateMachine_7wfeg")
 anim_player = NodePath("../DialogueAnimationPlayer")
+parameters/conditions/instantDialogue = false
+parameters/InstantWriteDialogue/TimeScale/scale = 1.0
 parameters/WriteDialogue/TimeScale/scale = 1.0
 
 [node name="DialogueFinishedMarginContainer" type="MarginContainer" parent="DialogueBox"]
@@ -403,7 +596,7 @@ texture_hover = ExtResource("17_x4yoi")
 texture_disabled = ExtResource("18_xcchf")
 texture_focused = ExtResource("17_x4yoi")
 
-[node name="TextureRect" type="TextureRect" parent="DialogueBox/SkipButton"]
+[node name="SkipButtonTextureRect" type="TextureRect" parent="DialogueBox/SkipButton"]
 modulate = Color(0.211765, 0.211765, 0.270588, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -419,6 +612,48 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("19_ee7ct")
+
+[node name="AutoAdvanceButton" type="TextureButton" parent="DialogueBox"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -226.0
+offset_top = -77.0
+offset_right = -133.0
+offset_bottom = 17.0
+grow_horizontal = 0
+texture_normal = ExtResource("15_ihdn3")
+texture_pressed = ExtResource("16_4k3ab")
+texture_hover = ExtResource("17_x4yoi")
+texture_disabled = ExtResource("18_xcchf")
+texture_focused = ExtResource("17_x4yoi")
+
+[node name="AutoAdvanceTextureRect" type="TextureRect" parent="DialogueBox/AutoAdvanceButton"]
+modulate = Color(0.211765, 0.211765, 0.270588, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -25.0
+offset_right = 29.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(22.09, 27.005)
+mouse_filter = 2
+texture = ExtResource("20_wnsui")
+flip_h = true
+
+[node name="AutoAdvanceButtonAnimationPlayer" type="AnimationPlayer" parent="DialogueBox/AutoAdvanceButton"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_00doy")
+}
 
 [node name="ChoicesPanelContainer" type="PanelContainer" parent="."]
 unique_name_in_owner = true
@@ -521,7 +756,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 30
 button_pressed = true
 text = "Confirm before skipping"
 

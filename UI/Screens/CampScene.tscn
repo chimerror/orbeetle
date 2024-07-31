@@ -63,9 +63,9 @@ unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="CampPlayer"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="CampPlayer/Camera2D"]
+[node name="DialogueDisplayCanvasLayer" type="CanvasLayer" parent="CampPlayer/Camera2D"]
 
-[node name="DialogueDisplay" parent="CampPlayer/Camera2D/CanvasLayer" instance=ExtResource("4_0c0v2")]
+[node name="DialogueDisplay" parent="CampPlayer/Camera2D/DialogueDisplayCanvasLayer" instance=ExtResource("4_0c0v2")]
 unique_name_in_owner = true
 visible = false
 z_index = 1
