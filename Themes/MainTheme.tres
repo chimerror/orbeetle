@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://iwug66emdkvn"]
+[gd_resource type="Theme" format=3 uid="uid://iwug66emdkvn"]
 
 [ext_resource type="FontFile" uid="uid://bkg0yeb2fnmjk" path="res://Fonts/Platypi-VariableFont_wght.ttf" id="1_8insa"]
 [ext_resource type="FontFile" uid="uid://b40j7wayyif2e" path="res://Fonts/static/Platypi-Bold.ttf" id="1_m2h70"]

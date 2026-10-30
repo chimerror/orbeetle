@@ -1,6 +1,6 @@
-[gd_scene load_steps=40 format=3 uid="uid://bph57lbhphswh"]
+[gd_scene format=3 uid="uid://bph57lbhphswh"]
 
-[ext_resource type="Script" path="res://UI/Elements/DialogueDisplay.cs" id="1_1orrv"]
+[ext_resource type="Script" uid="uid://d1c57hsrgyva6" path="res://UI/Elements/DialogueDisplay.cs" id="1_1orrv"]
 [ext_resource type="Resource" uid="uid://cwoktv1pn657o" path="res://InkScripts/MakingLandfall.ink" id="2_1m7py"]
 [ext_resource type="Texture2D" uid="uid://dcw2q80gl3g4j" path="res://Sprites/ship_parallax_complete.png" id="2_aqf1j"]
 [ext_resource type="PackedScene" uid="uid://c80namwaovu6n" path="res://UI/Elements/DialogueCharacter.tscn" id="3_ncks0"]
@@ -232,25 +232,13 @@ tracks/1/keys = {
 "update": 1,
 "values": [true, false]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("%DialogueBox/..:AnimationInProgress")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0525a"]
 _data = {
-"InstantWaitingForInput": SubResource("Animation_k6i11"),
-"RESET": SubResource("Animation_4mttc"),
-"WaitingForInput": SubResource("Animation_wbi14"),
-"WritingDialogue": SubResource("Animation_gehj0")
+&"InstantWaitingForInput": SubResource("Animation_k6i11"),
+&"RESET": SubResource("Animation_4mttc"),
+&"WaitingForInput": SubResource("Animation_wbi14"),
+&"WritingDialogue": SubResource("Animation_gehj0")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q5yd5"]
@@ -264,7 +252,7 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_q5yd5")
 nodes/Animation/position = Vector2(-266.667, 120)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_3weo1")
 nodes/TimeScale/position = Vector2(66.6667, 120)
-node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vqikm"]
 animation = &"WaitingForInput"
@@ -276,12 +264,12 @@ animation = &"WritingDialogue"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ws2t5"]
 graph_offset = Vector2(-365.979, 0)
+nodes/output/position = Vector2(306.667, 106.667)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_g2vga")
 nodes/Animation/position = Vector2(-106.667, 120)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_apwi7")
 nodes/TimeScale/position = Vector2(133.333, 106.667)
-nodes/output/position = Vector2(306.667, 106.667)
-node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l8ew6"]
 advance_mode = 2
@@ -385,11 +373,11 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_00doy"]
 _data = {
-"AutoAdvanceEnabled": SubResource("Animation_84pvf"),
-"RESET": SubResource("Animation_g7cla")
+&"AutoAdvanceEnabled": SubResource("Animation_84pvf"),
+&"RESET": SubResource("Animation_g7cla")
 }
 
-[node name="DialogueDisplay" type="Control"]
+[node name="DialogueDisplay" type="Control" unique_id=1767566183]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
 anchors_preset = 15
@@ -409,7 +397,7 @@ AutoAdvanceEnablingConfirmationDialogMessage = "Do you want the dialogue to adva
 AutoAdvanceDisablingConfirmationDialogMessage = "Do you want the dialogue to wait for your input before advancing?"
 AutoAdvanceConfirmationDialogCheckboxString = "Show this dialog before toggling auto-advance"
 
-[node name="BackgroundTextureRect" type="TextureRect" parent="."]
+[node name="BackgroundTextureRect" type="TextureRect" parent="." unique_id=1363246268]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -420,7 +408,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_aqf1j")
 
-[node name="CharacterHBox" type="HBoxContainer" parent="."]
+[node name="CharacterHBox" type="HBoxContainer" parent="." unique_id=282781144]
 custom_minimum_size = Vector2(1750, 1000)
 layout_mode = 1
 anchors_preset = 7
@@ -432,37 +420,37 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="FarLeftCharacter" parent="CharacterHBox" instance=ExtResource("3_ncks0")]
+[node name="FarLeftCharacter" parent="CharacterHBox" unique_id=1064055863 instance=ExtResource("3_ncks0")]
 unique_name_in_owner = true
 layout_mode = 2
 CurrentMood = "neutral"
 Character = ExtResource("4_ksr5e")
 
-[node name="LeftCharacter" parent="CharacterHBox" instance=ExtResource("3_ncks0")]
+[node name="LeftCharacter" parent="CharacterHBox" unique_id=1836517213 instance=ExtResource("3_ncks0")]
 unique_name_in_owner = true
 layout_mode = 2
 CurrentMood = "neutral"
 Character = ExtResource("4_ksr5e")
 
-[node name="CenterCharacter" parent="CharacterHBox" instance=ExtResource("3_ncks0")]
+[node name="CenterCharacter" parent="CharacterHBox" unique_id=1159323620 instance=ExtResource("3_ncks0")]
 unique_name_in_owner = true
 layout_mode = 2
 CurrentMood = "neutral"
 Character = ExtResource("4_ksr5e")
 
-[node name="RightCharacter" parent="CharacterHBox" instance=ExtResource("3_ncks0")]
+[node name="RightCharacter" parent="CharacterHBox" unique_id=848338188 instance=ExtResource("3_ncks0")]
 unique_name_in_owner = true
 layout_mode = 2
 CurrentMood = "neutral"
 Character = ExtResource("4_ksr5e")
 
-[node name="FarRightCharacter" parent="CharacterHBox" instance=ExtResource("3_ncks0")]
+[node name="FarRightCharacter" parent="CharacterHBox" unique_id=1791915201 instance=ExtResource("3_ncks0")]
 unique_name_in_owner = true
 layout_mode = 2
 CurrentMood = "neutral"
 Character = ExtResource("4_ksr5e")
 
-[node name="DialogueBox" type="Control" parent="."]
+[node name="DialogueBox" type="Control" parent="." unique_id=414162196]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1536, 350)
 layout_mode = 1
@@ -479,7 +467,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="SpeakerPanelContainer" type="PanelContainer" parent="DialogueBox"]
+[node name="SpeakerPanelContainer" type="PanelContainer" parent="DialogueBox" unique_id=1489315348]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 1
@@ -488,7 +476,7 @@ offset_top = -75.0
 offset_bottom = 2.0
 mouse_filter = 2
 
-[node name="SpeakerMarginContainer" type="MarginContainer" parent="DialogueBox/SpeakerPanelContainer"]
+[node name="SpeakerMarginContainer" type="MarginContainer" parent="DialogueBox/SpeakerPanelContainer" unique_id=828077647]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 10
@@ -496,13 +484,13 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="SpeakerLabel" type="Label" parent="DialogueBox/SpeakerPanelContainer/SpeakerMarginContainer"]
+[node name="SpeakerLabel" type="Label" parent="DialogueBox/SpeakerPanelContainer/SpeakerMarginContainer" unique_id=124129719]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Sous Chef Amari Okorie"
 
-[node name="DialoguePanel" type="Panel" parent="DialogueBox"]
+[node name="DialoguePanel" type="Panel" parent="DialogueBox" unique_id=1307459776]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -511,7 +499,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="DialogueMarginContainer" type="MarginContainer" parent="DialogueBox"]
+[node name="DialogueMarginContainer" type="MarginContainer" parent="DialogueBox" unique_id=64707343]
 custom_minimum_size = Vector2(1536, 350)
 layout_mode = 0
 offset_right = 40.0
@@ -522,7 +510,7 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 5
 
-[node name="DialogueLabel" type="RichTextLabel" parent="DialogueBox/DialogueMarginContainer"]
+[node name="DialogueLabel" type="RichTextLabel" parent="DialogueBox/DialogueMarginContainer" unique_id=691221660]
 unique_name_in_owner = true
 clip_contents = false
 layout_mode = 2
@@ -530,32 +518,33 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(0.211765, 0.211765, 0.270588, 1)
 theme_override_font_sizes/normal_font_size = 56
 theme_override_font_sizes/bold_font_size = 56
-theme_override_font_sizes/italics_font_size = 56
 theme_override_font_sizes/bold_italics_font_size = 56
+theme_override_font_sizes/italics_font_size = 56
 bbcode_enabled = true
 text = "Anyway, my sister Kamari has mentioned in her letters many times that while the standard rations the Isles have been giving to the adventurers are serviceable, that they only make her miss my cooking…
 "
 visible_characters_behavior = 1
 
-[node name="DialogueAnimationPlayer" type="AnimationPlayer" parent="DialogueBox/DialogueMarginContainer/DialogueLabel"]
-libraries = {
-"": SubResource("AnimationLibrary_0525a")
-}
+[node name="DialogueAnimationPlayer" type="AnimationPlayer" parent="DialogueBox/DialogueMarginContainer/DialogueLabel" unique_id=2063132378]
+active = false
+callback_mode_discrete = 0
+libraries/ = SubResource("AnimationLibrary_0525a")
 
-[node name="DialogueAudioPlayer" type="AudioStreamPlayer" parent="DialogueBox/DialogueMarginContainer/DialogueLabel"]
+[node name="DialogueAudioPlayer" type="AudioStreamPlayer" parent="DialogueBox/DialogueMarginContainer/DialogueLabel" unique_id=682557544]
 stream = ExtResource("13_yhh81")
 
-[node name="DialogueAnimationTree" type="AnimationTree" parent="DialogueBox/DialogueMarginContainer/DialogueLabel"]
+[node name="DialogueAnimationTree" type="AnimationTree" parent="DialogueBox/DialogueMarginContainer/DialogueLabel" unique_id=257185286]
 unique_name_in_owner = true
-active = false
+deterministic = false
 root_node = NodePath("%DialogueAnimationTree/..")
+callback_mode_discrete = 0
 tree_root = SubResource("AnimationNodeStateMachine_7wfeg")
 anim_player = NodePath("../DialogueAnimationPlayer")
 parameters/conditions/instantDialogue = false
 parameters/InstantWriteDialogue/TimeScale/scale = 1.0
 parameters/WriteDialogue/TimeScale/scale = 1.0
 
-[node name="DialogueFinishedMarginContainer" type="MarginContainer" parent="DialogueBox"]
+[node name="DialogueFinishedMarginContainer" type="MarginContainer" parent="DialogueBox" unique_id=516738763]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -570,7 +559,7 @@ mouse_filter = 2
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="DialogueFinishedTextureRect" type="TextureRect" parent="DialogueBox/DialogueFinishedMarginContainer"]
+[node name="DialogueFinishedTextureRect" type="TextureRect" parent="DialogueBox/DialogueFinishedMarginContainer" unique_id=297809311]
 unique_name_in_owner = true
 modulate = Color(0.211765, 0.211765, 0.270588, 1)
 layout_mode = 2
@@ -579,7 +568,7 @@ size_flags_vertical = 4
 mouse_filter = 2
 texture = ExtResource("14_wcfrq")
 
-[node name="SkipButton" type="TextureButton" parent="DialogueBox"]
+[node name="SkipButton" type="TextureButton" parent="DialogueBox" unique_id=579881608]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 1
@@ -596,7 +585,7 @@ texture_hover = ExtResource("17_x4yoi")
 texture_disabled = ExtResource("18_xcchf")
 texture_focused = ExtResource("17_x4yoi")
 
-[node name="SkipButtonTextureRect" type="TextureRect" parent="DialogueBox/SkipButton"]
+[node name="SkipButtonTextureRect" type="TextureRect" parent="DialogueBox/SkipButton" unique_id=95108519]
 modulate = Color(0.211765, 0.211765, 0.270588, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -613,7 +602,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("19_ee7ct")
 
-[node name="AutoAdvanceButton" type="TextureButton" parent="DialogueBox"]
+[node name="AutoAdvanceButton" type="TextureButton" parent="DialogueBox" unique_id=386223974]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 1
@@ -630,7 +619,7 @@ texture_hover = ExtResource("17_x4yoi")
 texture_disabled = ExtResource("18_xcchf")
 texture_focused = ExtResource("17_x4yoi")
 
-[node name="AutoAdvanceTextureRect" type="TextureRect" parent="DialogueBox/AutoAdvanceButton"]
+[node name="AutoAdvanceTextureRect" type="TextureRect" parent="DialogueBox/AutoAdvanceButton" unique_id=174536707]
 modulate = Color(0.211765, 0.211765, 0.270588, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -649,13 +638,11 @@ mouse_filter = 2
 texture = ExtResource("20_wnsui")
 flip_h = true
 
-[node name="AutoAdvanceButtonAnimationPlayer" type="AnimationPlayer" parent="DialogueBox/AutoAdvanceButton"]
+[node name="AutoAdvanceButtonAnimationPlayer" type="AnimationPlayer" parent="DialogueBox/AutoAdvanceButton" unique_id=2037127348]
 unique_name_in_owner = true
-libraries = {
-"": SubResource("AnimationLibrary_00doy")
-}
+libraries/ = SubResource("AnimationLibrary_00doy")
 
-[node name="ChoicesPanelContainer" type="PanelContainer" parent="."]
+[node name="ChoicesPanelContainer" type="PanelContainer" parent="." unique_id=1451887101]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -672,7 +659,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ChoicesMarginContainer" type="MarginContainer" parent="ChoicesPanelContainer"]
+[node name="ChoicesMarginContainer" type="MarginContainer" parent="ChoicesPanelContainer" unique_id=1545023497]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 16
@@ -680,14 +667,14 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="ChoicesVBox" type="VBoxContainer" parent="ChoicesPanelContainer/ChoicesMarginContainer"]
+[node name="ChoicesVBox" type="VBoxContainer" parent="ChoicesPanelContainer/ChoicesMarginContainer" unique_id=1095770107]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="ConfirmationDialogColorRect" type="ColorRect" parent="."]
+[node name="ConfirmationDialogColorRect" type="ColorRect" parent="." unique_id=2081395629]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(1920, 1080)
@@ -699,7 +686,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.211765, 0.211765, 0.270588, 0.752941)
 
-[node name="ConfirmationDialogPanel" type="Panel" parent="ConfirmationDialogColorRect"]
+[node name="ConfirmationDialogPanel" type="Panel" parent="ConfirmationDialogColorRect" unique_id=1650531421]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -713,7 +700,7 @@ offset_bottom = 175.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ConfirmationDialogVBox" type="VBoxContainer" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel"]
+[node name="ConfirmationDialogVBox" type="VBoxContainer" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel" unique_id=59278545]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -727,14 +714,14 @@ offset_bottom = 143.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ConfirmationDialogLabelMarginContainer" type="MarginContainer" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox"]
+[node name="ConfirmationDialogLabelMarginContainer" type="MarginContainer" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox" unique_id=1685154977]
 custom_minimum_size = Vector2(768, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 
-[node name="ConfirmationDialogLabel" type="Label" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox/ConfirmationDialogLabelMarginContainer"]
+[node name="ConfirmationDialogLabel" type="Label" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox/ConfirmationDialogLabelMarginContainer" unique_id=1558183470]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(750, 0)
 layout_mode = 2
@@ -744,14 +731,14 @@ text = "Do you want to skip the dialogue up to the next choice?"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="ConfirmationDialogCheckButtonMarginContainer" type="MarginContainer" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox"]
+[node name="ConfirmationDialogCheckButtonMarginContainer" type="MarginContainer" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox" unique_id=1907400927]
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 10
 
-[node name="ConfirmationDialogCheckBox" type="CheckBox" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox/ConfirmationDialogCheckButtonMarginContainer"]
+[node name="ConfirmationDialogCheckBox" type="CheckBox" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox/ConfirmationDialogCheckButtonMarginContainer" unique_id=1458599980]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -760,23 +747,23 @@ theme_override_font_sizes/font_size = 30
 button_pressed = true
 text = "Confirm before skipping"
 
-[node name="ConfirmationDialogYesNoButtonsMarginContainer" type="MarginContainer" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox"]
+[node name="ConfirmationDialogYesNoButtonsMarginContainer" type="MarginContainer" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox" unique_id=865588522]
 layout_mode = 2
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="ConfirmationDialogYesNoButtonsHBox" type="HBoxContainer" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox/ConfirmationDialogYesNoButtonsMarginContainer"]
+[node name="ConfirmationDialogYesNoButtonsHBox" type="HBoxContainer" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox/ConfirmationDialogYesNoButtonsMarginContainer" unique_id=171587564]
 layout_mode = 2
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="ConfirmationDialogYesButton" type="Button" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox/ConfirmationDialogYesNoButtonsMarginContainer/ConfirmationDialogYesNoButtonsHBox"]
+[node name="ConfirmationDialogYesButton" type="Button" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox/ConfirmationDialogYesNoButtonsMarginContainer/ConfirmationDialogYesNoButtonsHBox" unique_id=1101923680]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"ChoiceButton"
 text = "Yes"
 
-[node name="ConfirmationDialogNoButton" type="Button" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox/ConfirmationDialogYesNoButtonsMarginContainer/ConfirmationDialogYesNoButtonsHBox"]
+[node name="ConfirmationDialogNoButton" type="Button" parent="ConfirmationDialogColorRect/ConfirmationDialogPanel/ConfirmationDialogVBox/ConfirmationDialogYesNoButtonsMarginContainer/ConfirmationDialogYesNoButtonsHBox" unique_id=1980466777]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"ChoiceButton"
